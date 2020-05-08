@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="UTF-8">
@@ -98,7 +98,7 @@
             <tr>
               <td>X</td>
               <td>0</td>
-              <td><a href="#" data-izimodal-open="#modalEliminar">Eliminar</a></td>
+              <td><a href="#" data-izimodal-open="#modalEliminar" th:data-id="${compuesto.id}">Eliminar</a></td>
             </tr>
           </tbody>
         </table>
@@ -117,7 +117,7 @@
             <tr>
               <td>Y</td>
               <td>0</td>
-              <td><a href="#" data-izimodal-open="#modalEliminar">Eliminar</a></td>
+              <td><a href="#" data-izimodal-open="#modalEliminar" th:data-id="${compuesto.id}">Eliminar</a></td>
             </tr>
           </tbody>
         </table>
@@ -202,8 +202,7 @@
   <div id="modalEliminar" class="modalC">
     <h2 class="text-center mt-2">¿Desea eliminar el producto/materia prima?</h2>
     <form action="" class="row justify-content-around">
-      <button type="submit" class="btn btn-success col-sm-12 col-lg-4 mt-3 mb-3" value="Enviar"
-        id="confirmar">Eliminar</button>
+      <a href="/administrador/compuesto/borrar/" class="btn btn-success col-sm-12 col-lg-4 mt-3 mb-3">Eliminar</a>
     </form>
   </div>
 
@@ -273,8 +272,8 @@
           &nbsp;</li>
       </ul>
       <p>
-        <h3><span class="negrita">3. Tipos de cookies</span></h3>
-        <strong>3.1. Tipos de cookies según su finalidad</strong>
+      <h3><span class="negrita">3. Tipos de cookies</span></h3>
+      <strong>3.1. Tipos de cookies según su finalidad</strong>
       </p>
       <ul class="boliches">
         <li>
@@ -533,6 +532,14 @@
 
   <script>
     $(function () {
+      $(".modalC").iziModal({
+        padding: 10,
+        radius: 5,
+        overlayColor: 'rgba(0,0,0,0)',
+        transitionIn: 'flipInX',
+        transitionOut: 'fadeOutRight',
+        width: 800
+      });
       $(".modalP").iziModal({
         title: "Políticas y aviso legal",
         fullscreen: true,

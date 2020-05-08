@@ -82,9 +82,11 @@
   </nav>
   <main>
     <section class="row mx-auto text-center justify-content-around mt-5 mb-4">
-      <a role="button" class="btn botonContenido col-sm-10 col-lg-3" href="/administrador/gestionar_productos">Gestionar productos</a>
+      <a role="button" class="btn botonContenido col-sm-10 col-lg-3" href="/administrador/gestionar_productos">Gestionar
+        productos</a>
       <a role="button" class="btn botonContenido col-sm-10 col-lg-3" href="/administrador/precios">Gestionar precios</a>
-      <a role="button" class="btn botonContenido col-sm-10 col-lg-3" href="/administrador/clientes_pendientes">Aceptar nuevos clientes</a>
+      <a role="button" class="btn botonContenido col-sm-10 col-lg-3" href="/administrador/clientes_pendientes">Aceptar
+        nuevos clientes</a>
     </section>
     <section>
       <form action="">
@@ -118,18 +120,11 @@
         </thead>
         <tbody>
           <tr>
-            <th><a href="/administrador/pedidos_cliente">Gicnde, jfpef</a></th>
-            <th>36</th>
-            <th>4</th>
-            <th>62345</th>
-            <th><a href="#" data-izimodal-open="#modalEliminar">Eliminar</a></th>
-          </tr>
-          <tr>
             <th><a href="#">Uijdvfwe, coiuhfe</a></th>
             <th>75</th>
             <th>3</th>
             <th>123450</th>
-            <th><a href="#" data-izimodal-open="#modalEliminar">Eliminar</a></th>
+            <th><a href="#" data-izimodal-open="#modalEliminar" th:data-id="${cliente.id}">Eliminar</a></th>
           </tr>
         </tbody>
       </table>
@@ -188,8 +183,7 @@
   <div id="modalEliminar" class="modalC">
     <h2 class="text-center mt-2">¿Desea eliminar al cliente?</h2>
     <form action="" class="row justify-content-around">
-      <button type="submit" class="btn btn-success col-sm-12 col-lg-4 mt-3 mb-3" value="Enviar"
-        id="confirmar">Eliminar</button>
+      <a href="/administrador/borrar/" class="btn btn-success col-sm-12 col-lg-4 mt-3 mb-3">Eliminar</a>
     </form>
   </div>
 
@@ -258,8 +252,8 @@
           &nbsp;</li>
       </ul>
       <p>
-        <h3><span class="negrita">3. Tipos de cookies</span></h3>
-        <strong>3.1. Tipos de cookies según su finalidad</strong>
+      <h3><span class="negrita">3. Tipos de cookies</span></h3>
+      <strong>3.1. Tipos de cookies según su finalidad</strong>
       </p>
       <ul class="boliches">
         <li>

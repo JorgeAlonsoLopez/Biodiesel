@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="UTF-8">
@@ -104,22 +104,8 @@
             <th>Dsgan, hfpodl</th>
             <th>098765T</th>
             <th>España</th>
-            <th><a href="#" data-izimodal-open="#modalAceptar">Aceptar</a></th>
-            <th><a href="#" data-izimodal-open="#modalRechazar">Rechazar</a></th>
-          </tr>
-          <tr>
-            <th>Fyesm, Gjue</th>
-            <th>98765</th>
-            <th>Canadá</th>
-            <th><a href="#" data-izimodal-open="#modalAceptar">Aceptar</a></th>
-            <th><a href="#" data-izimodal-open="#modalRechazar">Rechazar</a></th>
-          </tr>
-          <tr>
-            <th>Abbc, Yrds</th>
-            <th>12345</th>
-            <th>Canadá</th>
-            <th><a href="#" data-izimodal-open="#modalAceptar">Aceptar</a></th>
-            <th><a href="#" data-izimodal-open="#modalRechazar">Rechazar</a></th>
+            <th><a href="#" data-izimodal-open="#modalAceptar" th:data-id="${cliente.id}">Aceptar</a></th>
+            <th><a href="#" data-izimodal-open="#modalRechazar" th:data-id="${cliente.id}">Rechazar</a></th>
           </tr>
         </tbody>
       </table>
@@ -178,16 +164,14 @@
   <div id="modalAceptar" class="modalC">
     <h2 class="text-center mt-2">¿Desea aceptar al cliente?</h2>
     <form action="" class="row justify-content-around">
-      <button type="submit" class="btn btn-success col-sm-12 col-lg-4 mt-3 mb-3" value="Enviar"
-        id="confirmar">Aceptar</button>
+      <a href="/administrador/clientes_pendientes/aceptar/" class="btn btn-success col-sm-12 col-lg-4 mt-3 mb-3">Aceptar</a>
     </form>
   </div>
 
   <div id="modalRechazar" class="modalC">
     <h2 class="text-center mt-2">¿Desea rechazar al cliente?</h2>
     <form action="" class="row justify-content-around">
-      <button type="submit" class="btn btn-danger col-sm-12 col-lg-4 mt-3 mb-3" value="Enviar"
-        id="rechazar">Rechazar</button>
+      <a href="/administrador/clientes_pendientes/borrar/" class="btn btn-success col-sm-12 col-lg-4 mt-3 mb-3">Rechazar</a>
     </form>
   </div>
 
@@ -256,8 +240,8 @@
           &nbsp;</li>
       </ul>
       <p>
-        <h3><span class="negrita">3. Tipos de cookies</span></h3>
-        <strong>3.1. Tipos de cookies según su finalidad</strong>
+      <h3><span class="negrita">3. Tipos de cookies</span></h3>
+      <strong>3.1. Tipos de cookies según su finalidad</strong>
       </p>
       <ul class="boliches">
         <li>

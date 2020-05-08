@@ -4,12 +4,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.salesianostriana.dam.biodiesel.repositorio.PedidoRepository;
+
 @Controller
 public class Controlador {
 
 
 	@GetMapping ("/cliente")
 	public String cliente (Model model) {
+		
+		//model.addAttribute("lista", repo.findAllById());
 		
 		return "cliente/Cliente";
 	}
