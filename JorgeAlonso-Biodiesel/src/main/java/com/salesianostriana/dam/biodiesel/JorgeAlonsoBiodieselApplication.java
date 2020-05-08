@@ -1,8 +1,11 @@
 package com.salesianostriana.dam.biodiesel;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -32,29 +35,44 @@ public class JorgeAlonsoBiodieselApplication {
 			return new CommandLineRunner() {
 				@Override
 				public void run(String... args) throws Exception {
+					
+					int num15=3, num0=0, num1=1;
+					Random rdn = new Random(System.nanoTime());
+					int aleatorio;
+					
+					List<Compuesto> listaCompuestos = new ArrayList<Compuesto>();
+					listaCompuestos.add(new Compuesto("Biodiesel", "compra", 0.86));
+					listaCompuestos.add(new Compuesto("Aceite de cogeneración", "compra", 0.34));
+					listaCompuestos.add(new Compuesto("Glicerina", "compra", 1.37));
+					listaCompuestos.add(new Compuesto("Aceite de motor", "venta", -0.25));
+					listaCompuestos.add(new Compuesto("Aceite de fritura", "venta", -0.36));
+					listaCompuestos.add(new Compuesto("Restos vegetales", "venta", -0.13));
+					for(Compuesto c : listaCompuestos) {
+						compuestoServicio.save(c);
+					}
 
-					Compuesto comp1 = new Compuesto("Biodiesel", "compra", 2);
-					Compuesto comp2 = new Compuesto("Frito", "venta", -10);
-					Compuesto comp3 = new Compuesto("Glicerina", "compra", 1);
-					compuestoServicio.save(comp1);
-					compuestoServicio.save(comp2);
-					compuestoServicio.save(comp3);
-
-					Administrador admin = new Administrador("admin", "admin", 1.67, 89.4);
+					Administrador admin = new Administrador("admin", "admin", 1200, 800);
 					administradorServicio.save(admin);
 					
-					Pais pais1 = new Pais("Pais 1", 3, 4);
-					Pais pais2 = new Pais("Pais 2", 5, 6);
-					paisServicio.save(pais1);
-					paisServicio.save(pais2);
+					List<Pais> listaPaises = new ArrayList<Pais>();
+					listaPaises.add(new Pais("Pais 1", 3, 4));
+					listaPaises.add(new Pais("Pais 2", 5, 6));
+					listaPaises.add(new Pais("Pais 3", 8, 4));
+					listaPaises.add(new Pais("Pais 4", 2, 1));
+					for(Pais p : listaPaises) {
+						paisServicio.save(p);
+					}
 					
+//					List<Cliente> listaClientes = new ArrayList<Cliente>();
+//					listaClientes.add(new Cliente("méngpehrsson", "méngpehrsson", "Méng", "Pehrsson", "46932 2nd Center", "cpehrsson0@hibu.com", "729479022", "12341234D", false, 
+//							LocalDate.of(1981, 03, 29), listaPaises.get(aleatorio)));
 					
-					Cliente c1 = new Cliente("AA", "aa", "Paco", "Perez", "Calle 2", "paco@gmail.com", "987654321", "12341234D", false, false, 
-							LocalDate.now(), pais1);
-					Cliente c2 = new Cliente("BB", "bb", "Pepe", "ñaaa", "Calle 22", "pepe@gmail.com", "123456789", "09876543E", true, true, 
-							LocalDate.now(), pais2);
-					clienteServicio.save(c1);
-					clienteServicio.save(c2);
+					List<Cliente> listaClientes = clienteServicio.cargarListado();
+					for(Cliente c : listaClientes) {
+						aleatorio = rdn.nextInt(num15 + num1);
+						c.setPais(paisServicio.findAll().get(aleatorio));
+						clienteServicio.save(c);
+					}
 					
 					
 					Map<String, Integer> mapa1 = new HashMap<String, Integer>();
@@ -71,14 +89,10 @@ public class JorgeAlonsoBiodieselApplication {
 					LocalDate fecha2 = LocalDate.of(2020, 6, 3);
 					LocalDate fecha3 = LocalDate.of(2020, 4, 10);
 					
-					pedidoServicio.hacerPedido(admin, mapa1, fecha1, c1, compuestoServicio);
-					pedidoServicio.hacerPedido(admin, mapa2, fecha2, c1, compuestoServicio);
-					pedidoServicio.hacerPedido(admin, mapa3, fecha3, c2, compuestoServicio);
-					
-					Cliente c3 = new Cliente("BB", "bb", "Pepe", "ñaaa", "Calle 22", "pepe@gmail.com", "123456789", "09876543E", true, true, 
-							LocalDate.now(), pais2);
-					clienteServicio.save(c3);
-					pedidoServicio.hacerPedido(admin, mapa3, fecha3, c2, compuestoServicio);
+//					pedidoServicio.hacerPedido(admin, mapa1, fecha1, listaClientes.get(0), compuestoServicio);
+//					pedidoServicio.hacerPedido(admin, mapa2, fecha2, listaClientes.get(1), compuestoServicio);
+//					pedidoServicio.hacerPedido(admin, mapa3, fecha3, listaClientes.get(2), compuestoServicio);
+//					pedidoServicio.hacerPedido(admin, mapa3, fecha3, listaClientes.get(3), compuestoServicio);
 					
 					
 

@@ -1,6 +1,7 @@
 package com.salesianostriana.dam.biodiesel.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -8,15 +9,31 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.salesianostriana.dam.biodiesel.modelo.Cliente;
 import com.salesianostriana.dam.biodiesel.servicio.ClienteServicio;
 
+@Controller
 public class ClienteController {
 
 	@Autowired
 	private ClienteServicio servicio;
 	
-	@GetMapping("/administrador/clientes_pendientes/borrar/{id}")
-	public String borrarClientePendiente(@PathVariable("id") Long id, Model model) {
+	
+	@GetMapping ("/administrador/clientes_pendientes")
+	public String clientesPendientes (Model model) {
+		model.addAttribute("listaClientes", servicio.clientesPendientes());
+		return "/administrador/ClientesPendientes";
+	}
+	
+	@GetMapping ("/administrador")
+	public String clientesTotales(Model model) {
+		model.addAttribute("listaClientes", servicio.clientesAceptados());
+		return "/administrador/Administrador";
+	}
+	
+	
+	
+	@GetMapping("/administrador/clientes_pendientes/borrar/{dni}")
+	public String borrarClientePendiente(@PathVariable("dni") String dni, Model model) {
 
-		Cliente cliente = servicio.findById(id);
+		Cliente cliente = servicio.buscarPorDNI(dni);
 
 		if (cliente != null) {
 			servicio.delete(cliente);
@@ -26,14 +43,13 @@ public class ClienteController {
 
 	}
 	
-	@GetMapping("/administrador/clientes_pendientes/borrar/{id}")
-	public String aceptarCliente(@PathVariable("id") Long id, Model model) {
+	@GetMapping("/administrador/clientes_pendientes/aceptar/{dni}")
+	public String aceptarCliente(@PathVariable("dni") String dni, Model model) {
 
-		Cliente cliente = servicio.findById(id);
+		Cliente cliente = servicio.buscarPorDNI(dni);
 
 		if (cliente != null) {
 			cliente.setAceptado(true);
-			cliente.setDadoAlta(true);
 			servicio.edit(cliente);
 		}
 
@@ -50,7 +66,7 @@ public class ClienteController {
 			servicio.delete(cliente);
 		}
 
-		return "redirect:/administrador";
+		return "redirect:/administrador/Administrador";
 
 	}
 	

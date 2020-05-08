@@ -13,7 +13,7 @@ public class Cliente extends Usuario{
 
 private String nombre, apellido, direccion, correo, telefono, dni;
 	
-	private boolean dadoAlta, aceptado;
+	private boolean aceptado;
 	
 	private LocalDate fechaNacimineto;
 	
@@ -21,7 +21,7 @@ private String nombre, apellido, direccion, correo, telefono, dni;
 	private Pais pais;
 
 	public Cliente(String usuario, String contrasenya, String nombre, String apellido,
-			String direccion, String correo, String telefono, String dni, boolean dadoAlta, boolean aceptado,
+			String direccion, String correo, String telefono, String dni, boolean aceptado,
 			LocalDate fechaNacimineto, Pais pais) {
 		super(usuario, contrasenya);
 		this.nombre = nombre;
@@ -30,10 +30,24 @@ private String nombre, apellido, direccion, correo, telefono, dni;
 		this.correo = correo;
 		this.telefono = telefono;
 		this.dni = dni;
-		this.dadoAlta = dadoAlta;
 		this.aceptado = aceptado;
 		this.fechaNacimineto = fechaNacimineto;
 		this.pais = pais;
 	}
+
+	public Cliente(String usuario, String contrasenya, String nombre, String apellido, String direccion, String correo,
+			String telefono, String dni, boolean aceptado, LocalDate fechaNacimineto) {
+		super(usuario, contrasenya);
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.direccion = direccion;
+		this.correo = correo;
+		this.telefono = telefono;
+		this.dni = dni;
+		this.aceptado = aceptado;
+		this.fechaNacimineto = fechaNacimineto;
+	}
+	
+	
 	
 }

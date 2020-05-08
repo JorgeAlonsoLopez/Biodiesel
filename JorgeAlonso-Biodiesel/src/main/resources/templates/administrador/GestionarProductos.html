@@ -95,10 +95,10 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>X</td>
-              <td>0</td>
-              <td><a href="#" data-izimodal-open="#modalEliminar" th:data-id="${compuesto.id}">Eliminar</a></td>
+            <tr th:each="material : ${materiasPrimas}">
+              <td th:text="${material.nombre}">X</td>
+              <td th:text="${material.precio}">0</td>
+              <td><a href="#" data-izimodal-open="#modalEliminar" th:data-id="${material.id}">Eliminar</a></td>
             </tr>
           </tbody>
         </table>
@@ -114,10 +114,10 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Y</td>
-              <td>0</td>
-              <td><a href="#" data-izimodal-open="#modalEliminar" th:data-id="${compuesto.id}">Eliminar</a></td>
+            <tr th:each="producto : ${productos}">
+              <td th:text="${producto.nombre}">Y</td>
+              <td th:text="${producto.precio}">0</td>
+              <td><a href="#" data-izimodal-open="#modalEliminar" th:data-id="${producto.id}">Eliminar</a></td>
             </tr>
           </tbody>
         </table>

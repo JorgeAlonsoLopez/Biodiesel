@@ -100,12 +100,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th>Dsgan, hfpodl</th>
-            <th>098765T</th>
-            <th>España</th>
-            <th><a href="#" data-izimodal-open="#modalAceptar" th:data-id="${cliente.id}">Aceptar</a></th>
-            <th><a href="#" data-izimodal-open="#modalRechazar" th:data-id="${cliente.id}">Rechazar</a></th>
+          <tr th:each="cliente : ${listaClientes}">
+            <th th:text="${cliente.apellido} + ', ' + ${cliente.nombre} ">Dsgan, hfpodl</th>
+            <th th:text="${cliente.dni}">098765T</th>
+            <th th:text="${cliente.pais.nombre}">España</th>
+            <th><a href="#" data-izimodal-open="#modalAceptar" th:data-id="${cliente.dni}">Aceptar</a></th>
+            <th><a href="#" data-izimodal-open="#modalRechazar" th:data-id="${cliente.dni}">Rechazar</a></th>
           </tr>
         </tbody>
       </table>

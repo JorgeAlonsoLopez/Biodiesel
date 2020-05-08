@@ -36,17 +36,7 @@ public class Controlador {
 		return "cliente/MateriasPrimas";
 	}
 	
-	@GetMapping ("/administrador")
-	public String administrador (Model model) {
-		
-		return "administrador/Administrador";
-	}
-	
-	@GetMapping ("/administrador/clientes_pendientes")
-	public String clientesPendientes (Model model) {
-		
-		return "administrador/ClientesPendientes";
-	}
+
 	
 	@GetMapping ("/administrador/precios")
 	public String precios (Model model) {
@@ -54,11 +44,7 @@ public class Controlador {
 		return "administrador/Precios";
 	}
 	
-	@GetMapping ("/administrador/gestionar_productos")
-	public String gestionarProductos (Model model) {
-		
-		return "administrador/GestionarProductos";
-	}
+	
 	
 	@GetMapping ("/administrador/pedidos_cliente")
 	public String pedidosCliente (Model model) {
