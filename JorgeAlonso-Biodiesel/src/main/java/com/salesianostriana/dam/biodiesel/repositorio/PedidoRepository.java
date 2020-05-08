@@ -12,4 +12,7 @@ public interface PedidoRepository extends JpaRepository<Pedido, Long> {
 	
 	@Query("select distinct p from Pedido p join fetch p.listaPedidos")
 	List<Pedido> findAllJoin();
+	
+	
+	
 }
