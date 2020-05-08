@@ -107,34 +107,31 @@ public class ClienteServicio extends BaseService<Cliente, Long, ClienteRepositor
 							.skip(1)
 							.map(line -> {
 								String[] values = line.split(",");
-								return new Cliente(values[3], values[4], values[0], values[1], values[8], values[5], values[6], values[1], false,
-										LocalDate.now());
+								return new Cliente(values[2], values[3], values[0], values[1], values[8], values[5], values[6], values[4], false,
+										createRandomDate(1960, 2000));
 						}).collect(Collectors.toList());
 	 			// @formatter:on
 				
 			}catch (Exception e) {
-				System.err.println("Error de lectura del fichero de datos");
+				System.err.println("Error de lectura del fichero de datos de clientes.");
 				System.exit(-1);
 			}
-			
-//			try (Stream<String> stream = Files.lines(Paths.get("classpath:clientes.csv"))) {
-//
-//				result = stream.skip(1)
-//			                  .map(line -> {
-//			                      String[] values = line.split(",");
-//			                      Cliente e = new Cliente(values[3], values[4], values[0], values[1], values[8], values[5], values[6], values[1], true,
-//											LocalDate.now());
-//			                      return e;
-//			                    }).collect(Collectors.toCollection(ArrayList::new));
-//
-//			} catch (IOException e) {
-//			    e.printStackTrace();
-//			}
 			
 
 			return result;
 
 		}
+	
+	public static LocalDate createRandomDate(int startYear, int endYear) {
+        int day = createRandomIntBetween(1, 28);
+        int month = createRandomIntBetween(1, 12);
+        int year = createRandomIntBetween(startYear, endYear);
+        return LocalDate.of(year, month, day);
+    }
+	
+	public static int createRandomIntBetween(int start, int end) {
+        return start + (int) Math.round(Math.random() * (end - start));
+    }
 	
 	
 

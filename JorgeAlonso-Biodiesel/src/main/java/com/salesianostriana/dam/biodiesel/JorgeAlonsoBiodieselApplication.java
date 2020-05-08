@@ -36,7 +36,6 @@ public class JorgeAlonsoBiodieselApplication {
 				@Override
 				public void run(String... args) throws Exception {
 					
-					int num15=3, num0=0, num1=1;
 					Random rdn = new Random(System.nanoTime());
 					int aleatorio;
 					
@@ -54,22 +53,13 @@ public class JorgeAlonsoBiodieselApplication {
 					Administrador admin = new Administrador("admin", "admin", 1200, 800);
 					administradorServicio.save(admin);
 					
-					List<Pais> listaPaises = new ArrayList<Pais>();
-					listaPaises.add(new Pais("Pais 1", 3, 4));
-					listaPaises.add(new Pais("Pais 2", 5, 6));
-					listaPaises.add(new Pais("Pais 3", 8, 4));
-					listaPaises.add(new Pais("Pais 4", 2, 1));
-					for(Pais p : listaPaises) {
+
+					for(Pais p : paisServicio.cargarListado()) {
 						paisServicio.save(p);
 					}
 					
-//					List<Cliente> listaClientes = new ArrayList<Cliente>();
-//					listaClientes.add(new Cliente("méngpehrsson", "méngpehrsson", "Méng", "Pehrsson", "46932 2nd Center", "cpehrsson0@hibu.com", "729479022", "12341234D", false, 
-//							LocalDate.of(1981, 03, 29), listaPaises.get(aleatorio)));
-					
-					List<Cliente> listaClientes = clienteServicio.cargarListado();
-					for(Cliente c : listaClientes) {
-						aleatorio = rdn.nextInt(num15 + num1);
+					for(Cliente c : clienteServicio.cargarListado()) {
+						aleatorio = rdn.nextInt(paisServicio.findAll().size());
 						c.setPais(paisServicio.findAll().get(aleatorio));
 						clienteServicio.save(c);
 					}
