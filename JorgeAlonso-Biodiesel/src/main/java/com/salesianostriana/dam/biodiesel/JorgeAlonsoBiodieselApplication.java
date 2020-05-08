@@ -37,7 +37,7 @@ public class JorgeAlonsoBiodieselApplication {
 				public void run(String... args) throws Exception {
 					
 					Random rdn = new Random(System.nanoTime());
-					int aleatorio;
+					int aleatorio, aleatorio2, num30=30, max=30000, min=5000;
 					
 					List<Compuesto> listaCompuestos = new ArrayList<Compuesto>();
 					listaCompuestos.add(new Compuesto("Biodiesel", "compra", 0.86));
@@ -65,25 +65,14 @@ public class JorgeAlonsoBiodieselApplication {
 					}
 					
 					
-					Map<String, Integer> mapa1 = new HashMap<String, Integer>();
-					mapa1.put("Biodiesel", 9);
-					
-					Map<String, Integer> mapa2 = new HashMap<String, Integer>();
-					mapa2.put("Frito", 10);
-					
-					Map<String, Integer> mapa3 = new HashMap<String, Integer>();
-					mapa3.put("Biodiesel", 5);
-					mapa3.put("Glicerina", 5);
-					
-					LocalDate fecha1 = LocalDate.of(2020, 10, 20);
-					LocalDate fecha2 = LocalDate.of(2020, 6, 3);
-					LocalDate fecha3 = LocalDate.of(2020, 4, 10);
-					
-//					pedidoServicio.hacerPedido(admin, mapa1, fecha1, listaClientes.get(0), compuestoServicio);
-//					pedidoServicio.hacerPedido(admin, mapa2, fecha2, listaClientes.get(1), compuestoServicio);
-//					pedidoServicio.hacerPedido(admin, mapa3, fecha3, listaClientes.get(2), compuestoServicio);
-//					pedidoServicio.hacerPedido(admin, mapa3, fecha3, listaClientes.get(3), compuestoServicio);
-					
+					for(int i=0; i<num30; i++) {
+						Map<String, Integer> mapa = new HashMap<String, Integer>();
+						aleatorio = rdn.nextInt(clienteServicio.findAll().size());
+						aleatorio2 = rdn.nextInt(compuestoServicio.findAll().size());
+						mapa.put(compuestoServicio.findAll().get(aleatorio2).getNombre(),rdn.nextInt(max - min)+min);
+						LocalDate fecha = clienteServicio.createRandomDate(2017, 2019);
+						pedidoServicio.hacerPedido(admin, mapa, fecha, clienteServicio.findAll().get(aleatorio), compuestoServicio);
+					}					
 					
 
 				}
