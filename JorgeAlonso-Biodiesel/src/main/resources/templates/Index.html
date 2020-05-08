@@ -1,0 +1,1975 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenTech - Inicio</title>
+    <meta name="description" content="Página principal de GreenTech, donde encontrará toda la información necesaria.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <!-- Tabla de datos (jscharting)  -->
+    <script src="https://code.jscharting.com/latest/jscharting.js"></script>
+    <!-- Fuentes  -->
+    <link href='https://fonts.googleapis.com/css?family=Cambay' rel='stylesheet'>
+    <!-- AOS  -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Modal (iziModal.js) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/js/iziModal.js"
+        integrity="sha256-jx5SpNrWp5tIlHK2uGtUsZ4QRJkEV9aQXXGN3kkPXIE=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/css/iziModal.css"
+        integrity="sha256-qaS6Cn77YhfgOLFHy4qadvrn/cEYG9bvbnQILtSY+0E=" crossorigin="anonymous" />
+    <!-- Iconos  -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <!-- Calendario (flatpickr.js)  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/es.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/dark.css">
+    <!-- Estilos propios y modificados de plantilla (footer)  -->
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="../CSS/CSS.css">
+    <!-- Google Maps  -->
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js"></script>
+    <!-- Google Maps settings -->
+    <script>
+        // Regular map
+        function regular_map() {
+            var var_location = new google.maps.LatLng(55.609139, 12.466885);
+
+            var var_mapoptions = {
+                center: var_location,
+                zoom: 13
+            };
+
+            var var_map = new google.maps.Map(document.getElementById("mapa"),
+                var_mapoptions);
+
+            var var_marker = new google.maps.Marker({
+                position: var_location,
+                map: var_map,
+                title: "New York"
+            });
+        }
+
+        // Initialize maps
+        google.maps.event.addDomListener(window, 'load', regular_map);
+    </script>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <a class="navbar-brand" href="#portada">
+            <img id="imagenNav" src="../img/logo.png" alt="Logo de la empresa">
+        </a>
+
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+            data-target="#collapsibleNavbar" aria-controls="navbarResponsive" aria-expanded="false"
+            aria-label="Toggle navigation" id="botonNav">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
+
+
+        <div class="collapse navbar-collapse text-right" id="collapsibleNavbar">
+            <ul class="navbar-nav ml-auto align-items-center">
+                <li class="nav-item navLink">
+                    <a class="nav-link" href="#servicios">Que ofrecemos</a>
+                </li>
+                <li class="nav-item navLink">
+                    <a class="nav-link" href="#productos">Productos</a>
+                </li>
+                <li class="nav-item navLink">
+                    <a class="nav-link" href="#historia">Historia</a>
+                </li>
+                <li class="nav-item navLink">
+                    <a class="nav-link" href="#produccion">Producción</a>
+                </li>
+                <li class="nav-item navLink">
+                    <a class="nav-link" href="#principios">Principios básicos</a>
+                </li>
+                <li class="nav-item navLink">
+                    <a class="nav-link" href="#equipo">Equipo</a>
+                </li>
+                <li class="nav-item navLink">
+                    <a class="nav-link" href="#contacto">Contacto</a>
+                </li>
+                <li class="nav-item navLink" id="opcionRegistro">
+                    <a href="#" class="btn botonNavbar" data-izimodal-open="#modalRegistro"
+                        role="button">Registrarse</a>
+                </li>
+                <li class="nav-item navLink" id="opcionIniciarSesion">
+                    <a href="#" class="btn botonNavbar" data-izimodal-open="#modalLogin" role="button">Iniciar
+                        sesión</a>
+                </li>
+                <li class="nav-item navLink" id="opcionGestion">
+                    <a class="btn botonNavbar" href="#" role="button">Area de gestión</a>
+                </li>
+                <li class="nav-item navLink" id="opcionCerrarSesion">
+                    <a class="btn botonNavbar" href="#" role="button">Cerrar sesión</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <header id="portada" class="d-flex align-items-center parallax2">
+        <div class="mx-auto text-center">
+            <h1>GREENTECH BOIFUELS</h1>
+            <h2>Tu biocombustible y cada día el de más gente</h2>
+        </div>
+    </header>
+    <main class="container-fluid">
+        <section id="servicios">
+            <h1 class="mb-5 d-flex align-items-center justify-content-center parallax" id="parallax1">Nuestros
+                servicios, nuestra garantía</h1>
+            <div class="flexCart">
+                <div class="carta col-sm-12 col-lg-3" data-aos="fade-right" data-aos-anchor-placement="bottom-bottom">
+                    <img src="../img/ballen.jpg" alt="Ballena" class="imgCart">
+                    <div>
+                        <h3>Menos contaminación</h3>
+                        <p class="cartaText">Al usar biodiesel GreenTech no solo contaminas menos en comparación con
+                            otros, sino que eliminas la
+                            contaminación de los residuos usados para fabricarlo y es mucho menos contaminante a nivel
+                            global que el resto del marcado.</p>
+                    </div>
+                </div>
+                <div class="carta col-sm-12 col-lg-3" data-aos="fade-down" data-aos-anchor-placement="bottom-bottom">
+                    <img src="../img/collage.jpg" alt="Vehículos de tierra, mar y aire de biodiesel" class="imgCart">
+                    <div>
+                        <h3>Todo tipo de vehículos</h3>
+                        <p class="cartaText">Nuestro biodiesel no solo sirve para adicionarlo a la gasolina, sino que
+                            gracias a nuestro proceso
+                            de purificación, se puede usar en cualquier tipo de vehículo, ya sea recorriendo la tierra,
+                            surcando los mares o atravesando los cielos.</p>
+                    </div>
+                </div>
+                <div class="carta col-sm-12 col-lg-3" data-aos="fade-left" data-aos-anchor-placement="bottom-bottom">
+                    <img src="../img/quimi.jpg" alt="Imagen de química" class="imgCart">
+                    <div>
+                        <h3>Nuevas oportunidades</h3>
+                        <p class="cartaText">Nuestro objetivo no es quedarnos como estamos, sino que tenemos un
+                            departamento de I+D+i donde optimizamos
+                            y mejoramos nuestro producto y abrimos las puertas a nuevas formas de energía para lograr la
+                            menor contaminación posible.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="productos">
+            <br>
+            <h1 class="mb-5 d-flex align-items-center justify-content-center parallax" id="parallax2">Productos y
+                materias primas</h1>
+            <div class="flexCart">
+                <div class="col-sm-12 col-lg-4">
+                    <h2 class="mb-4 mt-4">Productos</h2>
+                    <div class="row">
+                        <div class="col-sm-12 col-lg-12 mt-2 mb-2" data-aos="zoom-in-down"
+                            data-aos-anchor-placement="bottom-bottom">
+                            <h3>Biodiesel</h3>
+                            <p class="textProd">Es nuestro producto principal. Se puede usar como sustituto parcial o
+                                total al combustible y se notará tanto
+                                en niveles de contaminación como de ahorro económico. La pureza de nuestro biodiesel
+                                permite que sea usado en motores sin restricción de filtro.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-lg-12 mt-2 mb-2" data-aos="zoom-in"
+                            data-aos-anchor-placement="bottom-bottom">
+                            <h3>Glicerina</h3>
+                            <p class="textProd">La glicerina es un subproducto derivado de la producción. Los usos que
+                                se le pueden dar a este compuesto son bastantes y variados: vibras
+                                sintéticas, fármacos, cosméticos lubricantes o pinturas. Con esto se erradica la
+                                contaminación asociada a la producción de este valorado compuesto mediante otras vías.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-lg-12 mt-2 mb-2" data-aos="zoom-in-up"
+                            data-aos-anchor-placement="bottom-bottom">
+                            <h3>Aceite de combustión</h3>
+                            <p class="textProd">Este es otro subproducto, al igual que la glicerina. Es ideal para las
+                                plantas de cogeneración, donde se produce el calor necesario y el restante
+                                se aprovecha para generar electricidad, evitando así, la quema de productos como el
+                                carbón, que son altamente contaminantes.</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="imagenProduct" class="col-sm-12 col-lg-4 d-flex align-items-center">
+                    <img src="../img/logo.png" alt="">
+                </div>
+                <div class="col-sm-12 col-lg-4">
+                    <h2 class="mb-4 mt-4">Materias primas</h2>
+                    <div class="row">
+                        <div class="col-sm-12 col-lg-12  mt-2 mb-2" data-aos="zoom-in-down"
+                            data-aos-anchor-placement="bottom-bottom">
+                            <h3>Aceite de fritura</h3>
+                            <p class="textProd">El aceite usado procedente de la industria de la alimentación es uno de
+                                los elementos más contaminantes que existen.
+                                Es una amenaza para los suelos, los cuales pueden perder su fertilidad, y para las
+                                aguas, tanto superficiales como subterráneas.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-lg-12  mt-2 mb-2" data-aos="zoom-in"
+                            data-aos-anchor-placement="bottom-bottom">
+                            <h3>Aceite de motor</h3>
+                            <p class="textProd">Junto con los aceites de fritura, es otro gran contaminante. No solo
+                                contamina el agua con la que entra en contacto, sino que
+                                por los aditivos que lleva, crea una capa que impide la fotosíntesis si de alguna forma
+                                llega a las plantas, que se ve agravado por su lenta degradación.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-lg-12  mt-2 mb-2" data-aos="zoom-in-up"
+                            data-aos-anchor-placement="bottom-bottom">
+                            <h3>Restos alimentarios</h3>
+                            <p class="textProd">Estos desechos suelen tener un alto contenido de aceite, cómo por
+                                ejemplo, salsas, condimentos, grasas, aceites,
+                                mayonesa, etc. Con esta fuente, se retiran de la circulación restos de alimentos
+                                consumidos o que están caducados, dándoles una salida.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="historia">
+            <br>
+            <h1 class="mb-5 d-flex align-items-center justify-content-center parallax" id="parallax3">Historia</h1>
+            <div class="cartaText">
+                <h2 class="mx-auto">Unos inicios modestos</h2>
+                <div class="row mx-auto contenedHist" data-aos="fade-left" data-aos-anchor-placement="bottom-bottom">
+                    <img src="../img/start.jpg" alt="Salida de carrera" class="rounded-circle col-sm-12 col-lg-2">
+                    <span class="col-sm-12 col-lg-1 blancHist"></span>
+                    <p class="col-sm-12 col-lg-9 d-block textHist">Nuestra empresa comenzó en 2017 con una sencilla
+                        idea, producir el mejor,
+                        el menos contaminante y el más barato biodiesel del mercado. Para ello montamos una pequeña
+                        fábrica en Dinamarca.
+                        A varios empresarios locales les gustó nuestro producto y gracias a ellos pudimos despegar y
+                        generar los suficientes
+                        ingresos para seguir investigando y mejorar.</p>
+                </div>
+            </div>
+            <div class="cartaText">
+                <h2 class="mx-auto">El contrato que lo cambió todo</h2>
+                <div class="row mx-auto contenedHist" data-aos="fade-right" data-aos-anchor-placement="bottom-bottom">
+                    <p class="col-sm-12 col-lg-9 d-block textHist">En 2018, el gobierno del país estaba llevando a cabo
+                        unas medidas para combatir la
+                        contaminación y el cambio climático. Para ello se entrevistó con las empresas a nivel nacional y
+                        la nuestra salió vencedora.
+                        Gracias al concurso, nos encargaremos de convertir el aceite de fritura de los comedores
+                        públicos y escuelas en biodiesel.</p>
+                    <span class="col-sm-12 col-lg-1 blancHist"></span>
+                    <img src="../img/escudo.png" alt="Escudo del gobierno de Dinamarca"
+                        class="rounded-circle col-sm-12 col-lg-2">
+                </div>
+            </div>
+            <div class="cartaText">
+                <h2 class="mx-auto">Ampliación de la planta</h2>
+                <div class="row mx-auto contenedHist" data-aos="fade-left" data-aos-anchor-placement="bottom-bottom">
+                    <img src="../img/fabrica.jpg" alt="Imagen deuna fábrica" class="rounded-circle col-sm-12 col-lg-2">
+                    <span class="col-sm-12 col-lg-1 blancHist"></span>
+                    <p class="col-sm-12 col-lg-9 d-block textHist">Gracias al nuevo contrato, montamos una segunda línea
+                        de mayor capacidad para hacer frente
+                        no solo a la producción del biodiesel del aceite, sino a la demanda que de repente llegó al
+                        hacerse oficial. Pusimos toda
+                        nuestra energía e ilusión en mejorar día a día para dar lo que se esperaba de nosotros:
+                        excelencia.</p>
+                </div>
+            </div>
+            <div class="cartaText">
+                <h2 class="mx-auto">Nos reinventamos</h2>
+                <div class="row mx-auto contenedHist" data-aos="fade-right" data-aos-anchor-placement="bottom-bottom">
+                    <p class="col-sm-12 col-lg-9 d-block textHist">A día de hoy, gracias al éxito y al esfuerzo en el
+                        pasado, somos una de las marcas mejor valoradas
+                        en el sector. Hemos abierto un centro de desarrollo para dar salida a un mayor número de
+                        desechos que se puedan reutilizar y
+                        abrirnos a nuevas formas de energía. Todo esto lo vamos a llevar a cabo sin perder de vista
+                        nuestros valores y
+                        objetivos: excelencia, calidad y la mínima contaminación posible.</p>
+                    <span class="col-sm-12 col-lg-1 blancHist"></span>
+                    <img src="../img/cohete.jpg" alt="Imagen del lazamiento de un cohete"
+                        class="rounded-circle col-sm-12 col-lg-2">
+                </div>
+            </div>
+        </section>
+        <section id="produccion">
+            <br>
+            <h1 class="mb-5 d-flex align-items-center justify-content-center parallax" id="parallax4">Producción</h1>
+            <div>
+                <div id="chartDiv"></div>
+            </div>
+        </section>
+        <section id="principios">
+            <br>
+            <h1 class="mb-5 d-flex align-items-center justify-content-center parallax" id="parallax5">Principios básicos
+            </h1>
+            <div class="marcoReacc">
+                <p>Muchas personas que lo vean se preguntaran, ¿de qué está hecho el biodiesel y cómo se forma a partir
+                    de aceite?</p>
+                <p>El biodiesel está formado por ésteres. Estos son compuestos formados por cadenas de carbono unidas
+                    unas a otras, terminando en un compuesto de carbono y oxígeno.</p>
+                <img src="../img/reaccion.png" alt="Reacción principal del biodiesel" id="imgReacc"
+                    data-aos="flip-down">
+                <br><br>
+                <p>Para partir de aceite usado, que está formado principalmente por triglicéridos, que en presencia de
+                    un alcohol, en nuestro caso metanol, junto con un catalizador,
+                    metilato potásico, vamos a obtener glicerina y los ésteres, que son las cadenas carbonadas separadas
+                    del triglicérido, que es lo que se va a quemar en el proceso de combustión.
+                    A este proceso se le llama transesterificación.</p>
+            </div>
+        </section>
+        <section id="equipo">
+            <br>
+            <h1 class="mb-5 d-flex align-items-center justify-content-center parallax" id="parallax6">Equipo</h1>
+            <div>
+                <p class="imgCart mx-auto">Cómo no, no podríamos olvidarnos de las grandísimas que han hecho esto
+                    posible, gracias a su esfuerzo y dedicación, hemos conseguido llegar hasta donde estamos.</p>
+                <div class="flexCart">
+                    <div class="carta col-sm-12 col-lg-2 infoPersonal" id="infoPersonal1" data-aos="fade-up-right">
+                        <img src="../img/person3.png" alt="Foto de persona 1" class="imgCart">
+                        <div class="contenedorNombre pb-1 mb-2">
+                            <h4>Marta Castillo</h4>
+                            <h5>Directora ejecutiva</h5>
+                            <div class="redesPerso">
+                                <ul class="list-inline">
+                                    <li class="list-inline-item">
+                                        <a href="#" class="redS">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a href="#" class="redS">
+                                            <i class="fab fa-facebook-f"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a href="#" class="redS">
+                                            <i class="fab fa-linkedin-in"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carta col-sm-12 col-lg-2 infoPersonal" data-aos="fade-right">
+                        <img src="../img/person1.png" alt="Foto de persona 2" class="imgCart">
+                        <div class="contenedorNombre pb-1 mb-2">
+                            <h4>Alberto Díaz</h4>
+                            <h5>Director estratégico</h5>
+                            <div class="redesPerso">
+                                <ul class="list-inline redesPerso">
+                                    <li class="list-inline-item">
+                                        <a href="#" class="redS">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a href="#" class="redS">
+                                            <i class="fab fa-facebook-f"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a href="#" class="redS">
+                                            <i class="fab fa-linkedin-in"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carta col-sm-12 col-lg-2 infoPersonal" data-aos="fade-left">
+                        <img src="../img/person2.png" alt="Foto de persona 3" class="imgCart">
+                        <div class="contenedorNombre pb-1 mb-2">
+                            <h4>Max Hines</h4>
+                            <h5>Director financiero</h5>
+                            <div class="redesPerso">
+                                <ul class="list-inline">
+                                    <li class="list-inline-item">
+                                        <a href="#" class="redS">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a href="#" class="redS">
+                                            <i class="fab fa-facebook-f"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a href="#" class="redS">
+                                            <i class="fab fa-linkedin-in"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carta col-sm-12 col-lg-2 infoPersonal" data-aos="fade-up-left">
+                        <img src="../img/person4.png" alt="Foto de persona 4" class="imgCart">
+                        <div class="contenedorNombre pb-1 mb-2">
+                            <h4>Lucile Swanson</h4>
+                            <h5>Directora I+D+i</h5>
+                            <div class="redesPerso">
+                                <ul class="list-inline">
+                                    <li class="list-inline-item">
+                                        <a href="#" class="redS">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a href="#" class="redS">
+                                            <i class="fab fa-facebook-f"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a href="#" class="redS">
+                                            <i class="fab fa-linkedin-in"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="contacto">
+            <br>
+            <h1 class="mb-5 d-flex align-items-center justify-content-center parallax" id="parallax7">Contacto</h1>
+            <div class="row imgCart mx-auto">
+                <div class="col-sm-12 col-lg-8 mx-auto">
+                    <div class="map-container z-depth-1-half" id="mapa">
+                        <iframe src="https://maps.google.com/maps?q=warsaw&t=k&z=13&ie=UTF8&iwloc=&output=embed"
+                            frameborder="0" style="border:0" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-lg-4 text-left d-flex align-items-center mt-5" id="datosContacto"
+                    data-aos="flip-right">
+                    <div>
+                        <div>
+                            <h2 class="d-inline">Dirección</h2>
+                            <p class="d-inline ml-3">Avedǿre Holme - Hvidovre - Dinamarca</p>
+                        </div>
+                        <div class="mt-5">
+                            <h2 class="d-inline">Teléfono</h2>
+                            <p class="d-inline ml-3">(0034) 638 745 735</p>
+                        </div>
+                        <div class="mt-5">
+                            <h2 class="d-inline">Email </h2>
+                            <p class="d-inline ml-5"><a href="mailto:info@greentech.com">info@greentech.com</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="espacio"></div>
+
+    <footer class="footerPrin" id="footer">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-4">
+                    <span>Copyright © GREENTECH BOIFUELS 2020</span>
+                </div>
+                <div class="col-md-4" id="marcas">
+                    <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <a href="#" class="redS">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#" class="redS">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#" class="redS">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#" class="redS">
+                                <i class="fab fa-google-plus-g"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#" class="redS">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <a href="#" data-izimodal-open="#coockiesModal">Política de Cookies</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#" data-izimodal-open="#legalModal">Aviso Legal</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="modalRegistro" class="modalR conten">
+        <h3 class="text-center mt-2">Registro de un nuevo usuario</h3>
+		<div class="alert alert-success alert-dismissible">
+	   		<button type="button" class="close" data-dismiss="alert">&times;</button>
+			<p>Instrucciones</p>
+		</div>
+        <form action="#" method="POST" onsubmit="return validar();">
+            <div class="row">
+                <div class="form-group col-sm-12 col-xl-5">
+                    <label for="nombre" class="ml-3">Nombre<span class="error"> *</span></label>
+                    <input type="text" class="form-control" placeholder="Inserte el nombre" id="nombre" name="nombre"
+                        size="50">
+                    <div class="error ml-3"><span></span></div>
+                </div>
+                <div class="form-group col-sm-12 col-xl-5">
+                    <label for="apellidos" class="ml-3">Apellidos<span class="error"> *</span></label>
+                    <input type="text" class="form-control" placeholder="Inserte el/los apellidos" id="apellidos"
+                        name="apellidos" size="50">
+                    <div class="error ml-3"><span></span></div>
+                </div>
+                <div class="form-group col-sm-12 col-xl-2">
+                    <label for="dni" class="blk ml-3">DNI<span class="error"> *</span></label>
+                    <input type="text" class="form-control" placeholder="Inserte el DNI" id="dni" name="dni" size="9">
+                    <div class="error ml-3"><span></span></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-12 col-xl-3">
+                    <label for="fecha" class="blk ml-3">Fecha de nacimiento<span class="error"> *</span></label>
+                    <input type="date" class="form-control" id="fecha" name="fecha">
+                    <div class="error ml-3"><span></span></div>
+                </div>
+                <div class="form-group col-sm-12 col-xl-2">
+                    <label for="telef" class="blk ml-3">Teléfono<span class="error"> *</span></label>
+                    <input type="tel" class="form-control" id="telef" name="telef" placeholder="Inserte el número">
+                    <div class="error ml-3"><span></span></div>
+                </div>
+                <div class="form-group col-sm-12 col-xl-7">
+                    <label for="email" class="blk ml-3">Cuenta de correo<span class="error"> *</span></label>
+                    <input type="email" class="form-control" placeholder="Inserte el email" id="email" name="email">
+                    <div class="error ml-3"><span></span></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group btn-block col-sm-12 col-xl-2">
+                    <label for="pais" class="ml-3">País<span class="error"> *</span></label><br>
+                    <select id="pais" class="form-control" name="pais">
+                        <option value="0"> </option>
+                        <option value="1">España</option>
+                        <option value="2">Francia</option>
+                        <option value="3">Italia</option>
+                        <option value="4">Portugal</option>
+                        <option value="5">Estados Unidos</option>
+                    </select>
+                    <div class="error ml-3"><span></span></div>
+                </div>
+                <div class="form-group col-sm-12 col-xl-10">
+                    <label for="direccion" class="blk ml-3">Dirección<span class="error"> *</span></label>
+                    <input type="text" class="form-control" placeholder="Inserte la dirección" id="direccion"
+                        name="direccion">
+                    <div class="error ml-3"><span></span></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-12 col-xl-3">
+                    <label for="usuar" class="blk ml-3">Nombre de usuario<span class="error"> *</span></label>
+                    <input type="text" class="form-control" placeholder="Inserte el nombre de usuario" id="usuar"
+                        name="usuar">
+                    <div class="error ml-3"><span></span></div>
+                </div>
+                <div class="form-group col-sm-12 col-xl-4">
+                    <label for="pwd1" class="blk ml-3">Contraseña<span class="error"> *</span></label>
+                    <input type="password" class="form-control"
+                        placeholder="Inserte la contraseña (mínimo 8 caracteres)" id="pwd1" name="pwd1">
+                    <div class="error ml-3"><span></span></div>
+                </div>
+                <div class="form-group col-sm-12 col-xl-4">
+                    <label for="pwd2" class="blk ml-3">Confirme contraseña<span class="error"> *</span></label>
+                    <input type="password" class="form-control" placeholder="Inserte la misma contraseña" id="pwd2">
+                    <div class="error ml-3"><span></span></div>
+                </div>
+                <div class="form-group col-sm-12 col-xl-1 mx-auto">
+                    <span class="blk mb-3">&nbsp; </span>
+                    <i id="ojo" class="fas ojo fa-eye fa-lg"></i>
+                    <i id="ojo2" class="fas ojo fa-eye-slash fa-lg"></i>
+                </div>
+            </div>
+            <div class="custom-control custom-checkbox pmd-checkbox">
+                <input type="checkbox" class="custom-control-input" id="client-sidecustomControlValidation1" required>
+                <label class="custom-control-label" for="client-sidecustomControlValidation1">Acepta los términos y
+                    condiciones</label>
+            </div>
+            <button type="submit" class="btn btn-dark botonEnv" value="Enviar" id="enviar">Enviar</button>
+        </form>
+    </div>
+
+    <div id="modalLogin" class="modalC">
+        <h3 class="text-center mt-2">Inicio de sesión</h3>
+        <form action="" method="POST">
+            <div class="row">
+                <div class="form-group col-sm-12 col-xl-6">
+                    <label for="usuarL" class="blk">Usuario:</label>
+                    <input type="text" class="form-control" placeholder="Inserte el nombre de usuario" id="usuarL"
+                        name="usuarL" required>
+                </div>
+                <div class="form-group col-sm-12 col-xl-6">
+                    <label for="pwdL" class="blk">Contraseña:</label>
+                    <input type="password" class="form-control" placeholder="Inserte la contraseña" id="pwdL"
+                        name="pwdL" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-dark botonEnv" value="Enviar" id="enviar2">Enviar</button>
+            <br>
+            <a href="#" data-izimodal-open="#recoverModal" role="button">¿Ha olvidado la contraseña?</a>
+        </form>
+    </div>
+
+
+    <div id="recoverModal" class="modalC">
+        <h3 class="text-center mt-2">Recuperar contraseña</h3>
+        <p class="text-center">Le enviaremos un correo donde podrá restablecer su contraseña.</p>
+        <form action="#" method="POST" onsubmit="return validarCorr();">
+            <div class="row">
+                <div class="form-group col-sm-12 col-xl-8 mx-auto">
+                    <label for="email2" class="blk">Cuenta de correo:</label>
+                    <input type="email" class="form-control" placeholder="Inserte el email" id="email2" name="email2">
+                    <div class="error ml-3">
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-dark botonEnv" value="Enviar" id="enviar3">Recuperar</button>
+        </form>
+    </div>
+
+    <div id="coockiesModal" class="modalP">
+        <div class="conten">
+            <h1><br>
+                Política de cookies</h1>
+            <p>
+                Utilizamos cookies para garantizar el funcionamiento de nuestros sitios web, así como para mejorar su
+                calidad y contenidos a través del análisis de los hábitos de navegación de los usuarios,
+                proporcionándote una excelente experiencia de navegación.</p>
+            <p>
+                En la presente Política de Cookies, te explicamos qué son las cookies, para qué sirven, y cómo puedes
+                configurarla o desactivarlas si así lo deseas. Además, te indicamos qué tipos de cookies utiliza, y con
+                qué finalidad lo hace, la sociedad perteneciente al Grupo Sanitas responsable del sitio web a través del
+                cual has accedido a la presente Política de Cookies (el “Sitio web”), y que se encuentra debidamente
+                identificada en el Aviso Legal que figura en el mismo.</p>
+            <p>
+                Te invitamos a leer atentamente esta Política de Cookies.<br>
+                &nbsp;</p>
+            <h3>
+                1. ¿Qué son las cookies y para qué sirven?<strong style="font-size:12px"><span
+                        class="negrita">&nbsp;&nbsp;</span></strong></h3>
+            <p>
+                Las cookies ficheros que se instalan en tu dispositivo (por ejemplo tu ordenador, tableta o teléfono
+                móvil) cuando visitas un sitio web. Las cookies se utilizan para garantizar la calidad, usabilidad y
+                correcto funcionamiento de los sitios web, además de para almacenar y recuperar información sobre los
+                hábitos de navegación en los mismos y personalizar sus contenidos, pudiendo utilizarse en ocasiones para
+                reconocer al usuario de un sitio web.</p>
+            <p>
+                Por lo tanto, las cookies son esenciales para el funcionamiento de Internet, y en ningún caso suponen un
+                riesgo para tu equipo o tu dispositivo. Es más, pueden ayudarnos a reconocer la necesidad de mejoras en
+                partes del Sitio web y a detectar errores de funcionamiento.<br>
+                &nbsp;</p>
+            <h3>
+                <span class="negrita">2. ¿Qué tipos de cookies existen?</span></h3>
+            <p>
+                Las cookies pueden clasificarse en diversos tipos, según diferentes criterios. A continuación, Sanitas
+                le ofrece información sobre los diferentes tipos de cookies que utilizamos en el Sitio web.</p>
+            <p>
+                <strong>2.1. Tipos de cookies según la entidad que las gestiona</strong></p>
+            <ul class="boliches">
+                <li>
+                    Cookies propias: son aquellas que se envían a su equipo o dispositivo desde el Sitio web gestionado
+                    por Sanitas y desde el que se le presta el servicio. Si las cookies se instalan desde un equipo o
+                    dominio gestionado por Sanitas, pero la información que se recoge mediante las mismas es gestionada
+                    por un tercero, no pueden ser consideradas como cookies propias si el tercero las utiliza para sus
+                    propias finalidades (por ejemplo, la mejora de los servicios que presta).</li>
+                <li>
+                    Cookies de terceros: son aquellas que se envían a su equipo web desde un equipo o dominio que no es
+                    gestionado por Sanitas, sino por otra entidad, que trata la información obtenida a través de las
+                    mismas.<br>
+                    &nbsp;</li>
+            </ul>
+            <p>
+                <strong>2.2. Tipos de cookies según el período de tiempo que permanecen activadas en su
+                    dispositivo</strong></p>
+            <ul class="boliches">
+                <li>
+                    Cookies de sesión: son aquellas diseñadas para recabar y almacenar información únicamente durante la
+                    duración de su visita al Sitio web, y desaparecen al terminar la sesión.. Se emplean normalmente
+                    para almacenar información que solo interesa conservar durante para garantizar las funcionalidades
+                    básicas del Sitio web de Sanitas durante su visita al mismo.</li>
+                <li>
+                    Cookies persistentes: estas cookies almacenan la información por un período de tiempo más largo, que
+                    puede ser accedida y tratada por el responsable de la cookie&nbsp; durante dicho período. Este
+                    período varía según cada cookie, y puede ir de unos minutos a varios años.<br>
+                    &nbsp;</li>
+            </ul>
+            <p>
+                <h3><span class="negrita">3. Tipos de cookies</span></h3>
+                <strong>3.1. Tipos de cookies según su finalidad</strong>
+            </p>
+            <ul class="boliches">
+                <li>
+                    Cookies de sesión: son aquellas que te permiten navegar por el Sitio web. Las cookies de sesión te
+                    permitirán utilizar las diferentes funcionalidades y servicios del Sitio web, por ejemplo el inicio
+                    de sesión con tu identificador.</li>
+                <li>
+                    Cookies de preferencias o de personalización: son aquellas que permiten recordar información para
+                    que puedas acceder al Sitio web con características que pueden diferenciar tu experiencia de las de
+                    otros usuarios, como, por ejemplo, el aspecto o contenido del Sitio Web, que podrá variar en función
+                    del el tipo de navegador que utilizas.</li>
+                <li>
+                    Cookies de análisis o medición: son aquellas que permiten el seguimiento y análisis de su
+                    comportamiento en el Sitio web. Esta información permite medir y analizar el uso del Sitio web, así
+                    como elaborar perfiles de navegación de los usuarios, con el objetivo de introducir las mejoras
+                    necesarias en Sitio web en función del análisis de los datos de navegación recogidos.</li>
+                <li>
+                    Cookies publicitarias: son aquéllas que permiten la gestión, de la forma más eficaz posible, de los
+                    espacios publicitarios que, en su caso, se hayan incluido en el Sitio web de Sanitas.</li>
+                <li>
+                    Cookies de publicidad comportamental: son aquellas que permiten la gestión eficaz de los espacios
+                    publicitarios que se hayan podido incluir en el Sitio web, a través del almacenamiento de
+                    información de su comportamiento obtenida gracias a la observación continuada de sus hábitos de
+                    navegación, lo que permite desarrollar un perfil específico para mostrar publicidad en función del
+                    mismo.<br>
+                    &nbsp;</li>
+            </ul>
+            <h3>
+                4. ¿Cómo puedes configurar las cookies en el Sitio web?<br>
+                &nbsp;</h3>
+            <p>
+                <strong>4.1. Configuración de cookies a través del centro de configuración de cookies de
+                    Sanitas</strong></p>
+            <p>
+                Puedes aceptar o rechazar el uso de cookies a través del centro de configuración de cookies que Sanitas
+                pone a tu disposición, y al que puedes acceder tanto a través del mensaje de información básica sobre
+                cookies que aparece al visitar el Sitio web por primera vez, como a través del siguiente enlace, que te
+                dirigirá al centro de configuración de cookies:&nbsp;<a class="ot-sdk-show-settings"
+                    style="cursor:pointer">Configuración de privacidad</a>.</p>
+            <p>
+                En el centro de configuración de cookies de Sanitas podrás consentir al uso de cookies, así como retirar
+                cualquier consentimiento para sus uso ya otorgado, en cualquier momento y tantas veces como desees.</p>
+            <p>
+                Ten en cuenta que si aceptas las cookies de terceros, deberás eliminarlas, si así lo deseas,
+                directamente a través de las opciones de gestión de cookies de tu navegador, tal y como explicamos en el
+                siguiente punto 4.2.<br>
+                &nbsp;</p>
+            <p>
+                <strong>4.2. Configuración de cookies a través de tu navegador</strong></p>
+            <p>
+                Puedes permitir, bloquear o eliminar las cookies instaladas en tu equipo&nbsp; en cualquier momento a
+                través de las opciones que pone a tu disposición el navegador que utilizas. Ten en cuenta que si
+                deshabilitas la totalidad de las cookies, algunas funcionalidades o contenidos del Sitio web de Sanitas
+                pueden verse afectados. Te contamos cómo hacerlo:</p>
+            <ul class="boliches">
+                <li>
+                    Si utilizas <strong>Microsoft Internet Explorer</strong>: pulsa en el botón Herramientas de Internet
+                    Explorer y, después, en Opciones de Internet &gt; Privacidad &gt; Configuración &gt; Aceptar. Para
+                    más información, pulsa <a
+                        href="https://support.microsoft.com/es-es/help/17442/windows-internet-explorer-delete-manage-cookies"
+                        target="_blank">aquí</a></li>
+                <li>
+                    Si utilizas&nbsp;<strong>Firefox</strong>: pulsa en el botón Firefox y selecciona Opciones &gt;
+                    Privacidad &gt; Usar una configuración personalizada para el historial &gt; Marca la opción Aceptar
+                    cookies para activarlas, y desmárcala para desactivarlas &gt; Elige durante cuánto tiempo las
+                    cookies serán almacenadas &gt; Aceptar. Para más información, pulsa <a
+                        href="https://support.mozilla.org/es/products/firefox/privacy-and-security"
+                        target="_blank">aquí</a></li>
+                <li>
+                    Si utilizas&nbsp;<strong>Chrome</strong>: pulsa en el menú de Chrome en la barra de herramientas del
+                    navegador &gt; Configuración &gt; Mostrar opciones avanzadas &gt; En la sección "Privacidad", pulsa
+                    en Configuración de contenido &gt; En la sección "Cookies", puedes configurar las cookies. Para más
+                    información, pulsa <a href="https://support.google.com/chrome/answer/95647?hl=es"
+                        target="_blank">aquí</a></li>
+                <li>
+                    Si utilizas&nbsp;<strong>Safari</strong>: ve a Preferencias y, en el panel Privacidad, elige
+                    Bloquear Cookies, y selecciona la opción que prefieras de las que el navegador te ofrece. Para más
+                    información, pulsa <a href="https://support.apple.com/es-es/guide/safari/sfri11471/mac"
+                        target="_blank">aquí</a></li>
+                <li>
+                    Si utilizas&nbsp;<strong>Opera</strong>: pulsa en Configuración &gt; Opciones &gt; Avanzado &gt;
+                    Cookies. Para más información, pulsa <a
+                        href="https://help.opera.com/en/latest/web-preferences/#cookies" target="_blank">aquí</a></li>
+                <li>
+                    Si utilizas un&nbsp;<strong>IPhone </strong>o un<strong> Ipad</strong>: en la pantalla de inicio,
+                    selecciona Ajustes &gt; Safari y, a continuación, elige la opción de configuración que prefieras.
+                    Para más información, pulsa <a href="https://support.apple.com/es-es/HT201265"
+                        target="_blank">aquí</a></li>
+                <li>
+                    Si utilizas&nbsp;<strong>Android</strong>: pulsa en Menú &gt; Ajustes &gt; Seguridad y Privacidad
+                    &gt; activa o desactiva la casilla “Aceptar cookies” &gt; Reinicia el navegador para que los cambios
+                    sean efectivos.</li>
+                <li>
+                    Si utilizas&nbsp;<strong>Windows Phone</strong>: en Internet Explorer, pulsa en Más &gt;
+                    Configuración. También puedes obtener acceso a la configuración de Internet Explorer a través de
+                    Configuración, en la lista de aplicaciones. Selecciona o desactiva la opción Permitir cookies.<br>
+                    &nbsp;</li>
+            </ul>
+            <h3>
+                5. Información adicional</h3>
+            <p>
+                Puedes consultar información adicional sobre el tratamiento de tu información, en particular sobre tus
+                derechos y las modalidades de ejercicio de los mismos, en el aviso legal y la política de privacidad de
+                Sanitas que encontrarás disponible a través del enlace que figura al pie de página del Sitio Web, y que
+                te invitamos a consultar.<br>
+                &nbsp;</p>
+            <h4>
+                Última actualización de la Política de Cookies: 11 de noviembre de 2019</h4>
+        </div>
+    </div>
+
+    <div id="legalModal" class="modalP">
+        <div class="conten">
+            <div><br>
+                <h3>1) Identidad del titular del web</h3>
+                <p>RBA Revistas, S.L. (en adelante la COMPAÑÍA) es una entidad mercantil de nacionalidad española, con
+                    domicilio en Avenida Diagonal 189, 08018 Barcelona, y C.I.F. nº B64610389, inscrita en el Registro
+                    Mercantil de Barcelona, Tomo 39811, folio 38, hoja nº B-352176, inscripción 1ª.</p>
+                <p>Puede contactarnos en el teléfono 910 92 01 29 o enviando un correo a clientes@rba.es</p>
+                <p>Para cuestiones relacionadas con su privacidad: Envíe un correo electrónico a protecciondatos@rba.es
+                </p>
+                <h3>2) Aceptación del Usuario</h3>
+                <p>Estas Condiciones de Uso (en adelante Aviso Legal) regulan el acceso y utilización de la página web
+                    (en adelante la “Web”) que LA COMPAÑÍA pone a disposición de los usuarios de Internet. El acceso a
+                    la misma implica la aceptación sin reservas del presente Aviso Legal.</p>
+                <p>LA COMPAÑÍA puede ofrecer a través de la página web, servicios que podrán encontrarse sometidos a
+                    unas condiciones particulares propias sobre las cuales se informará al Usuario en cada caso
+                    concreto.</p>
+                <h3>3) Acceso a la página web y Contraseñas</h3>
+                <p>En general no se exige la previa suscripción o registro como Usuario para el acceso y uso de la
+                    página web, sin perjuicio de que para la utilización de determinados servicios o contenidos de la
+                    misma se deba realizar dicha suscripción o registro.</p>
+                <p>Los datos de los Usuarios obtenidos a través de la suscripción o registro, están protegidos mediante
+                    contraseñas elegidas por ellos mismos. El Usuario se compromete a mantener su contraseña en secreto
+                    y a protegerla de usos no autorizados por terceros. El Usuario deberá notificar a LA COMPAÑÍA
+                    inmediatamente cualquier uso no consentido de su cuenta o cualquier violación de la seguridad
+                    relacionada con el servicio de la página web, de la que haya tenido conocimiento.</p>
+                <p>LA COMPAÑÍA adopta las medidas técnicas y organizativas necesarias para garantizar la protección de
+                    los datos de carácter personal y evitar su alteración, pérdida, tratamiento y/o acceso no
+                    autorizado, habida cuenta del estado de la técnica, la naturaleza de los datos almacenados y los
+                    riesgos a que están expuestos, todo ello, conforme a lo establecido por la legislación española de
+                    Protección de Datos de Carácter Personal.</p>
+                <p>LA COMPAÑÍA no se hace responsable frente a los Usuarios, por la revelación de sus datos personales a
+                    terceros que no sea debida a causas directamente imputables a LA COMPAÑÍA, ni por el uso que de
+                    tales datos hagan terceros ajenos a LA COMPAÑÍA.</p>
+                <h3>4) Uso correcto de la página web</h3>
+                <p>El Usuario se compromete a utilizar la página web, los contenidos y servicios de conformidad con la
+                    Ley, el presente Aviso Legal, las buenas costumbres y el orden público. Del mismo modo el Usuario se
+                    obliga a no utilizar la página web, sus contenidos o los servicios que se presten a través de ésta
+                    con fines o efectos ilícitos o contrarios al contenido del presente</p>
+                <p>Aviso Legal, lesivos de los intereses o derechos de terceros, o que de cualquier forma pueda dañar,
+                    inutilizar, hacer inaccesibles o deteriorar la página web, sus contenidos o sus servicios o impedir
+                    un normal disfrute de la misma por otros Usuarios.</p>
+                <p>Asimismo, el Usuario se compromete expresamente a no destruir, alterar, inutilizar o, de cualquier
+                    otra forma, dañar los datos, programas o documentos electrónicos que se encuentren en la Web.</p>
+                <p>El Usuario se compromete a no obstaculizar el acceso de otros Usuarios mediante el consumo masivo de
+                    los recursos informáticos a través de los cuales LA COMPAÑÍA presta el servicio, así como realizar
+                    acciones que dañen, interrumpan o generen errores en dichos sistemas o servicios.</p>
+                <p>El Usuario se compromete a no introducir programas, virus, macros, applets, controles ActiveX o
+                    cualquier otro dispositivo lógico o secuencia de caracteres que causen o sean susceptibles de causar
+                    cualquier tipo de alteración en los sistemas informáticos de LA COMPAÑÍA o de terceros.</p>
+                <h3>5) Enlaces de terceros</h3>
+                <p>El presente Aviso Legal se refiere únicamente a la página web y contenidos de LA COMPAÑÍA, y no se
+                    aplica a los enlaces o a las páginas web de terceros accesibles a través de la página web.</p>
+                <p>Los destinos de dichos enlaces no están bajo el control de LA COMPAÑÍA, y LA COMPAÑÍA no es
+                    responsable del contenido de ninguna de las páginas web de destino de un enlace, ni de ningún enlace
+                    incluido en una página web a la que se llegue desde la web de LA COMPAÑÍA, ni de ningún cambio o
+                    actualización de dichas páginas.</p>
+                <p>Estos enlaces se proporcionan únicamente para informar al Usuario sobre la existencia de otras
+                    fuentes de información sobre un tema concreto, y la inclusión de un enlace no implica la aprobación
+                    de la página web enlazada por parte de LA COMPAÑÍA.</p>
+                <h3>6) Propiedad intelectual e industrial</h3>
+                <p>Todos los contenidos de la página Web, salvo que se indique lo contrario, son titularidad exclusiva
+                    de LA COMPAÑÍA y, con carácter enunciativo, que no limitativo, el diseño gráfico, código fuente,
+                    logos, textos, gráficos, ilustraciones, fotografías, y demás elementos que aparecen en la página
+                    Web.</p>
+                <p>Igualmente, todos los nombres comerciales, marcas o signos distintivos de cualquier clase contenidos
+                    en la página Web están protegidos por la Ley.</p>
+                <p>LA COMPAÑÍA no concede ningún tipo de licencia o autorización de uso personal al Usuario sobre sus
+                    derechos de propiedad intelectual e industrial o sobre cualquier otro derecho relacionado con su Web
+                    y los servicios ofrecidos en la misma.</p>
+                <p>Por ello, el Usuario reconoce que la reproducción, distribución, comercialización, transformación, y
+                    en general, cualquier otra forma de explotación, por cualquier procedimiento, de todo o parte de los
+                    contenidos de esta página Web constituye una infracción de los derechos de propiedad intelectual y/o
+                    industrial de LA COMPAÑÍA o del titular de los mismos.</p>
+                <h3>7) Foros o Blogs</h3>
+                <p>LA COMPAÑÍA ofrece a los Usuarios la posibilidad de introducir comentarios y/o de remitir fotografías
+                    para incorporarlos en las secciones correspondientes, así como de participar en foros de debate y de
+                    mantener conversaciones con otros usuarios. La publicación de los comentarios y/o las fotografías
+                    está sujeta al presente Aviso Legal.</p>
+                <p>La persona identificada en cada caso como la que ha realizado los comentarios y/o ha enviado las
+                    fotografías, es responsable de los mismos. Los comentarios y/o las fotografías, no reflejan la
+                    opinión de LA COMPAÑÍA, ni LA COMPAÑÍA hace declaraciones a este respecto.</p>
+                <p>LA COMPAÑÍA no se hará responsable, a no ser en aquellos extremos a los que le obligue la Ley, de los
+                    errores, inexactitudes o irregularidades que puedan contener los comentarios y/o las fotografías,
+                    así como de los daños o perjuicios que se pudieran ocasionar por la inserción de los comentarios y/o
+                    las fotografías en el Foro o en las demás secciones de la página web que permitan esta clase de
+                    servicios y contenidos.</p>
+                <p>El Usuario suministrador del texto y/o fotografías cede a LA COMPAÑÍA los derechos para su
+                    reproducción, uso, distribución, comunicación pública y cualquier tipo de actividad sobre los
+                    mismos, tanto en formato electrónico, digital, papel, como en cualquier otro tipo de soporte. Y, en
+                    especial, el Usuario cede dichos derechos para el emplazamiento del texto y/o las fotografías en la
+                    página Web, con el fin de que los demás Usuarios puedan acceder a los mismos.</p>
+                <p>El Usuario suministrador declara ser el titular de los derechos sobre los textos o fotografías o, en
+                    su caso, garantiza que dispone de los derechos y autorizaciones necesarios del autor o propietario
+                    del texto y/o fotografías, para su utilización por parte de LA COMPAÑÍA a través de la página Web.
+                </p>
+                <p>LA COMPAÑÍA no se hará responsable, a no ser en aquellos extremos a los que obligue la Ley, de los
+                    daños o perjuicios que se pudieran ocasionar por el uso, reproducción, distribución o comunicación
+                    pública o cualquier tipo de actividad que realice sobre los textos y/o fotografías que se encuentren
+                    protegidos por derechos de propiedad intelectual pertenecientes a terceros, sin que el Usuario haya
+                    obtenido previamente de sus titulares la autorización necesaria para llevar a cabo el uso que
+                    efectúa o pretende efectuar.</p>
+                <p>Asimismo, LA COMPAÑÍA se reserva el derecho de retirar de forma unilateral los comentarios y/o
+                    fotografías albergados en cualquier sección de la web, cuando haya indicios de que los comentarios
+                    y/o fotografías infringen cualquier disposición legal, vulneran derechos de terceros, o son
+                    utilizados con fines publicitarios (spam), así como cuando LA COMPAÑÍA lo estime oportuno.</p>
+                <p>LA COMPAÑÍA no será responsable por la información enviada por el Usuario cuando no tenga
+                    conocimiento efectivo de que la información almacenada es ilícita o de que lesiona bienes o derechos
+                    de un tercero susceptibles de indemnización. En el momento que LA COMPAÑÍA tenga conocimiento
+                    efectivo de que aloja datos como los anteriormente referidos, se compromete a actuar con diligencia
+                    para retirarlos o hacer imposible el acceso a ellos.</p>
+                <p>En todo caso, para interponer cualquier reclamación relacionada con los contenidos insertados en
+                    cualquiera de las secciones, puede dirigirse a la siguiente dirección de correo electrónico:
+                    juridico@rba.es</p>
+                <h3>8) Redes sociales</h3>
+                <p>El usuario podrá unirse a los Grupos que LA COMPAÑÍA tiene en distintas redes sociales. El usuario
+                    que se haga fan o seguidor de alguno de estos Grupos, acepta las condiciones de uso y política de
+                    privacidad de la red social correspondiente.</p>
+                <h3>9) Protección de datos de carácter personal</h3>
+                <p>El Usuario podrá facilitar a LA COMPAÑÍA sus datos de carácter personal a través de los distintos
+                    formularios que a tal efecto aparecen incorporados en la página Web. Dichos formularios incorporan
+                    un texto legal en materia de protección de datos personales que da cumplimiento a las exigencias
+                    establecidas en la normativa de Protección de Datos en vigor.</p>
+                <p>Rogamos lea atentamente los textos legales antes de facilitar sus datos de carácter personal.</p>
+                <p>En general los datos personales se incorporarán a un único fichero cuyo responsable es la Comunidad
+                    RBA que está conformada por las siguientes empresas de RBA: RBA COLECCIONABLES, S.A.U., RBA
+                    REVISTAS, S.L., RBA LIBROS, S.A. y EDICIONES EL JUEVES, S.A., pertenecientes al sector editorial y
+                    serán tratados con la finalidad para la que los haya facilitado, o para remitirle comunicaciones
+                    comerciales de sus productos cuando así lo haya autorizado. Estas compañías están domiciliadas en
+                    Avda. Diagonal, 189, 08018, Barcelona y en conjunto conforman la Comunidad RBA. La Comunidad se
+                    coordina desde las referidas instalaciones de RBA, donde se centralizan los sistemas y servicios de
+                    las citadas Compañías, para ser gestionados de forma unificada. Por ello, a pesar de existir varios
+                    responsables, el fichero donde se albergarán sus datos personales se tratará internamente como una
+                    única base de datos respecto a la que podrá ejercitar los derechos descritos a continuación.</p>
+                <p>Podrá ejercer sus derechos de acceso, rectificación, supresión, oposición, limitación del tratamiento
+                    y portabilidad de sus datos, así como revocar el consentimiento prestado para el envío de
+                    comunicaciones comerciales, enviando un correo electrónico a protecciondatos@rba.es, o bien enviando
+                    una carta a la dirección anteriormente indicada. Además, en cada envío que reciba incluiremos el
+                    medio habilitado para que pueda darse de baja de nuestras comunicaciones.</p>
+                <p>RBA tiene implantadas las medidas de seguridad de índole técnica y organizativas necesarias para
+                    garantizar la seguridad de sus datos de carácter personal y evitar su alteración, pérdida y
+                    tratamiento y/o acceso no autorizado, habida cuenta del estado de la tecnología, la naturaleza de
+                    los datos almacenados y los riesgos a que están expuestos. Todo ello, de conformidad con lo previsto
+                    en las referidas normativas.</p>
+                <h3>10) Modificación de las condiciones de uso</h3>
+                <p>LA COMPAÑÍA se reserva el derecho de desarrollar o actualizar en cualquier momento el Aviso Legal por
+                    lo que el usuario deberá leerlo periódicamente.</p>
+                <h3>11) Ley aplicable y Jurisdicción</h3>
+                <p>La relación entre LA COMPAÑÍA y el Usuario se regirá por la normativa española vigente y cualquier
+                    controversia se someterá a los Juzgados y Tribunales del domicilio del Usuario.</p>
+                <p>LA COMPAÑÍA perseguirá el incumplimiento de las presentes Condiciones, así como cualquier utilización
+                    indebida del sitio web ejerciendo todas las acciones civiles y penales que le puedan corresponder y
+                    asistan en derecho.</p>
+                <h3>12) Resolución de conflictos online en caso de compra o suscripción</h3>
+                <p>En relación con la resolución de reclamaciones online en materia de consumo, el Art. 14.1 del
+                    Reglamento 524/2013 de la Comisión Europea facilita a los consumidores una plataforma para
+                    interponer sus reclamaciones, que se encuentra disponible en el siguiente enlace:
+                    http://ec.europa.eu/consumers/odr/</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu -->
+    <script>
+
+        $("#opcionGestion").addClass("eliminar");
+        $("#opcionCerrarSesion").addClass("eliminar");
+
+    </script>
+
+    <!-- Modal -->
+    <script>
+        $(function () {
+            $(".modalC").iziModal({
+                padding: 10,
+                radius: 5,
+                overlayColor: 'rgba(0,0,0,0)',
+                transitionIn: 'flipInX',
+                transitionOut: 'fadeOutRight',
+                width: 800
+            });
+            $(".modalR").iziModal({
+                padding: 10,
+                radius: 5,
+                overlayColor: 'rgba(0,0,0,0)',
+                transitionIn: 'flipInX',
+                transitionOut: 'fadeOutRight',
+                width: 1300
+            });
+            $(".modalP").iziModal({
+                title: "Políticas y aviso legal",
+                fullscreen: true,
+                headerColor: 'rgb(88,88,88)',
+                overlayColor: 'rgba(0,0,0,0)',
+                transitionIn: 'comingIn',
+                width: 1000
+            });
+
+            var numero = 0;
+            $("#ojo").hide();
+            $(".ojo").click(function (event) {
+                numero += 1;
+
+                if (numero % 2 != 0) {
+                    $("#ojo").show();
+                    $("#ojo2").hide();
+                    $("#pwd1").prop('type', 'text');
+                    $("#pwd2").prop('type', 'text');
+                }
+                if (numero % 2 == 0) {
+                    $("#ojo2").show();
+                    $("#ojo").hide();
+                    $("#pwd1").prop('type', 'password');
+                    $("#pwd2").prop('type', 'password');
+                }
+            });
+
+            flatpickr("#fecha", {
+                "locale": { "firstDayOfWeek": 1 },
+                "locale": "es",
+                dateFormat: "m/d/Y",
+
+
+            });
+
+
+        });
+    </script>
+
+    <!-- Formulario -->
+    <script>
+
+        //Comprueba cada elemento cuando se retira el ratón
+        window.onload = function () {
+            $("#nombre").blur(function (event) {
+                comprobarNombre();
+            });
+            $("#apellidos").blur(function (event) {
+                comprobarApellido();
+            });
+            $("#direccion").blur(function (event) {
+                comprobarDireccion();
+            });
+            $("#usuar").blur(function (event) {
+                comprobarUsuaio();
+            });
+            $("#dni").blur(function (event) {
+                comprobarDNI();
+            });
+            $("#email").blur(function (event) {
+                comprobarCorreo();
+            });
+            $("#pwd2").blur(function (event) {
+                comprobarContrasena($(this));
+            });
+            $("#pwd1").blur(function (event) {
+                comprobarContrasena($(this));
+            });
+            $("#fecha").blur(function (event) {
+                comprobarEdad();
+            });
+            $("#telef").blur(function (event) {
+                comprobarTelefono();
+            });
+            $("#email2").blur(function (event) {
+                comprobarCorreo2();
+            });
+            $("#pais").blur(function (event) {
+                comprobarPais();
+            });
+        }
+
+        function comprobarNombre() {
+            if ($("#nombre").val().length === 0) {
+                $("#nombre").siblings(".error").children().html("El campo es obligatorio");
+                $("#nombre").removeClass("is-valid");
+                $("#nombre").addClass("is-invalid");
+                return false;
+            } else {
+                $("#nombre").siblings(".error").children().html("");
+                $("#nombre").addClass("is-valid");
+                $("#nombre").removeClass("is-invalid");
+                return true;
+            }
+        }
+
+        function comprobarApellido() {
+            if ($("#apellidos").val().length === 0) {
+                $("#apellidos").siblings(".error").children().html("El campo es obligatorio");
+                $("#apellidos").removeClass("is-valid");
+                $("#apellidos").addClass("is-invalid");
+                return false;
+            } else {
+                $("#apellidos").siblings(".error").children().html("");
+                $("#apellidos").addClass("is-valid");
+                $("#apellidos").removeClass("is-invalid");
+                return true;
+            }
+        }
+
+        function comprobarUsuaio() {
+            if ($("#usuar").val().length === 0) {
+                $("#usuar").siblings(".error").children().html("El campo es obligatorio");
+                $("#usuar").removeClass("is-valid");
+                $("#usuar").addClass("is-invalid");
+                return false;
+            } else {
+                $("#usuar").siblings(".error").children().html("");
+                $("#usuar").addClass("is-valid");
+                $("#usuar").removeClass("is-invalid");
+                return true;
+            }
+        }
+
+        function comprobarDireccion() {
+            if ($("#direccion").val().length === 0) {
+                $("#direccion").siblings(".error").children().html("El campo es obligatorio");
+                $("#direccion").removeClass("is-valid");
+                $("#direccion").addClass("is-invalid");
+                return false;
+            } else {
+                $("#direccion").siblings(".error").children().html("");
+                $("#direccion").addClass("is-valid");
+                $("#direccion").removeClass("is-invalid");
+                return true;
+            }
+        }
+
+
+
+        //Comprueba el formato del dni y que la letra esté bien
+        function comprobarDNI() {
+            var dni = $("#dni").val();
+            var letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D',
+                'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E', 'T'];
+
+            if ($("#dni").val().length === 0) {
+                $("#dni").siblings(".error").children().html("El campo es obligatorio");
+                $("#dni").removeClass("is-valid");
+                $("#dni").addClass("is-invalid");
+                return false;
+            } else {
+                if (!(/^\d{8}[A-Z]$/.test(dni))) {
+                    $("#dni").siblings(".error").children().html("El DNI no cumple con el formato");
+                    $("#dni").removeClass("is-valid");
+                    $("#dni").addClass("is-invalid");
+                    return false;
+                } else {
+                    if (dni.charAt(8) != letras[(dni.substring(0, 8)) % 23]) {
+                        $("#dni").siblings(".error").children().html("La letra insertada no es correcta");
+                        $("#dni").removeClass("is-valid");
+                        $("#dni").addClass("is-invalid");
+                        return false;
+                    } else {
+                        $("#dni").siblings(".error").children().html("");
+                        $("#dni").addClass("is-valid");
+                        $("#dni").removeClass("is-invalid");
+                        return true;
+                    }
+                }
+            }
+
+
+        }
+
+        //Comprueba el formato del teléfono
+        function comprobarTelefono() {
+            var telef = $("#telef").val();
+            if (telef.length === 0) {
+                $("#telef").siblings(".error").children().html("El campo es obligatorio");
+                $("#telef").removeClass("is-valid");
+                $("#telef").addClass("is-invalid");
+                return false;
+            } else {
+                if (!(/^[9|6]{1}([\d]{2}[-]*){3}[\d]{2}$/.test(telef))) {
+                    $("#telef").siblings(".error").children().html("El formato del número no es correcto");
+                    $("#telef").removeClass("is-valid");
+                    $("#telef").addClass("is-invalid");
+                    return false;
+                } else {
+                    $("#telef").siblings(".error").children().html("");
+                    $("#telef").addClass("is-valid");
+                    $("#telef").removeClass("is-invalid");
+                    return true;
+                }
+            }
+
+        }
+        //Comprueba el formato del correo para recuperar contraseña
+        function comprobarCorreo() {
+            var email = $("#email").val();
+
+            if (email.length === 0) {
+                $("#email").siblings(".error").children().html("El campo es obligatorio");
+                $("#email").removeClass("is-valid");
+                $("#email").addClass("is-invalid");
+                return false;
+            } else {
+                if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{3})+$/.test(email))) {
+                    $("#email").siblings(".error").children().html("El formato del email no es correcto");
+                    $("#email").removeClass("is-valid");
+                    $("#email").addClass("is-invalid");
+                    return false;
+                } else {
+                    $("#email").siblings(".error").children().html("");
+                    $("#email").addClass("is-valid");
+                    $("#email").removeClass("is-invalid");
+                    return true;
+                }
+            }
+        }
+
+        function comprobarCorreo2() {
+            var email = $("#email2").val();
+
+            if (email.length === 0) {
+                $("#email2").siblings(".error").children().html("El campo es obligatorio");
+                $("#email2").removeClass("is-valid");
+                $("#email2").addClass("is-invalid");
+                return false;
+            } else {
+                if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{3})+$/.test(email))) {
+                    $("#email2").siblings(".error").children().html("El formato del email no es correcto");
+                    $("#email2").removeClass("is-valid");
+                    $("#email2").addClass("is-invalid");
+                    return false;
+                } else {
+                    $("#email2").siblings(".error").children().html("");
+                    $("#email").addClass("is-valid");
+                    $("#email2").removeClass("is-invalid");
+                    return true;
+                }
+            }
+        }
+
+        //Que las dos contraseñas sean identicas
+        function comprobarContrasena(input) {
+            var contr1 = $("#pwd1").val();
+            var contr2 = $("#pwd2").val();
+
+            if (input.val().length === 0) {
+                input.siblings(".error").children().html("El campo es obligatorio");
+                $("#pwd1").removeClass("is-valid");
+                $("#pwd1").addClass("is-invalid");
+                $("#pwd2").removeClass("is-valid");
+                $("#pwd2").addClass("is-invalid");
+                return false;
+            } else {
+                if (input.val().length > 7) {
+                    if (contr2.length > 7 && contr1.length > 7) {
+                        if (contr1 == contr2) {
+                            $("#pwd1").siblings(".error").children().html("");
+                            $("#pwd2").siblings(".error").children().html("");
+                            $("#pwd1").addClass("is-valid");
+                            $("#pwd1").removeClass("is-invalid");
+                            $("#pwd2").addClass("is-valid");
+                            $("#pwd2").removeClass("is-invalid");
+                            return true;
+                        } else {
+                            $("#pwd1").siblings(".error").children().html("Las contraseñas deben ser iguales");
+                            $("#pwd2").siblings(".error").children().html("Las contraseñas deben ser iguales");
+                            $("#pwd1").removeClass("is-valid");
+                            $("#pwd1").addClass("is-invalid");
+                            $("#pwd2").removeClass("is-valid");
+                            $("#pwd2").addClass("is-invalid");
+                            return false;
+                        }
+                    }
+                } else {
+                    input.siblings(".error").children().html("La contraseña tiene que tener un mínimo de 8 caractéres");
+                    $("#pwd1").removeClass("is-valid");
+                    $("#pwd1").addClass("is-invalid");
+                    $("#pwd2").removeClass("is-valid");
+                    $("#pwd2").addClass("is-invalid");
+                    return false;
+                }
+            }
+        }
+
+
+        // Que la persona sea mayor de edad
+        function comprobarEdad() {
+            var fecha = new Date($("#fecha").val());
+            var hoy = new Date();
+            var edad = Math.floor((hoy.getTime() - fecha.getTime()) / (365.25 * 24 * 60 * 60 * 1000));
+            if ($("#fecha").val() == "") {
+                $("#fecha").siblings(".error").children().html("El campo es obligatorio");
+                $("#fecha").removeClass("is-valid");
+                $("#fecha").addClass("is-invalid");
+                return false;
+            } else if (fecha > hoy) {
+                $("#fecha").siblings(".error").children().html("La fecha seleccionada se encuentra en el futuro");
+                $("#fecha").removeClass("is-valid");
+                $("#fecha").addClass("is-invalid");
+                return false;
+            } else {
+                if (edad >= 18) {
+                    $("#fecha").siblings(".error").children().html("");
+                    $("#fecha").addClass("is-valid");
+                    $("#fecha").removeClass("is-invalid");
+                    return true;
+                } else {
+                    $("#fecha").siblings(".error").children().html("Es menor de edad");
+                    $("#fecha").removeClass("is-valid");
+                    $("#fecha").addClass("is-invalid");
+                    return false;
+                }
+            }
+        }
+
+        function comprobarPais() {
+            if ($("#pais").val() == "0") {
+                $("#pais").siblings(".error").children().html("El campo es obligatorio");
+            } else {
+                $("#pais").siblings(".error").children().html("");
+            }
+        }
+
+        //Comprueba que todo están verificados los campos en el registro
+        function validar() {
+            if (comprobarEdad() && comprobarContrasena() && comprobarCorreo() && comprobarDNI() && comprobarTelefono()
+                && comprobarNombre() && comprobarApellido() && comprobarUsuaio() && comprobarDireccion() && comprobarPais()) {
+                alert("OK");
+                return true;
+            } else {
+                return false;
+            }
+        }
+        //Comprueba que estén verificados los campos en la recuperación de contraseña
+        function validarCorr() {
+            if (comprobarCorreo()) {
+                alert("OK");
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
+
+
+    <!-- Datos tabla -->
+    <script>
+        var chart = JSC.chart('chartDiv', {
+            debug: true,
+            type: 'line',
+
+            legend: {
+                template: '%name',
+                position: 'inside top left'
+            },
+            defaultPoint_marker_type: 'none',
+            xAxis_crosshair_enabled: true,
+            yAxis_formatString: 'tn',
+
+            series: [
+                {
+                    name: 'Producción (Tn)',
+                    color: 'green',
+
+                    points: [
+                        [new Date(2017, 3, 8), 14, 01],
+                        [new Date(2017, 3, 10), 28, 23],
+                        [new Date(2017, 3, 12), 38, 30],
+                        [new Date(2017, 3, 14), 56, 81],
+                        [new Date(2017, 3, 16), 68, 31],
+                        [new Date(2017, 3, 18), 77, 09],
+                        [new Date(2017, 3, 20), 86, 00],
+                        [new Date(2017, 3, 22), 98, 88],
+                        [new Date(2017, 3, 24), 111, 08],
+                        [new Date(2017, 3, 26), 123, 33],
+                        [new Date(2017, 3, 28), 140, 76],
+                        [new Date(2017, 3, 30), 154, 32],
+                        [new Date(2017, 4, 2), 173, 81],
+                        [new Date(2017, 4, 4), 187, 42],
+                        [new Date(2017, 4, 6), 193, 30],
+                        [new Date(2017, 4, 8), 204, 96],
+                        [new Date(2017, 4, 10), 214, 05],
+                        [new Date(2017, 4, 12), 223, 96],
+                        [new Date(2017, 4, 14), 236, 39],
+                        [new Date(2017, 4, 16), 248, 00],
+                        [new Date(2017, 4, 18), 253, 96],
+                        [new Date(2017, 4, 20), 266, 57],
+                        [new Date(2017, 4, 22), 275, 17],
+                        [new Date(2017, 4, 24), 281, 05],
+                        [new Date(2017, 4, 26), 295, 34],
+                        [new Date(2017, 4, 28), 304, 01],
+                        [new Date(2017, 4, 30), 318, 09],
+                        [new Date(2017, 5, 2), 329, 92],
+                        [new Date(2017, 5, 4), 345, 97],
+                        [new Date(2017, 5, 6), 353, 79],
+                        [new Date(2017, 5, 8), 367, 37],
+                        [new Date(2017, 5, 10), 384, 71],
+                        [new Date(2017, 5, 12), 403, 50],
+                        [new Date(2017, 5, 14), 417, 17],
+                        [new Date(2017, 5, 16), 430, 88],
+                        [new Date(2017, 5, 18), 445, 50],
+                        [new Date(2017, 5, 20), 464, 10],
+                        [new Date(2017, 5, 22), 482, 04],
+                        [new Date(2017, 5, 24), 491, 10],
+                        [new Date(2017, 5, 26), 500, 34],
+                        [new Date(2017, 5, 28), 506, 73],
+                        [new Date(2017, 5, 30), 513, 08],
+                        [new Date(2017, 6, 2), 524, 25],
+                        [new Date(2017, 6, 4), 531, 82],
+                        [new Date(2017, 6, 6), 541, 12],
+                        [new Date(2017, 6, 8), 560, 25],
+                        [new Date(2017, 6, 10), 571, 77],
+                        [new Date(2017, 6, 12), 588, 42],
+                        [new Date(2017, 6, 14), 595, 94],
+                        [new Date(2017, 6, 16), 603, 03],
+                        [new Date(2017, 6, 18), 616, 88],
+                        [new Date(2017, 6, 20), 636, 59],
+                        [new Date(2017, 6, 22), 650, 53],
+                        [new Date(2017, 6, 24), 656, 51],
+                        [new Date(2017, 6, 26), 670, 57],
+                        [new Date(2017, 6, 28), 675, 91],
+                        [new Date(2017, 6, 30), 691, 13],
+                        [new Date(2017, 7, 2), 705, 65],
+                        [new Date(2017, 7, 4), 714, 14],
+                        [new Date(2017, 7, 6), 729, 34],
+                        [new Date(2017, 7, 8), 748, 02],
+                        [new Date(2017, 7, 10), 755, 82],
+                        [new Date(2017, 7, 12), 761, 63],
+                        [new Date(2017, 7, 14), 775, 58],
+                        [new Date(2017, 7, 16), 787, 34],
+                        [new Date(2017, 7, 18), 798, 47],
+                        [new Date(2017, 7, 20), 812, 32],
+                        [new Date(2017, 7, 22), 819, 25],
+                        [new Date(2017, 7, 24), 834, 24],
+                        [new Date(2017, 7, 26), 840, 81],
+                        [new Date(2017, 7, 28), 854, 02],
+                        [new Date(2017, 7, 30), 866, 49],
+                        [new Date(2017, 8, 2), 882, 85],
+                        [new Date(2017, 8, 4), 889, 31],
+                        [new Date(2017, 8, 6), 899, 32],
+                        [new Date(2017, 8, 8), 907, 23],
+                        [new Date(2017, 8, 10), 920, 77],
+                        [new Date(2017, 8, 12), 938, 09],
+                        [new Date(2017, 8, 14), 950, 48],
+                        [new Date(2017, 8, 16), 962, 50],
+                        [new Date(2017, 8, 18), 967, 89],
+                        [new Date(2017, 8, 20), 975, 62],
+                        [new Date(2017, 8, 22), 992, 82],
+                        [new Date(2017, 8, 24), 1005, 10],
+                        [new Date(2017, 8, 26), 1021, 18],
+                        [new Date(2017, 8, 28), 1036, 36],
+                        [new Date(2017, 8, 30), 1054, 56],
+                        [new Date(2017, 9, 2), 1066, 86],
+                        [new Date(2017, 9, 4), 1080, 90],
+                        [new Date(2017, 9, 6), 1094, 56],
+                        [new Date(2017, 9, 8), 1111, 13],
+                        [new Date(2017, 9, 10), 1127, 81],
+                        [new Date(2017, 9, 12), 1143, 38],
+                        [new Date(2017, 9, 14), 1162, 37],
+                        [new Date(2017, 9, 16), 1172, 35],
+                        [new Date(2017, 9, 18), 1191, 16],
+                        [new Date(2017, 9, 20), 1197, 19],
+                        [new Date(2017, 9, 22), 1205, 07],
+                        [new Date(2017, 9, 24), 1214, 14],
+                        [new Date(2017, 9, 26), 1233, 45],
+                        [new Date(2017, 9, 28), 1249, 56],
+                        [new Date(2017, 9, 30), 1256, 36],
+                        [new Date(2017, 10, 2), 1267, 06],
+                        [new Date(2017, 10, 4), 1272, 12],
+                        [new Date(2017, 10, 6), 1278, 76],
+                        [new Date(2017, 10, 8), 1294, 57],
+                        [new Date(2017, 10, 10), 1313, 32],
+                        [new Date(2017, 10, 12), 1331, 44],
+                        [new Date(2017, 10, 14), 1338, 80],
+                        [new Date(2017, 10, 16), 1344, 40],
+                        [new Date(2017, 10, 18), 1358, 37],
+                        [new Date(2017, 10, 20), 1373, 44],
+                        [new Date(2017, 10, 22), 1378, 70],
+                        [new Date(2017, 10, 24), 1398, 21],
+                        [new Date(2017, 10, 26), 1403, 77],
+                        [new Date(2017, 10, 28), 1412, 16],
+                        [new Date(2017, 10, 30), 1418, 26],
+                        [new Date(2017, 11, 2), 1428, 14],
+                        [new Date(2017, 11, 4), 1443, 51],
+                        [new Date(2017, 11, 6), 1453, 30],
+                        [new Date(2017, 11, 8), 1466, 11],
+                        [new Date(2017, 11, 10), 1471, 93],
+                        [new Date(2017, 11, 12), 1486, 60],
+                        [new Date(2017, 11, 14), 1495, 87],
+                        [new Date(2017, 11, 16), 1507, 72],
+                        [new Date(2017, 11, 18), 1524, 88],
+                        [new Date(2017, 11, 20), 1536, 69],
+                        [new Date(2017, 11, 22), 1552, 84],
+                        [new Date(2017, 11, 24), 1571, 12],
+                        [new Date(2017, 11, 26), 1584, 91],
+                        [new Date(2017, 11, 28), 1598, 00],
+                        [new Date(2017, 11, 30), 1608, 63],
+                        [new Date(2018, 0, 2), 1624, 76],
+                        [new Date(2018, 0, 4), 1637, 95],
+                        [new Date(2018, 0, 6), 1653, 30],
+                        [new Date(2018, 0, 8), 1664, 93],
+                        [new Date(2018, 0, 10), 1684, 73],
+                        [new Date(2018, 0, 12), 1706, 36],
+                        [new Date(2018, 0, 14), 1738, 38],
+                        [new Date(2018, 0, 16), 1756, 36],
+                        [new Date(2018, 0, 18), 1786, 97],
+                        [new Date(2018, 0, 20), 1818, 88],
+                        [new Date(2018, 0, 22), 1832, 13],
+                        [new Date(2018, 0, 24), 1856, 09],
+                        [new Date(2018, 0, 26), 1875, 95],
+                        [new Date(2018, 0, 28), 1910, 89],
+                        [new Date(2018, 0, 30), 1941, 49],
+                        [new Date(2018, 1, 2), 1959, 57],
+                        [new Date(2018, 1, 4), 1987, 21],
+                        [new Date(2018, 1, 6), 2019, 86],
+                        [new Date(2018, 1, 8), 2049, 93],
+                        [new Date(2018, 1, 10), 2064, 24],
+                        [new Date(2018, 1, 12), 2094, 21],
+                        [new Date(2018, 1, 14), 2121, 45],
+                        [new Date(2018, 1, 16), 2153, 12],
+                        [new Date(2018, 1, 18), 2178, 30],
+                        [new Date(2018, 1, 20), 2192, 09],
+                        [new Date(2018, 1, 22), 2220, 86],
+                        [new Date(2018, 1, 24), 2238, 49],
+                        [new Date(2018, 1, 26), 2277, 82],
+                        [new Date(2018, 1, 28), 2301, 63],
+                        [new Date(2018, 2, 2), 2325, 16],
+                        [new Date(2018, 2, 4), 2353, 46],
+                        [new Date(2018, 2, 6), 2368, 97],
+                        [new Date(2018, 2, 8), 2387, 18],
+                        [new Date(2018, 2, 10), 2397, 55],
+                        [new Date(2018, 2, 12), 2424, 67],
+                        [new Date(2018, 2, 14), 2447, 09],
+                        [new Date(2018, 2, 16), 2472, 37],
+                        [new Date(2018, 2, 18), 2510, 67],
+                        [new Date(2018, 2, 20), 2527, 50],
+                        [new Date(2018, 2, 22), 2554, 64],
+                        [new Date(2018, 2, 24), 2586, 68],
+                        [new Date(2018, 2, 26), 2625, 08],
+                        [new Date(2018, 2, 28), 2649, 37],
+                        [new Date(2018, 2, 30), 2663, 33],
+                        [new Date(2018, 3, 2), 2698, 06],
+                        [new Date(2018, 3, 4), 2724, 58],
+                        [new Date(2018, 3, 6), 2737, 58],
+                        [new Date(2018, 3, 8), 2773, 27],
+                        [new Date(2018, 3, 10), 2805, 12],
+                        [new Date(2018, 3, 12), 2841, 90],
+                        [new Date(2018, 3, 14), 2859, 70],
+                        [new Date(2018, 3, 16), 2893, 86],
+                        [new Date(2018, 3, 18), 2912, 27],
+                        [new Date(2018, 3, 20), 2934, 18],
+                        [new Date(2018, 3, 22), 2965, 69],
+                        [new Date(2018, 3, 24), 2993, 17],
+                        [new Date(2018, 3, 26), 3022, 81],
+                        [new Date(2018, 3, 28), 3032, 94],
+                        [new Date(2018, 3, 30), 3054, 40],
+                        [new Date(2018, 4, 2), 3089, 20],
+                        [new Date(2018, 4, 4), 3102, 79],
+                        [new Date(2018, 4, 6), 3140, 35],
+                        [new Date(2018, 4, 8), 3160, 79],
+                        [new Date(2018, 4, 10), 3178, 72],
+                        [new Date(2018, 4, 12), 3189, 77],
+                        [new Date(2018, 4, 14), 3200, 36],
+                        [new Date(2018, 4, 16), 3222, 72],
+                        [new Date(2018, 4, 18), 3247, 87],
+                        [new Date(2018, 4, 20), 3267, 18],
+                        [new Date(2018, 4, 22), 3294, 50],
+                        [new Date(2018, 4, 24), 3329, 39],
+                        [new Date(2018, 4, 26), 3361, 16],
+                        [new Date(2018, 4, 28), 3385, 27],
+                        [new Date(2018, 4, 30), 3420, 62],
+                        [new Date(2018, 5, 2), 3442, 46],
+                        [new Date(2018, 5, 4), 3468, 55],
+                        [new Date(2018, 5, 6), 3481, 97],
+                        [new Date(2018, 5, 8), 3498, 07],
+                        [new Date(2018, 5, 10), 3513, 11],
+                        [new Date(2018, 5, 12), 3541, 93],
+                        [new Date(2018, 5, 14), 3569, 40],
+                        [new Date(2018, 5, 16), 3596, 87],
+                        [new Date(2018, 5, 18), 3616, 94],
+                        [new Date(2018, 5, 20), 3656, 45],
+                        [new Date(2018, 5, 22), 3696, 18],
+                        [new Date(2018, 5, 24), 3716, 91],
+                        [new Date(2018, 5, 26), 3727, 08],
+                        [new Date(2018, 5, 28), 3761, 07],
+                        [new Date(2018, 5, 30), 3771, 40],
+                        [new Date(2018, 6, 2), 3790, 63],
+                        [new Date(2018, 6, 4), 3827, 02],
+                        [new Date(2018, 6, 6), 3847, 29],
+                        [new Date(2018, 6, 8), 3880, 06],
+                        [new Date(2018, 6, 10), 3903, 12],
+                        [new Date(2018, 6, 12), 3918, 04],
+                        [new Date(2018, 6, 14), 3944, 27],
+                        [new Date(2018, 6, 16), 3956, 89],
+                        [new Date(2018, 6, 18), 3971, 47],
+                        [new Date(2018, 6, 20), 3982, 24],
+                        [new Date(2018, 6, 22), 4012, 95],
+                        [new Date(2018, 6, 24), 4030, 40],
+                        [new Date(2018, 6, 26), 4052, 62],
+                        [new Date(2018, 6, 28), 4066, 03],
+                        [new Date(2018, 6, 30), 4092, 55],
+                        [new Date(2018, 7, 2), 4107, 35],
+                        [new Date(2018, 7, 4), 4123, 63],
+                        [new Date(2018, 7, 6), 4146, 23],
+                        [new Date(2018, 7, 8), 4168, 20],
+                        [new Date(2018, 7, 10), 4181, 97],
+                        [new Date(2018, 7, 12), 4221, 77],
+                        [new Date(2018, 7, 14), 4252, 47],
+                        [new Date(2018, 7, 16), 4275, 96],
+                        [new Date(2018, 7, 18), 4294, 70],
+                        [new Date(2018, 7, 20), 4333, 49],
+                        [new Date(2018, 7, 22), 4371, 69],
+                        [new Date(2018, 7, 24), 4404, 45],
+                        [new Date(2018, 7, 26), 4419, 10],
+                        [new Date(2018, 7, 28), 4442, 91],
+                        [new Date(2018, 7, 30), 4481, 15],
+                        [new Date(2018, 8, 2), 4508, 70],
+                        [new Date(2018, 8, 4), 4543, 41],
+                        [new Date(2018, 8, 6), 4560, 50],
+                        [new Date(2018, 8, 8), 4584, 25],
+                        [new Date(2018, 8, 10), 4599, 58],
+                        [new Date(2018, 8, 12), 4632, 51],
+                        [new Date(2018, 8, 14), 4652, 29],
+                        [new Date(2018, 8, 16), 4691, 47],
+                        [new Date(2018, 8, 18), 4721, 05],
+                        [new Date(2018, 8, 20), 4741, 08],
+                        [new Date(2018, 8, 22), 4780, 23],
+                        [new Date(2018, 8, 24), 4814, 22],
+                        [new Date(2018, 8, 26), 4826, 16],
+                        [new Date(2018, 8, 28), 4858, 29],
+                        [new Date(2018, 8, 30), 4873, 30],
+                        [new Date(2018, 9, 2), 4902, 03],
+                        [new Date(2018, 9, 4), 4915, 22],
+                        [new Date(2018, 9, 6), 4928, 74],
+                        [new Date(2018, 9, 8), 4967, 63],
+                        [new Date(2018, 9, 10), 4987, 66],
+                        [new Date(2018, 9, 12), 5015, 05],
+                        [new Date(2018, 9, 14), 5036, 69],
+                        [new Date(2018, 9, 16), 5051, 96],
+                        [new Date(2018, 9, 18), 5084, 57],
+                        [new Date(2018, 9, 20), 5123, 96],
+                        [new Date(2018, 9, 22), 5148, 83],
+                        [new Date(2018, 9, 24), 5172, 93],
+                        [new Date(2018, 9, 26), 5209, 77],
+                        [new Date(2018, 9, 28), 5220, 09],
+                        [new Date(2018, 9, 30), 5248, 83],
+                        [new Date(2018, 10, 2), 5270, 92],
+                        [new Date(2018, 10, 4), 5308, 63],
+                        [new Date(2018, 10, 6), 5318, 87],
+                        [new Date(2018, 10, 8), 5329, 01],
+                        [new Date(2018, 10, 10), 5343, 76],
+                        [new Date(2018, 10, 12), 5367, 91],
+                        [new Date(2018, 10, 14), 5397, 09],
+                        [new Date(2018, 10, 16), 5418, 28],
+                        [new Date(2018, 10, 18), 5449, 67],
+                        [new Date(2018, 10, 20), 5482, 04],
+                        [new Date(2018, 10, 22), 5518, 75],
+                        [new Date(2018, 10, 24), 5546, 38],
+                        [new Date(2018, 10, 26), 5570, 29],
+                        [new Date(2018, 10, 28), 5580, 95],
+                        [new Date(2018, 10, 30), 5609, 21],
+                        [new Date(2018, 11, 2), 5622, 37],
+                        [new Date(2018, 11, 4), 5637, 59],
+                        [new Date(2018, 11, 6), 5667, 29],
+                        [new Date(2018, 11, 8), 5697, 04],
+                        [new Date(2018, 11, 10), 5732, 22],
+                        [new Date(2018, 11, 12), 5761, 99],
+                        [new Date(2018, 11, 14), 5789, 69],
+                        [new Date(2018, 11, 16), 5809, 56],
+                        [new Date(2018, 11, 18), 5845, 98],
+                        [new Date(2018, 11, 20), 5857, 51],
+                        [new Date(2018, 11, 22), 5869, 89],
+                        [new Date(2018, 11, 24), 5883, 16],
+                        [new Date(2018, 11, 26), 5909, 95],
+                        [new Date(2018, 11, 28), 5937, 64],
+                        [new Date(2018, 11, 30), 5958, 51],
+                        [new Date(2019, 0, 2), 5983, 61],
+                        [new Date(2019, 0, 4), 6012, 37],
+                        [new Date(2019, 0, 6), 6043, 90],
+                        [new Date(2019, 0, 8), 6079, 91],
+                        [new Date(2019, 0, 10), 6096, 25],
+                        [new Date(2019, 0, 12), 6123, 55],
+                        [new Date(2019, 0, 14), 6152, 04],
+                        [new Date(2019, 0, 16), 6180, 06],
+                        [new Date(2019, 0, 18), 6209, 66],
+                        [new Date(2019, 0, 20), 6229, 37],
+                        [new Date(2019, 0, 22), 6248, 71],
+                        [new Date(2019, 0, 24), 6265, 42],
+                        [new Date(2019, 0, 26), 6289, 65],
+                        [new Date(2019, 0, 28), 6305, 57],
+                        [new Date(2019, 0, 30), 6331, 59],
+                        [new Date(2019, 1, 2), 6352, 41],
+                        [new Date(2019, 1, 4), 6389, 43],
+                        [new Date(2019, 1, 6), 6408, 34],
+                        [new Date(2019, 1, 8), 6429, 98],
+                        [new Date(2019, 1, 10), 6449, 35],
+                        [new Date(2019, 1, 12), 6470, 87],
+                        [new Date(2019, 1, 14), 6501, 36],
+                        [new Date(2019, 1, 16), 6525, 87],
+                        [new Date(2019, 1, 18), 6560, 89],
+                        [new Date(2019, 1, 20), 6573, 42],
+                        [new Date(2019, 1, 22), 6601, 62],
+                        [new Date(2019, 1, 24), 6638, 31],
+                        [new Date(2019, 1, 26), 6661, 49],
+                        [new Date(2019, 1, 28), 6687, 85],
+                        [new Date(2019, 2, 2), 6714, 73],
+                        [new Date(2019, 2, 4), 6725, 19],
+                        [new Date(2019, 2, 6), 6751, 02],
+                        [new Date(2019, 2, 8), 6763, 33],
+                        [new Date(2019, 2, 10), 6800, 34],
+                        [new Date(2019, 2, 12), 6839, 05],
+                        [new Date(2019, 2, 14), 6852, 95],
+                        [new Date(2019, 2, 16), 6886, 30],
+                        [new Date(2019, 2, 18), 6908, 93],
+                        [new Date(2019, 2, 20), 6939, 36],
+                        [new Date(2019, 2, 22), 6951, 37],
+                        [new Date(2019, 2, 24), 6988, 00],
+                        [new Date(2019, 2, 26), 7005, 94],
+                        [new Date(2019, 2, 28), 7044, 23],
+                        [new Date(2019, 2, 30), 7066, 97],
+                        [new Date(2019, 3, 2), 7097, 80],
+                        [new Date(2019, 3, 4), 7120, 80],
+                        [new Date(2019, 3, 6), 7159, 81],
+                        [new Date(2019, 3, 8), 7195, 46],
+                        [new Date(2019, 3, 10), 7226, 55],
+                        [new Date(2019, 3, 12), 7260, 17],
+                        [new Date(2019, 3, 14), 7272, 24],
+                        [new Date(2019, 3, 16), 7285, 06],
+                        [new Date(2019, 3, 18), 7309, 88],
+                        [new Date(2019, 3, 20), 7338, 67],
+                        [new Date(2019, 3, 22), 7358, 10],
+                        [new Date(2019, 3, 24), 7392, 21],
+                        [new Date(2019, 3, 26), 7402, 87],
+                        [new Date(2019, 3, 28), 7437, 28],
+                        [new Date(2019, 3, 30), 7461, 50],
+                        [new Date(2019, 4, 2), 7498, 82],
+                        [new Date(2019, 4, 4), 7517, 95],
+                        [new Date(2019, 4, 6), 7537, 04],
+                        [new Date(2019, 4, 8), 7548, 09],
+                        [new Date(2019, 4, 10), 7585, 53],
+                        [new Date(2019, 4, 12), 7623, 80],
+                        [new Date(2019, 4, 14), 7654, 34],
+                        [new Date(2019, 4, 16), 7667, 67],
+                        [new Date(2019, 4, 18), 7686, 96],
+                        [new Date(2019, 4, 20), 7714, 12],
+                        [new Date(2019, 4, 22), 7742, 54],
+                        [new Date(2019, 4, 24), 7772, 44],
+                        [new Date(2019, 4, 26), 7797, 87],
+                        [new Date(2019, 4, 28), 7809, 22],
+                        [new Date(2019, 4, 30), 7826, 59],
+                        [new Date(2019, 5, 2), 7840, 74],
+                        [new Date(2019, 5, 4), 7856, 71],
+                        [new Date(2019, 5, 6), 7879, 42],
+                        [new Date(2019, 5, 8), 7916, 79],
+                        [new Date(2019, 5, 10), 7937, 38],
+                        [new Date(2019, 5, 12), 7966, 91],
+                        [new Date(2019, 5, 14), 8000, 03],
+                        [new Date(2019, 5, 16), 8011, 87],
+                        [new Date(2019, 5, 18), 8026, 08],
+                        [new Date(2019, 5, 20), 8060, 99],
+                        [new Date(2019, 5, 22), 8071, 81],
+                        [new Date(2019, 5, 24), 8098, 40],
+                        [new Date(2019, 5, 26), 8113, 41],
+                        [new Date(2019, 5, 28), 8151, 92],
+                        [new Date(2019, 5, 30), 8188, 35],
+                        [new Date(2019, 6, 2), 8202, 90],
+                        [new Date(2019, 6, 4), 8230, 06],
+                        [new Date(2019, 6, 6), 8261, 16],
+                        [new Date(2019, 6, 8), 8289, 11],
+                        [new Date(2019, 6, 10), 8327, 02],
+                        [new Date(2019, 6, 12), 8355, 10],
+                        [new Date(2019, 6, 14), 8368, 97],
+                        [new Date(2019, 6, 16), 8381, 07],
+                        [new Date(2019, 6, 18), 8411, 74],
+                        [new Date(2019, 6, 20), 8433, 67],
+                        [new Date(2019, 6, 22), 8454, 97],
+                        [new Date(2019, 6, 24), 8468, 08],
+                        [new Date(2019, 6, 26), 8493, 50],
+                        [new Date(2019, 6, 28), 8509, 78],
+                        [new Date(2019, 6, 30), 8524, 90],
+                        [new Date(2019, 7, 2), 8564, 17],
+                        [new Date(2019, 7, 4), 8583, 76],
+                        [new Date(2019, 7, 6), 8621, 49],
+                        [new Date(2019, 7, 8), 8659, 93],
+                        [new Date(2019, 7, 10), 8684, 21],
+                        [new Date(2019, 7, 12), 8701, 68],
+                        [new Date(2019, 7, 14), 8738, 54],
+                        [new Date(2019, 7, 16), 8749, 99],
+                        [new Date(2019, 7, 18), 8789, 57],
+                        [new Date(2019, 7, 20), 8816, 12],
+                        [new Date(2019, 7, 22), 8831, 38],
+                        [new Date(2019, 7, 24), 8846, 57],
+                        [new Date(2019, 7, 26), 8857, 34],
+                        [new Date(2019, 7, 28), 8893, 20],
+                        [new Date(2019, 7, 30), 8912, 66],
+                        [new Date(2019, 8, 2), 8942, 93],
+                        [new Date(2019, 8, 4), 8968, 22],
+                        [new Date(2019, 8, 6), 8995, 30],
+                        [new Date(2019, 8, 8), 9021, 98],
+                        [new Date(2019, 8, 10), 9032, 21],
+                        [new Date(2019, 8, 12), 9054, 58],
+                        [new Date(2019, 8, 14), 9080, 84],
+                        [new Date(2019, 8, 16), 9102, 60],
+                        [new Date(2019, 8, 18), 9112, 71],
+                        [new Date(2019, 8, 20), 9144, 99],
+                        [new Date(2019, 8, 22), 9176, 15],
+                        [new Date(2019, 8, 24), 9199, 97],
+                        [new Date(2019, 8, 26), 9224, 38],
+                        [new Date(2019, 8, 28), 9256, 68],
+                        [new Date(2019, 8, 30), 9294, 94],
+                        [new Date(2019, 9, 2), 9312, 11],
+                        [new Date(2019, 9, 4), 9341, 69],
+                        [new Date(2019, 9, 6), 9373, 84],
+                        [new Date(2019, 9, 8), 9383, 98],
+                        [new Date(2019, 9, 10), 9405, 58],
+                        [new Date(2019, 9, 12), 9435, 08],
+                        [new Date(2019, 9, 14), 9450, 30],
+                        [new Date(2019, 9, 16), 9472, 46],
+                        [new Date(2019, 9, 18), 9504, 25],
+                        [new Date(2019, 9, 20), 9520, 11],
+                        [new Date(2019, 9, 22), 9544, 12],
+                        [new Date(2019, 9, 24), 9567, 08],
+                        [new Date(2019, 9, 26), 9593, 63],
+                        [new Date(2019, 9, 28), 9605, 44],
+                        [new Date(2019, 9, 30), 9645, 00],
+                        [new Date(2019, 10, 2), 9657, 56],
+                        [new Date(2019, 10, 4), 9683, 67],
+                        [new Date(2019, 10, 6), 9714, 21],
+                        [new Date(2019, 10, 8), 9753, 63],
+                        [new Date(2019, 10, 10), 9787, 70],
+                        [new Date(2019, 10, 12), 9801, 64],
+                        [new Date(2019, 10, 14), 9831, 41],
+                        [new Date(2019, 10, 16), 9867, 83],
+                        [new Date(2019, 10, 18), 9881, 54],
+                        [new Date(2019, 10, 20), 9919, 03],
+                        [new Date(2019, 10, 22), 9938, 78],
+                        [new Date(2019, 10, 24), 9969, 26],
+                        [new Date(2019, 10, 26), 9991, 39],
+                        [new Date(2019, 10, 28), 10012, 78],
+                        [new Date(2019, 10, 30), 10025, 74],
+                        [new Date(2019, 11, 2), 10038, 26],
+                        [new Date(2019, 11, 4), 10064, 19],
+                        [new Date(2019, 11, 6), 10086, 79],
+                        [new Date(2019, 11, 8), 10118, 42],
+                        [new Date(2019, 11, 10), 10143, 68],
+                        [new Date(2019, 11, 12), 10177, 41],
+                        [new Date(2019, 11, 14), 10189, 23],
+                        [new Date(2019, 11, 16), 10211, 62],
+                        [new Date(2019, 11, 18), 10247, 78],
+                        [new Date(2019, 11, 20), 10285, 33],
+                        [new Date(2019, 11, 22), 10299, 44],
+                        [new Date(2019, 11, 24), 10311, 83],
+                        [new Date(2019, 11, 26), 10333, 76],
+                        [new Date(2019, 11, 28), 10356, 97],
+                        [new Date(2019, 11, 30), 10380, 04],
+                        [new Date(2020, 0, 2), 10400, 02],
+                        [new Date(2020, 0, 4), 10411, 55],
+                        [new Date(2020, 0, 6), 10448, 45],
+                        [new Date(2020, 0, 8), 10478, 51],
+                        [new Date(2020, 0, 10), 10499, 82],
+                        [new Date(2020, 0, 12), 10530, 64],
+                        [new Date(2020, 0, 14), 10553, 17],
+                        [new Date(2020, 0, 16), 10576, 14],
+                        [new Date(2020, 0, 18), 10597, 84],
+                        [new Date(2020, 0, 20), 10627, 65],
+                        [new Date(2020, 0, 22), 10660, 78],
+                        [new Date(2020, 0, 24), 10679, 33],
+                        [new Date(2020, 0, 26), 10713, 74],
+                        [new Date(2020, 0, 28), 10734, 09],
+                        [new Date(2020, 0, 30), 10763, 84],
+                        [new Date(2020, 1, 2), 10798, 60],
+                        [new Date(2020, 1, 4), 10815, 25],
+                        [new Date(2020, 1, 6), 10844, 97],
+                        [new Date(2020, 1, 8), 10879, 50],
+                        [new Date(2020, 1, 10), 10912, 93],
+                        [new Date(2020, 1, 12), 10941, 63],
+                        [new Date(2020, 1, 14), 10981, 41],
+                        [new Date(2020, 1, 16), 11004, 98],
+                        [new Date(2020, 1, 18), 11032, 03],
+                        [new Date(2020, 1, 20), 11070, 90],
+                        [new Date(2020, 1, 22), 11084, 36],
+                        [new Date(2020, 1, 24), 11098, 62],
+                        [new Date(2020, 1, 26), 11129, 00],
+                        [new Date(2020, 1, 28), 11152, 52],
+                        [new Date(2020, 2, 2), 11166, 17],
+                        [new Date(2020, 2, 4), 11202, 40],
+                        [new Date(2020, 2, 6), 11234, 11],
+                        [new Date(2020, 2, 8), 11247, 84],
+                        [new Date(2020, 2, 10), 11283, 76],
+                        [new Date(2020, 2, 12), 11323, 61],
+                        [new Date(2020, 2, 14), 11339, 54],
+                        [new Date(2020, 2, 16), 11357, 55],
+                        [new Date(2020, 2, 18), 11394, 28],
+                        [new Date(2020, 2, 20), 11405, 03],
+                        [new Date(2020, 2, 22), 11435, 88],
+                        [new Date(2020, 2, 24), 11447, 60],
+                        [new Date(2020, 2, 26), 11474, 81],
+                        [new Date(2020, 2, 28), 11495, 06],
+                        [new Date(2020, 2, 30), 11512, 93],
+                        [new Date(2020, 3, 2), 11549, 70],
+                        [new Date(2020, 3, 4), 11559, 90],
+                        [new Date(2020, 3, 6), 11570, 09],
+                        [new Date(2020, 3, 8), 11586, 16],
+                        [new Date(2020, 3, 10), 11601, 05],
+                        [new Date(2020, 3, 12), 11617, 19],
+                        [new Date(2020, 3, 14), 11630, 13],
+                        [new Date(2020, 3, 16), 11667, 88],
+                        [new Date(2020, 3, 18), 11698, 88],
+                        [new Date(2020, 3, 20), 11734, 12],
+                        [new Date(2020, 3, 22), 11753, 26],
+                        [new Date(2020, 3, 24), 11772, 23],
+                        [new Date(2020, 3, 26), 11790, 93],
+                        [new Date(2020, 3, 28), 11824, 82],
+                        [new Date(2020, 3, 30), 11862, 36],
+                        [new Date(2020, 4, 2), 11889, 77],
+                    ]
+                }
+            ]
+        }); 
+    </script>
+
+    <!-- AOS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            offset: 200,
+            delay: 0,
+            duration: 500
+        });
+    </script>
+
+	<!-- Aviso registro -->
+	
+</body>
+
+</html>
