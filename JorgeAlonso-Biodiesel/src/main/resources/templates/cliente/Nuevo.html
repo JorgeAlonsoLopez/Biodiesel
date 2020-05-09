@@ -87,61 +87,56 @@
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
                 <p>Instrucciones</p>
             </div>
-            <form action="#" method="POST" onsubmit="return validar();">
+            <form action="#" method="POST" onsubmit="return validar();" th:action="@{/nuevo/submit}" th:object="${clienteFrom}">
                 <div class="row">
                     <div class="form-group col-sm-12 col-xl-5">
                         <label for="nombre" class="ml-3">Nombre<span class="error"> *</span></label>
                         <input type="text" class="form-control" placeholder="Inserte el nombre" id="nombre"
-                            name="nombre" size="50">
+                             size="50" th:field="*{nombre}">
                         <div class="error ml-3"><span></span></div>
                     </div>
                     <div class="form-group col-sm-12 col-xl-5">
                         <label for="apellidos" class="ml-3">Apellidos<span class="error"> *</span></label>
                         <input type="text" class="form-control" placeholder="Inserte el/los apellidos" id="apellidos"
-                            name="apellidos" size="50">
+                             size="50" th:field="*{apellido}">
                         <div class="error ml-3"><span></span></div>
                     </div>
                     <div class="form-group col-sm-12 col-xl-2">
                         <label for="dni" class="blk ml-3">DNI<span class="error"> *</span></label>
-                        <input type="text" class="form-control" placeholder="Inserte el DNI" id="dni" name="dni"
-                            size="9">
+                        <input type="text" class="form-control" placeholder="Inserte el DNI" id="dni" 
+                            size="9" th:field="*{dni}">
                         <div class="error ml-3"><span></span></div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-sm-12 col-xl-3">
                         <label for="fecha" class="blk ml-3">Fecha de nacimiento<span class="error"> *</span></label>
-                        <input type="date" class="form-control" id="fecha" name="fecha">
+                        <input type="date" class="form-control" id="fecha"  th:field="*{fechaNacimineto}">
                         <div class="error ml-3"><span></span></div>
                     </div>
                     <div class="form-group col-sm-12 col-xl-2">
                         <label for="telef" class="blk ml-3">Teléfono<span class="error"> *</span></label>
-                        <input type="tel" class="form-control" id="telef" name="telef" placeholder="Inserte el número">
+                        <input type="tel" class="form-control" id="telef" placeholder="Inserte el número" th:field="*{telefono}">
                         <div class="error ml-3"><span></span></div>
                     </div>
                     <div class="form-group col-sm-12 col-xl-7">
                         <label for="email" class="blk ml-3">Cuenta de correo<span class="error"> *</span></label>
-                        <input type="email" class="form-control" placeholder="Inserte el email" id="email" name="email">
+                        <input type="email" class="form-control" placeholder="Inserte el email" id="email" th:field="*{correo}">
                         <div class="error ml-3"><span></span></div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group btn-block col-sm-12 col-xl-2">
                         <label for="pais" class="ml-3">País<span class="error"> *</span></label><br>
-                        <select id="pais" class="form-control" name="pais">
-                            <option value="0"> </option>
-                            <option value="1">España</option>
-                            <option value="2">Francia</option>
-                            <option value="3">Italia</option>
-                            <option value="4">Portugal</option>
-                            <option value="5">Estados Unidos</option>
+                        <select id="pais" class="form-control" th:field="*{pais}">
+                            <option th:each="pais : ${listaPais}" th:value="*{pais.id}" th:text="${pais.nombre}">España</option>
                         </select>
                         <div class="error ml-3"><span></span></div>
                     </div>
                     <div class="form-group col-sm-12 col-xl-10">
                         <label for="direccion" class="blk ml-3">Dirección<span class="error"> *</span></label>
                         <input type="text" class="form-control" placeholder="Inserte la dirección" id="direccion"
-                            name="direccion">
+                        th:field="*{direccion}">
                         <div class="error ml-3"><span></span></div>
                     </div>
                 </div>
@@ -149,13 +144,13 @@
                     <div class="form-group col-sm-12 col-xl-3">
                         <label for="usuar" class="blk ml-3">Nombre de usuario<span class="error"> *</span></label>
                         <input type="text" class="form-control" placeholder="Inserte el nombre de usuario" id="usuar"
-                            name="usuar">
+                        th:field="*{usuario}">
                         <div class="error ml-3"><span></span></div>
                     </div>
                     <div class="form-group col-sm-12 col-xl-4">
                         <label for="pwd1" class="blk ml-3">Contraseña<span class="error"> *</span></label>
                         <input type="password" class="form-control"
-                            placeholder="Inserte la contraseña (mínimo 8 caracteres)" id="pwd1" name="pwd1">
+                            placeholder="Inserte la contraseña (mínimo 8 caracteres)" id="pwd1" th:field="*{contrasenya}">
                         <div class="error ml-3"><span></span></div>
                     </div>
                     <div class="form-group col-sm-12 col-xl-4">
@@ -649,9 +644,6 @@
             $("#telef").blur(function (event) {
                 comprobarTelefono();
             });
-            $("#email2").blur(function (event) {
-                comprobarCorreo2();
-            });
             $("#pais").blur(function (event) {
                 comprobarPais();
             });
@@ -797,28 +789,6 @@
             }
         }
 
-        function comprobarCorreo2() {
-            var email = $("#email2").val();
-
-            if (email.length === 0) {
-                $("#email2").siblings(".error").children().html("El campo es obligatorio");
-                $("#email2").removeClass("is-valid");
-                $("#email2").addClass("is-invalid");
-                return false;
-            } else {
-                if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{3})+$/.test(email))) {
-                    $("#email2").siblings(".error").children().html("El formato del email no es correcto");
-                    $("#email2").removeClass("is-valid");
-                    $("#email2").addClass("is-invalid");
-                    return false;
-                } else {
-                    $("#email2").siblings(".error").children().html("");
-                    $("#email").addClass("is-valid");
-                    $("#email2").removeClass("is-invalid");
-                    return true;
-                }
-            }
-        }
 
         //Que las dos contraseñas sean identicas
         function comprobarContrasena(input) {
@@ -896,10 +866,12 @@
         }
 
         function comprobarPais() {
-            if ($("#pais").val() == "0") {
+            if ($("#pais").val() == "-1") {
                 $("#pais").siblings(".error").children().html("El campo es obligatorio");
+                return false;
             } else {
                 $("#pais").siblings(".error").children().html("");
+                return true;
             }
         }
 
@@ -907,7 +879,6 @@
         function validar() {
             if (comprobarEdad() && comprobarContrasena() && comprobarCorreo() && comprobarDNI() && comprobarTelefono()
                 && comprobarNombre() && comprobarApellido() && comprobarUsuaio() && comprobarDireccion() && comprobarPais()) {
-                alert("OK");
                 return true;
             } else {
                 return false;
