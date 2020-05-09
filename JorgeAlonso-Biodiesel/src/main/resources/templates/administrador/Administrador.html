@@ -119,8 +119,8 @@
           </tr>
         </thead>
         <tbody>
-          <tr >
-            <td><a href="#">Uijdvfwe, coiuhfe</a></td>
+          <tr th:each="cliente : ${listaClientes}">
+            <td><a th:text="${cliente.apellido} + ', ' + ${cliente.nombre}" href="#">Uijdvfwe, coiuhfe</a></td>
             <td>75</td>
             <td>3</td>
             <td>123450</td>

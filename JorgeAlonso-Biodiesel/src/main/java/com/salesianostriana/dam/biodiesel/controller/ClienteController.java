@@ -89,10 +89,10 @@ public class ClienteController {
 
 	}
 	
-	@GetMapping("/administrador/borrar/{id}")
-	public String borrarCliente(@PathVariable("id") Long id, Model model) {
+	@GetMapping("/administrador/borrar/{dni}")
+	public String borrarCliente(@PathVariable("dni") String dni, Model model) {
 
-		Cliente cliente = servicio.findById(id);
+		Cliente cliente = servicio.buscarPorDNI(dni);
 
 		if (cliente != null) {
 			servicio.delete(cliente);

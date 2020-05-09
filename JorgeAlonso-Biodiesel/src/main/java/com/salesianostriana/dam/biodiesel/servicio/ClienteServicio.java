@@ -107,8 +107,13 @@ public class ClienteServicio extends BaseService<Cliente, Long, ClienteRepositor
 							.skip(1)
 							.map(line -> {
 								String[] values = line.split(",");
-								return new Cliente(values[2], values[3], values[0], values[1], values[8], values[5], values[6], values[4], false,
-										createRandomDate(1960, 2000));
+								if(values[10].equals("false")) {
+									return new Cliente(values[2], values[3], values[0], values[1], values[8], values[5], values[6], values[4], false,
+											createRandomDate(1960, 2000));
+								}else {
+									return new Cliente(values[2], values[3], values[0], values[1], values[8], values[5], values[6], values[4], true,
+											createRandomDate(1960, 2000));
+								}
 						}).collect(Collectors.toList());
 	 			// @formatter:on
 				
