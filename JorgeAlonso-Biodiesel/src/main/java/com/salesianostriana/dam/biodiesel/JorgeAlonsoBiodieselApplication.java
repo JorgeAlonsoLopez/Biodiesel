@@ -42,12 +42,12 @@ public class JorgeAlonsoBiodieselApplication {
 					boolean encontrado =false;
 					
 					List<Compuesto> listaCompuestos = new ArrayList<Compuesto>();
-					listaCompuestos.add(new Compuesto("Biodiesel", "compra", 0.86));
-					listaCompuestos.add(new Compuesto("Aceite de cogeneración", "compra", 0.34));
-					listaCompuestos.add(new Compuesto("Glicerina", "compra", 1.37));
-					listaCompuestos.add(new Compuesto("Aceite de motor", "venta", -0.25));
-					listaCompuestos.add(new Compuesto("Aceite de fritura", "venta", -0.36));
-					listaCompuestos.add(new Compuesto("Restos vegetales", "venta", -0.13));
+					listaCompuestos.add(new Compuesto("Biodiesel", "compra", 0.86, true));
+					listaCompuestos.add(new Compuesto("Aceite de cogeneración", "compra", 0.34, true));
+					listaCompuestos.add(new Compuesto("Glicerina", "compra", 1.37, true));
+					listaCompuestos.add(new Compuesto("Aceite de motor", "venta", -0.25, true));
+					listaCompuestos.add(new Compuesto("Aceite de fritura", "venta", -0.36, true));
+					listaCompuestos.add(new Compuesto("Restos vegetales", "venta", -0.13, true));
 					for(Compuesto c : listaCompuestos) {
 						compuestoServicio.save(c);
 					}

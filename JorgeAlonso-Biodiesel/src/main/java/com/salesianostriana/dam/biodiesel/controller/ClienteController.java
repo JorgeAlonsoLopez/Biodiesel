@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.salesianostriana.dam.biodiesel.modelo.Cliente;
+import com.salesianostriana.dam.biodiesel.modelo.Pais;
 import com.salesianostriana.dam.biodiesel.servicio.ClienteServicio;
 import com.salesianostriana.dam.biodiesel.servicio.PaisServicio;
 
@@ -26,6 +27,7 @@ public class ClienteController {
 	public String registro(Model model) {
 		model.addAttribute("clienteFrom",new Cliente());
 		model.addAttribute("listaPais", servicioPais.findAll());
+
 		return "/cliente/Nuevo";
 	}
 	
@@ -33,6 +35,7 @@ public class ClienteController {
 	
 	@PostMapping ("/nuevo/submit")
 	public String submitRegistro(@ModelAttribute("clienteFrom") Cliente nuevoCliente) {
+
 		servicio.save(nuevoCliente);
 		return "redirect:/cliente";
 	}

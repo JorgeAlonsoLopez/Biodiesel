@@ -87,7 +87,7 @@
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
                 <p>Instrucciones</p>
             </div>
-            <form action="#" method="POST" onsubmit="return validar();" th:action="@{/nuevo/submit}" th:object="${clienteFrom}">
+            <form action="#" method="POST" onsubmit="return validar();" th:action="@{/nuevo/submit}" th:object="${clienteFrom}" >
                 <div class="row">
                     <div class="form-group col-sm-12 col-xl-5">
                         <label for="nombre" class="ml-3">Nombre<span class="error"> *</span></label>
@@ -109,11 +109,11 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="form-group col-sm-12 col-xl-3">
+                 <!--   <div class="form-group col-sm-12 col-xl-3">
                         <label for="fecha" class="blk ml-3">Fecha de nacimiento<span class="error"> *</span></label>
                         <input type="date" class="form-control" id="fecha"  th:field="*{fechaNacimineto}">
                         <div class="error ml-3"><span></span></div>
-                    </div>
+                    </div> -->
                     <div class="form-group col-sm-12 col-xl-2">
                         <label for="telef" class="blk ml-3">Teléfono<span class="error"> *</span></label>
                         <input type="tel" class="form-control" id="telef" placeholder="Inserte el número" th:field="*{telefono}">
@@ -129,7 +129,7 @@
                     <div class="form-group btn-block col-sm-12 col-xl-2">
                         <label for="pais" class="ml-3">País<span class="error"> *</span></label><br>
                         <select id="pais" class="form-control" th:field="*{pais}">
-                            <option th:each="pais : ${listaPais}" th:value="*{pais.id}" th:text="${pais.nombre}">España</option>
+                            <option th:each="pais : ${listaPais}" th:value="${pais.idPais}" th:text="${pais.nombre}">España</option>
                         </select>
                         <div class="error ml-3"><span></span></div>
                     </div>
@@ -877,7 +877,7 @@
 
         //Comprueba que todo están verificados los campos en el registro
         function validar() {
-            if (comprobarEdad() && comprobarContrasena() && comprobarCorreo() && comprobarDNI() && comprobarTelefono()
+            if ( comprobarContrasena() && comprobarCorreo() && comprobarDNI() && comprobarTelefono()
                 && comprobarNombre() && comprobarApellido() && comprobarUsuaio() && comprobarDireccion() && comprobarPais()) {
                 return true;
             } else {

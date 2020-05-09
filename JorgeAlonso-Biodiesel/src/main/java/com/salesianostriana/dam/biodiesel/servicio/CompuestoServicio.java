@@ -12,6 +12,16 @@ import com.salesianostriana.dam.biodiesel.servicio.base.BaseService;
 @Service
 public class CompuestoServicio extends BaseService<Compuesto, Long, CompuestoRepository>{
 
+	public  List<Compuesto> burcarActivos(){
+		List<Compuesto> lista = new ArrayList<Compuesto>();
+		for(Compuesto p : this.findAll()) {
+			if(p.isActivo()) {
+				lista.add(p);
+			}
+		}
+		return lista;
+	}
+	
 	public CompuestoServicio(CompuestoRepository repo) {
 		super(repo);
 	}
@@ -23,7 +33,7 @@ public class CompuestoServicio extends BaseService<Compuesto, Long, CompuestoRep
 	
 	public List<Compuesto> buscarMateriasPrimas(){
 		List<Compuesto> lista = new ArrayList<Compuesto>();
-		for(Compuesto p : this.findAll()) {
+		for(Compuesto p : this.burcarActivos()) {
 			if(p.getTipo()=="venta") {
 				lista.add(p);
 			}
@@ -37,7 +47,7 @@ public class CompuestoServicio extends BaseService<Compuesto, Long, CompuestoRep
 	
 	public List<Compuesto> buscarProductos(){
 		List<Compuesto> lista = new ArrayList<Compuesto>();
-		for(Compuesto p : this.findAll()) {
+		for(Compuesto p : this.burcarActivos()) {
 			if(p.getTipo()=="compra") {
 				lista.add(p);
 			}

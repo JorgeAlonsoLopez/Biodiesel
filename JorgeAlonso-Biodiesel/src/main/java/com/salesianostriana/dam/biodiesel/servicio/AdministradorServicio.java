@@ -27,11 +27,12 @@ public class AdministradorServicio extends BaseService<Administrador, Long, Admi
 	}
 
 	public void eliminarCompuesto(String compuesto, CompuestoServicio servicio) {
-		servicio.delete(servicio.buscarPorNombre(compuesto));
+		servicio.buscarPorNombre(compuesto).setActivo(false);
+		servicio.edit(servicio.buscarPorNombre(compuesto));
 	}
 
 	public void anyadirCompuesto(String nombre, String tipo, double precio, CompuestoServicio servicio) {
-		Compuesto comp = new Compuesto(nombre, tipo, precio);
+		Compuesto comp = new Compuesto(nombre, tipo, precio, true);
 		servicio.save(comp);
 	}
 

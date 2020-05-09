@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class Usuario {
 
 	@Id @GeneratedValue(strategy = GenerationType.TABLE)
-	private long idUsuario;
+	private Long idUsuario;
 	
 	private String usuario, contrasenya;
 

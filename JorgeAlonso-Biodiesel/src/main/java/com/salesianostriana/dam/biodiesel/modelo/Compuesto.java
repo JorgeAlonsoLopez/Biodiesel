@@ -23,10 +23,15 @@ public class Compuesto {
 
 	private double precio; 
 
-	public Compuesto(String nombre, String tipo, double precio) {
+	private boolean activo;
+
+	public Compuesto(String nombre, String tipo, double precio, boolean activo) {
 		super();
 		this.nombre = nombre;
 		this.tipo = tipo;
 		this.precio = precio;
+		this.activo = activo;
 	}
+	
+	
 }
