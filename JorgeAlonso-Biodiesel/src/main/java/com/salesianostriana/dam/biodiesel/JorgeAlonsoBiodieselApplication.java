@@ -37,7 +37,9 @@ public class JorgeAlonsoBiodieselApplication {
 				public void run(String... args) throws Exception {
 					
 					Random rdn = new Random(System.nanoTime());
-					int aleatorio, aleatorio2, num30=30, max=30000, min=5000;
+					int aleatorio, aleatorio2, rand, num2=2, num30=30, max=300000, min=10000;
+					String tipo;
+					boolean encontrado =false;
 					
 					List<Compuesto> listaCompuestos = new ArrayList<Compuesto>();
 					listaCompuestos.add(new Compuesto("Biodiesel", "compra", 0.86));
@@ -67,10 +69,37 @@ public class JorgeAlonsoBiodieselApplication {
 					
 					for(int i=0; i<num30; i++) {
 						Map<String, Integer> mapa = new HashMap<String, Integer>();
+						rand =  rdn.nextInt(num2);
 						aleatorio = rdn.nextInt(clienteServicio.findAll().size());
 						aleatorio2 = rdn.nextInt(compuestoServicio.findAll().size());
-						mapa.put(compuestoServicio.findAll().get(aleatorio2).getNombre(),rdn.nextInt(max - min)+min);
+						
 						LocalDate fecha = clienteServicio.createRandomDate(2017, 2019);
+						
+						switch (rand) {
+						case 0:
+							mapa.put(compuestoServicio.findAll().get(aleatorio2).getNombre(),rdn.nextInt(max - min)+min);
+							break;
+							
+						case 1:
+							encontrado = false;
+							mapa.put(compuestoServicio.findAll().get(aleatorio2).getNombre(),rdn.nextInt(max - min)+min);
+							tipo = compuestoServicio.findAll().get(aleatorio2).getTipo();
+							Compuesto previo = compuestoServicio.findAll().get(aleatorio2);
+							do {
+								aleatorio2 = rdn.nextInt(compuestoServicio.findAll().size());
+								if(compuestoServicio.findAll().get(aleatorio2).getTipo() == tipo && compuestoServicio.findAll().get(aleatorio2) != previo) {
+									mapa.put(compuestoServicio.findAll().get(aleatorio2).getNombre(),rdn.nextInt(max - min)+min);
+									encontrado = true;
+								}else{
+									encontrado = false;
+								}
+							}while (!encontrado);
+							break;
+
+						default:
+							break;
+						}
+
 						pedidoServicio.hacerPedido(admin, mapa, fecha, clienteServicio.findAll().get(aleatorio), compuestoServicio);
 					}					
 					
