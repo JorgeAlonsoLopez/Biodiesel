@@ -66,7 +66,6 @@ public class ClienteController {
 	
 	@GetMapping("/administrador/clientes_pendientes/borrar/{dni}")
 	public String borrarClientePendiente(@PathVariable("dni") String dni, Model model) {
-
 		Cliente cliente = servicio.buscarPorDNI(dni);
 
 		if (cliente != null) {
@@ -79,7 +78,6 @@ public class ClienteController {
 	
 	@GetMapping("/administrador/clientes_pendientes/aceptar/{dni}")
 	public String aceptarCliente(@PathVariable("dni") String dni, Model model) {
-
 		Cliente cliente = servicio.buscarPorDNI(dni);
 
 		if (cliente != null) {
@@ -100,7 +98,7 @@ public class ClienteController {
 			servicio.delete(cliente);
 		}
 
-		return "redirect:/administrador/Administrador";
+		return "redirect:/administrador";
 
 	}
 	

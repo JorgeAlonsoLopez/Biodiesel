@@ -31,7 +31,7 @@ public class ClienteServicio extends BaseService<Cliente, Long, ClienteRepositor
 	public Cliente buscarPorDNI(String dni) {
 		Cliente c1 = null;
 		for(Cliente c : this.findAll()) {
-			if(c.getDni()==dni) {
+			if(c.getDni().equals(dni)) {
 				c1 = c;
 			}
 		}

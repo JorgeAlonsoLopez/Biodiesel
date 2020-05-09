@@ -101,11 +101,11 @@
         </thead>
         <tbody>
           <tr th:each="cliente : ${listaClientes}">
-            <th th:text="${cliente.apellido} + ', ' + ${cliente.nombre} ">Dsgan, hfpodl</th>
-            <th th:text="${cliente.dni}">098765T</th>
-            <th th:text="${cliente.pais.nombre}">España</th>
-            <th><a href="#" data-izimodal-open="#modalAceptar" th:data-id="${cliente.dni}">Aceptar</a></th>
-            <th><a href="#" data-izimodal-open="#modalRechazar" th:data-id="${cliente.dni}">Rechazar</a></th>
+            <td th:text="${cliente.apellido} + ', ' + ${cliente.nombre} ">Dsgan, hfpodl</td>
+            <td th:text="${cliente.dni}">098765T</td>
+            <td th:text="${cliente.pais.nombre}">España</td>
+            <td><a th:href="@{'/administrador/clientes_pendientes/aceptar/'+${cliente.dni}}">Aceptar</a></td>
+            <td><a th:href="@{'/administrador/clientes_pendientes/borrar/'+${cliente.dni}}">Rechazar</a></td>
           </tr>
         </tbody>
       </table>
@@ -160,20 +160,6 @@
       </div>
     </div>
   </footer>
-
-  <div id="modalAceptar" class="modalC">
-    <h2 class="text-center mt-2">¿Desea aceptar al cliente?</h2>
-    <form action="" class="row justify-content-around">
-      <a href="/administrador/clientes_pendientes/aceptar/" class="btn btn-success col-sm-12 col-lg-4 mt-3 mb-3">Aceptar</a>
-    </form>
-  </div>
-
-  <div id="modalRechazar" class="modalC">
-    <h2 class="text-center mt-2">¿Desea rechazar al cliente?</h2>
-    <form action="" class="row justify-content-around">
-      <a href="/administrador/clientes_pendientes/borrar/" class="btn btn-success col-sm-12 col-lg-4 mt-3 mb-3">Rechazar</a>
-    </form>
-  </div>
 
   <div id="coockiesModal" class="modalP">
     <div class="conten">
@@ -500,14 +486,6 @@
 
   <script>
     $(function () {
-      $(".modalC").iziModal({
-        padding: 10,
-        radius: 5,
-        overlayColor: 'rgba(0,0,0,0)',
-        transitionIn: 'flipInX',
-        transitionOut: 'fadeOutRight',
-        width: 800
-      });
       $(".modalP").iziModal({
         title: "Políticas y aviso legal",
         fullscreen: true,

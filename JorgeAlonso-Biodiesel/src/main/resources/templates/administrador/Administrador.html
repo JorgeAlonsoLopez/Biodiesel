@@ -120,11 +120,11 @@
         </thead>
         <tbody>
           <tr >
-            <th><a href="#">Uijdvfwe, coiuhfe</a></th>
-            <th>75</th>
-            <th>3</th>
-            <th>123450</th>
-            <th><a href="#" data-izimodal-open="#modalEliminar" >Eliminar</a></th>
+            <td><a href="#">Uijdvfwe, coiuhfe</a></td>
+            <td>75</td>
+            <td>3</td>
+            <td>123450</td>
+            <td><a th:href="@{'/administrador/borrar/'+${cliente.dni}}">Eliminar</a></td>
           </tr>
         </tbody>
       </table>
@@ -179,13 +179,6 @@
       </div>
     </div>
   </footer>
-
-  <div id="modalEliminar" class="modalC">
-    <h2 class="text-center mt-2">¿Desea eliminar al cliente?</h2>
-    <form action="" class="row justify-content-around">
-      <a href="/administrador/borrar/" class="btn btn-success col-sm-12 col-lg-4 mt-3 mb-3">Eliminar</a>
-    </form>
-  </div>
 
   <div id="coockiesModal" class="modalP">
     <div class="conten">
@@ -512,14 +505,6 @@
 
   <script>
     $(function () {
-      $(".modalC").iziModal({
-        padding: 10,
-        radius: 5,
-        overlayColor: 'rgba(0,0,0,0)',
-        transitionIn: 'flipInX',
-        transitionOut: 'fadeOutRight',
-        width: 800
-      });
       $(".modalP").iziModal({
         title: "Políticas y aviso legal",
         fullscreen: true,
