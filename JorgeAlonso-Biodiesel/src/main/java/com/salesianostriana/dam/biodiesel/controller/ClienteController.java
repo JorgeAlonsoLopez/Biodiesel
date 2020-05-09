@@ -16,6 +16,20 @@ public class ClienteController {
 	private ClienteServicio servicio;
 	
 	
+	@GetMapping ("/nuevo")
+	public String registro(Model model) {
+		
+		return "/cliente/Nuevo";
+	}
+	
+	@GetMapping ("/login")
+	public String login(Model model) {
+		
+		return "/Login";
+	}
+	
+	
+	
 	@GetMapping ("/administrador/clientes_pendientes")
 	public String clientesPendientes (Model model) {
 		model.addAttribute("listaClientes", servicio.clientesPendientes());

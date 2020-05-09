@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.salesianostriana.dam.biodiesel.modelo.Pedido;
+import com.salesianostriana.dam.biodiesel.servicio.ClienteServicio;
 import com.salesianostriana.dam.biodiesel.servicio.PedidoServicio;
 
 @Controller
@@ -16,20 +17,32 @@ public class PedidoController {
 	@Autowired
 	private PedidoServicio servicio;
 	
-	@GetMapping("/nuevo")
-	public String nuevaProducto(Model model) {
+	@Autowired
+	private ClienteServicio servicioCli;
+	
+	@GetMapping ("/cliente")
+	public String cliente (Model model) {
+		
+	//	model.addAttribute("lista", servicio.findAll());
+	//	model.addAttribute("cliente",servicioCli.findById(7L));
+		return "cliente/Cliente";
+	}
+	
+	
+//	@GetMapping("/nuevo")
+//	public String nuevaProducto(Model model) {
 //		model.addAttribute("producto", new Producto());
 //		model.addAttribute("categorias", categoriaService.findAll());
-		return "admin/form-producto";
-	}
-
-	@PostMapping("/nuevo/submit")
-	public String submitNuevoProducto(Model model) {
-
+//		return "admin/form-producto";
+//	}
+//
+//	@PostMapping("/nuevo/submit")
+//	public String submitNuevoProducto(Model model) {
+//
 //		productoService.save(producto);
-		return "redirect:/admin/producto/";
-
-	}
+//		return "redirect:/admin/producto/";
+//
+//	}
 	
 	@GetMapping("/cliente/borrar/{id}")
 	public String borrarPedido(@PathVariable("id") Long id, Model model) {

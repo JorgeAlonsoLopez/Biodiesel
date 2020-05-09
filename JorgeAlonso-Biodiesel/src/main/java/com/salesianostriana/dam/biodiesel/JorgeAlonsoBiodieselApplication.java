@@ -37,7 +37,7 @@ public class JorgeAlonsoBiodieselApplication {
 				public void run(String... args) throws Exception {
 					
 					Random rdn = new Random(System.nanoTime());
-					int aleatorio, aleatorio2, rand, num2=2, num30=30, max=300000, min=10000;
+					int aleatorio, aleatorio2, rand, num2=2, num60=60, max=300000, min=10000;
 					String tipo;
 					boolean encontrado =false;
 					
@@ -67,7 +67,7 @@ public class JorgeAlonsoBiodieselApplication {
 					}
 					
 					
-					for(int i=0; i<num30; i++) {
+					for(int i=0; i<num60; i++) {
 						Map<String, Integer> mapa = new HashMap<String, Integer>();
 						rand =  rdn.nextInt(num2);
 						aleatorio = rdn.nextInt(clienteServicio.findAll().size());

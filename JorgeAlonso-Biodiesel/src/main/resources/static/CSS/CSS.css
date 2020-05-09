@@ -282,6 +282,12 @@ section{
     margin: auto;
 }
 
+#contenInici{
+    width: 60%;
+    margin: auto;
+    margin-top: 10%;
+}
+
 .filtro{
     text-align: justify;
     list-style: none;
@@ -403,6 +409,9 @@ section{
     }
     .tabla{
         width: 90%;
+    }
+    #contenInici{
+        margin-top: 2px;
     }
 }
 

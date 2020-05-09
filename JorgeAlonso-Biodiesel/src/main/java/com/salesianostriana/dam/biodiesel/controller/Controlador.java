@@ -10,13 +10,7 @@ import com.salesianostriana.dam.biodiesel.repositorio.PedidoRepository;
 public class Controlador {
 
 
-	@GetMapping ("/cliente")
-	public String cliente (Model model) {
-		
-		//model.addAttribute("lista", repo.findAllById());
-		
-		return "cliente/Cliente";
-	}
+	
 	
 	@GetMapping ("/cliente/ajustes")
 	public String ajustes (Model model) {
@@ -38,17 +32,5 @@ public class Controlador {
 	
 
 	
-	@GetMapping ("/administrador/precios")
-	public String precios (Model model) {
-		
-		return "administrador/Precios";
-	}
 	
-	
-	
-	@GetMapping ("/administrador/pedidos_cliente")
-	public String pedidosCliente (Model model) {
-		
-		return "administrador/PedidosCliente";
-	}
 }

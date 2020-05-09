@@ -99,12 +99,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr >
-            <td><a href="#" data-izimodal-open="#modalPedido" >X</a></td>
-            <td>10-07-2023</td>
-            <td>02-07-2023</td>
-            <td>341234</td>
-            <td><button class="btn" data-izimodal-open="#modalCancelar" >Cancelar</button></td>
+          <tr th:each="pedido : ${lista}">
+            <td><a href="#" data-izimodal-open="#modalPedido" th:text="${pedido.id}" th:data-id="${pedido.id}">X</a></td>
+            <td th:text="${pedido.fechaLlegada}">10-07-2023</td>
+            <td th:text="${pedido.fechaSalidaTrasnporte}">02-07-2023</td>
+            <td th:text="${pedido.precioFinal}">341234</td>
+            <td><button class="btn" data-izimodal-open="#modalCancelar" th:data-id="${pedido.id}">Cancelar</button></td>
           </tr>
         </tbody>
       </table>
@@ -211,14 +211,14 @@
 
   <div id="modalPedido" class="modalC">
     <div class="row mx-auto text-center align-items-center justify-content-around">
-      <span class="btn info col-sm-12 col-lg-4">ID pedido</span>
-      <span class="btn info col-sm-12 col-lg-4">Precio</span>
+      <span class="btn info col-sm-12 col-lg-4" th:text="${pedido.id}">ID pedido</span>
+      <span class="btn info col-sm-12 col-lg-4" th:text="${pedido.precioFinal}">Precio</span>
     </div>
     <div class="row mx-auto text-center align-items-center justify-content-around">
-      <span class="btn info col-sm-12 col-lg-4">Dirección</span>
+      <span class="btn info col-sm-12 col-lg-4" th:text="${cliente.direccion}">Dirección</span>
     </div>
     <div class="row mx-auto text-center align-items-center justify-content-around">
-      <span class="btn info col-sm-12 col-lg-4">País</span>
+      <span class="btn info col-sm-12 col-lg-4" th:text="${cliente.pais.nombre}">País</span>
     </div>
     <div class="row">
       <table class="col-sm-12 col-lg-8 mx-auto text-center table table-striped table-bordered table-hover"
@@ -231,10 +231,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Biodiesel</td>
-            <td>1000</td>
-            <td>123456</td>
+          <tr th:each="linea : ${pedido.listaPedidos}">
+            <td th:text="${linea.compuesto.nombre}">Biodiesel</td>
+            <td th:text="${linea.cantidad}">1000</td>
+            <td th:text="${linea.precio}">123456</td>
           </tr>
         </tbody>
       </table>
