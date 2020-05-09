@@ -40,37 +40,23 @@ public class AdministradorController {
 	}
 	
 	@GetMapping("/administrador/precios/{idMateria}")
-	public String actualizarPrecioMateria(@PathVariable("idMateria") String idMateria, @RequestParam(name = "precio") Double precio, Model model) {
-//		model.addAttribute("listaMateriasPrimas", servicioCompu.buscarMateriasPrimas());
-//		model.addAttribute("listaProductos", servicioCompu.buscarProductos());
-//		model.addAttribute("administrador", servicio.findAll().get(num0));
-		System.out.println(idMateria);
-		System.out.println(precio);
+	public String actualizarPrecio(@PathVariable("idMateria") String idMateria, @RequestParam(name = "precio") Double precio, Model model) {
+		servicioCompu.findById( Long.parseLong(idMateria)).setPrecio(precio);
+		servicioCompu.edit(servicioCompu.findById( Long.parseLong(idMateria)));
 		return "redirect:/administrador/precios";
 	}
 	
-	@PostMapping ("/administrador/precios/submitM")
-	public String cambioPreciosMateriasPrimas(@ModelAttribute("listaMateriasPrimas") List<Compuesto> listaM) {
-		for(Compuesto c : listaM) {
-			servicioCompu.edit(c);
+	@GetMapping("/administrador/precios/admin/{id}")
+	public String actualizarPrecioAdmin(@PathVariable("id") String id, @RequestParam(name = "precio") Double precio, Model model) {
+		if(id.equals("1")) {
+			servicio.findAll().get(num0).setPrecioTren(precio);
+		}else {
+			servicio.findAll().get(num0).setPrecioBarco(precio);;
 		}
+		servicio.edit(servicio.findAll().get(num0));
 		return "redirect:/administrador/precios";
 	}
 	
-	@PostMapping ("/administrador/precios/submitP")
-	public String cambioPreciosProductos(@ModelAttribute("listaProductos") List<Compuesto> listaP) {
-		for(Compuesto c : listaP) {
-			servicioCompu.edit(c);
-		}
-		return "redirect:/administrador/precios";
-	}
-	
-	@PostMapping ("/administrador/precios/submitT")
-	public String cambioPreciosTranspote(@ModelAttribute("administrador") Administrador admin) {
-			servicio.edit(admin);
-		
-		return "redirect:/administrador/precios";
-	}
 	
 	
 	@GetMapping ("/administrador/pedidos_cliente")

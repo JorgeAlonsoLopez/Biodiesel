@@ -86,87 +86,79 @@
       <div class="row conten justify-content-around mx-auto">
         <div class="col-sm-12 col-lg-5 mt-5">
           <h2>Materias primas</h2>
-          <form action="" method="POST" th:action="@{/administrador/precios/submitM}"
-            th:object="${listaMateriasPrimas}">
-            <table class="table table-bordered table-hover table-responsive-sm mx-auto" id="tablaMateriasPrimas">
-              <thead>
-                <tr>
-                  <th>Nombre</th>
-                  <th>Precio (€/Kg)</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr th:each="producto : ${listaMateriasPrimas}">
-                  <td th:text="${producto.nombre}">X</td>
-                  <td>
-                    <input th:id="'precio' + ${producto.id}" type="number" class="form-control" step=".001" 
-                      placeholder="Inserte el precio" th:value="${producto.precio}">
-                    </td>
-                  <td> <button type="button" th:onclick="'actualizarPrecioMateria('+${producto.id}+')'">Actualizar</button></td>
-                </tr>
-              </tbody>
-            </table>
-            <div class=" mx-auto">
-              <button type="submit" class="btn btn-success col-sm-12 col-lg-2 mt-5 mb-5" value="Enviar"
-                id="confirmar">Guardar cambios</button>
-            </div>
-          </form>
+          <table class="table table-bordered table-hover table-responsive-sm mx-auto" id="tablaMateriasPrimas">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Precio (€/Kg)</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="producto : ${listaMateriasPrimas}">
+                <td th:text="${producto.nombre}">X</td>
+                <td>
+                  <input th:id="'precio' + ${producto.id}" type="number" class="form-control" step=".001"
+                    placeholder="Inserte el precio" th:value="${producto.precio}">
+                </td>
+                <td> <button type="button" th:onclick="'actualizarProducto('+${producto.id}+')'">Actualizar</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
         <div class="col-sm-12 col-lg-5 mt-5">
           <h2>Productos</h2>
-          <form action="" method="POST" th:action="@{/administrador/precios/submitP}" th:object="${listaProductos}">
-            <table class="table table-bordered table-hover table-responsive-sm mx-auto" id="tablaProductos">
-              <thead>
-                <tr>
-                  <th>Nombre</th>
-                  <th>Precio (€/Kg)</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr th:each="producto : ${listaProductos}">
-                  <td th:text="${producto.nombre}">X</td>
-                  <td><input type="number" class="form-control" id="precioMP1" min="0" step=".001"
-                      placeholder="Inserte el precio" th:value="${producto.precio}"></td>
-                </tr>
-              </tbody>
-            </table>
-            <div class=" mx-auto">
-              <button type="submit" class="btn btn-success col-sm-12 col-lg-2 mt-5 mb-5" value="Enviar"
-                id="confirmar">Guardar cambios</button>
-            </div>
-          </form>
+          <table class="table table-bordered table-hover table-responsive-sm mx-auto" id="tablaProductos">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Precio (€/Kg)</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="producto : ${listaProductos}">
+                <td th:text="${producto.nombre}">X</td>
+                <td>
+                  <input th:id="'precio' + ${producto.id}" type="number" class="form-control" step=".001"
+                    placeholder="Inserte el precio" th:value="${producto.precio}">
+                </td>
+                <td> <button type="button" th:onclick="'actualizarProducto('+${producto.id}+')'">Actualizar</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
       <div class="row">
         <div class="conten mx-auto col-sm-12 col-lg-5 mt-5">
           <h2 class="mx-auto">Transporte</h2>
-          <form action="" method="POST" th:action="@{/administrador/precios/submitT}" th:object="${administrador}">
-            <table class="table table-bordered table-hover table-responsive-sm mx-auto" id="tablaPrecios">
-              <thead>
-                <tr>
-                  <th>Nombre</th>
-                  <th>Precio (€/dia)</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Tren</td>
-                  <td><input type="number" class="form-control" id="precioT1" min="0" step=".001"
-                      placeholder="Inserte el precio" value="0" th:field="*{precioTren}"></td>
-                </tr>
-                <tr>
-                  <td>Barco</td>
-                  <td><input type="number" class="form-control" id="precioT1" min="0" step=".001"
-                      placeholder="Inserte el precio" value="0" th:field="*{precioBarco}"></td>
-                </tr>
-              </tbody>
-            </table>
-            <div class=" mx-auto">
-              <button type="submit" class="btn btn-success col-sm-12 col-lg-2 mt-5 mb-5" value="Enviar"
-                id="confirmar">Guardar cambios</button>
-            </div>
-          </form>
+          <table class="table table-bordered table-hover table-responsive-sm mx-auto" id="tablaPrecios">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Precio (€/dia)</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Tren</td>
+                <td><input type="number" class="form-control" id="precioT1" min="0" step=".001" th:id="admin1"
+                    placeholder="Inserte el precio" value="0" th:value="${administrador.precioTren}"></td>
+                <td><button type="button" th:onclick="'actualizarAdmin('+1+')'">Actualizar</button>
+                </td>
+              </tr>
+              <tr>
+                <td>Barco</td>
+                <td><input type="number" class="form-control" id="precioT1" min="0" step=".001" th:id="admin2"
+                    placeholder="Inserte el precio" value="0" th:value="${administrador.precioBarco}"></td>
+                <td><button type="button" th:onclick="'actualizarAdmin('+2+')'">Actualizar</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
@@ -558,12 +550,14 @@
     });
 
 
-    function actualizarPrecioMateria (id){
-      
-      //alert($('#precio' + id).val());
-
+    function actualizarProducto(id) {
       window.location.href = "/administrador/precios/" + id + "?precio=" + $('#precio' + id).val();
     }
+
+    function actualizarAdmin(id) {
+      window.location.href = "/administrador/precios/admin/" + id + "?precio=" + $('#admin' + id).val();
+    }
+
   </script>
 
 </body>

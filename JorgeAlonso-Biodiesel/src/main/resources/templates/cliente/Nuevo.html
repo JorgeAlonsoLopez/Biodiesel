@@ -87,41 +87,44 @@
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
                 <p>Instrucciones</p>
             </div>
-            <form action="#" method="POST" onsubmit="return validar();" th:action="@{/nuevo/submit}" th:object="${clienteFrom}" >
+            <form action="#" method="POST" onsubmit="return validar();" th:action="@{/nuevo/submit}"
+                th:object="${clienteFrom}">
                 <div class="row">
                     <div class="form-group col-sm-12 col-xl-5">
                         <label for="nombre" class="ml-3">Nombre<span class="error"> *</span></label>
-                        <input type="text" class="form-control" placeholder="Inserte el nombre" id="nombre"
-                             size="50" th:field="*{nombre}">
+                        <input type="text" class="form-control" placeholder="Inserte el nombre" id="nombre" size="50"
+                            th:field="*{nombre}">
                         <div class="error ml-3"><span></span></div>
                     </div>
                     <div class="form-group col-sm-12 col-xl-5">
                         <label for="apellidos" class="ml-3">Apellidos<span class="error"> *</span></label>
                         <input type="text" class="form-control" placeholder="Inserte el/los apellidos" id="apellidos"
-                             size="50" th:field="*{apellido}">
+                            size="50" th:field="*{apellido}">
                         <div class="error ml-3"><span></span></div>
                     </div>
                     <div class="form-group col-sm-12 col-xl-2">
                         <label for="dni" class="blk ml-3">DNI<span class="error"> *</span></label>
-                        <input type="text" class="form-control" placeholder="Inserte el DNI" id="dni" 
-                            size="9" th:field="*{dni}">
+                        <input type="text" class="form-control" placeholder="Inserte el DNI" id="dni" size="9"
+                            th:field="*{dni}">
                         <div class="error ml-3"><span></span></div>
                     </div>
                 </div>
                 <div class="row">
-                 <!--   <div class="form-group col-sm-12 col-xl-3">
+                    <!--   <div class="form-group col-sm-12 col-xl-3">
                         <label for="fecha" class="blk ml-3">Fecha de nacimiento<span class="error"> *</span></label>
                         <input type="date" class="form-control" id="fecha"  th:field="*{fechaNacimineto}">
                         <div class="error ml-3"><span></span></div>
                     </div> -->
                     <div class="form-group col-sm-12 col-xl-2">
                         <label for="telef" class="blk ml-3">Teléfono<span class="error"> *</span></label>
-                        <input type="tel" class="form-control" id="telef" placeholder="Inserte el número" th:field="*{telefono}">
+                        <input type="tel" class="form-control" id="telef" placeholder="Inserte el número"
+                            th:field="*{telefono}">
                         <div class="error ml-3"><span></span></div>
                     </div>
                     <div class="form-group col-sm-12 col-xl-7">
                         <label for="email" class="blk ml-3">Cuenta de correo<span class="error"> *</span></label>
-                        <input type="email" class="form-control" placeholder="Inserte el email" id="email" th:field="*{correo}">
+                        <input type="email" class="form-control" placeholder="Inserte el email" id="email"
+                            th:field="*{correo}">
                         <div class="error ml-3"><span></span></div>
                     </div>
                 </div>
@@ -129,14 +132,15 @@
                     <div class="form-group btn-block col-sm-12 col-xl-2">
                         <label for="pais" class="ml-3">País<span class="error"> *</span></label><br>
                         <select id="pais" class="form-control" th:field="*{pais}">
-                            <option th:each="pais : ${listaPais}" th:value="${pais.idPais}" th:text="${pais.nombre}">España</option>
+                            <option th:each="pais : ${listaPais}" th:value="${pais.idPais}" th:text="${pais.nombre}">
+                                España</option>
                         </select>
                         <div class="error ml-3"><span></span></div>
                     </div>
                     <div class="form-group col-sm-12 col-xl-10">
                         <label for="direccion" class="blk ml-3">Dirección<span class="error"> *</span></label>
                         <input type="text" class="form-control" placeholder="Inserte la dirección" id="direccion"
-                        th:field="*{direccion}">
+                            th:field="*{direccion}">
                         <div class="error ml-3"><span></span></div>
                     </div>
                 </div>
@@ -144,13 +148,14 @@
                     <div class="form-group col-sm-12 col-xl-3">
                         <label for="usuar" class="blk ml-3">Nombre de usuario<span class="error"> *</span></label>
                         <input type="text" class="form-control" placeholder="Inserte el nombre de usuario" id="usuar"
-                        th:field="*{usuario}">
+                            th:field="*{usuario}">
                         <div class="error ml-3"><span></span></div>
                     </div>
                     <div class="form-group col-sm-12 col-xl-4">
                         <label for="pwd1" class="blk ml-3">Contraseña<span class="error"> *</span></label>
                         <input type="password" class="form-control"
-                            placeholder="Inserte la contraseña (mínimo 8 caracteres)" id="pwd1" th:field="*{contrasenya}">
+                            placeholder="Inserte la contraseña (mínimo 8 caracteres)" id="pwd1"
+                            th:field="*{contrasenya}">
                         <div class="error ml-3"><span></span></div>
                     </div>
                     <div class="form-group col-sm-12 col-xl-4">
@@ -877,7 +882,8 @@
 
         //Comprueba que todo están verificados los campos en el registro
         function validar() {
-            if ( comprobarContrasena() && comprobarCorreo() && comprobarDNI() && comprobarTelefono()
+            if (//comprobarEdad() &&
+                comprobarContrasena() && comprobarCorreo() && comprobarDNI() && comprobarTelefono()
                 && comprobarNombre() && comprobarApellido() && comprobarUsuaio() && comprobarDireccion() && comprobarPais()) {
                 return true;
             } else {
