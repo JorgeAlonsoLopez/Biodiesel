@@ -44,8 +44,14 @@ public class CompuestoController {
 	
 	@PostMapping ("/administrador/gestionar_productos/submit")
 	public String submitRegistro(@ModelAttribute("elemento") Compuesto compuest) {
-		compuest.setActivo(true);
-		servicio.save(compuest);
+		if(servicio.buscarPorNombre(compuest.getNombre()) != null) {
+			servicio.buscarPorNombre(compuest.getNombre()).setPrecio(compuest.getPrecio());
+			servicio.buscarPorNombre(compuest.getNombre()).setActivo(true);
+			servicio.edit(servicio.buscarPorNombre(compuest.getNombre()));
+		}else {
+			compuest.setActivo(true);
+			servicio.save(compuest);
+		}
 		return "redirect:/administrador/gestionar_productos";
 	}
 	

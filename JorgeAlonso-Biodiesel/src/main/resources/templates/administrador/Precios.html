@@ -101,7 +101,8 @@
                   <input th:id="'precio' + ${producto.id}" type="number" class="form-control" step=".001"
                     placeholder="Inserte el precio" th:value="${producto.precio}">
                 </td>
-                <td> <button type="button" th:onclick="'actualizarProducto('+${producto.id}+')'">Actualizar</button>
+                <td> <button type="button" th:onclick="'actualizarProducto('+${producto.id}+')'"
+                    class="btn btn-light">Actualizar</button>
                 </td>
               </tr>
             </tbody>
@@ -124,7 +125,8 @@
                   <input th:id="'precio' + ${producto.id}" type="number" class="form-control" step=".001"
                     placeholder="Inserte el precio" th:value="${producto.precio}">
                 </td>
-                <td> <button type="button" th:onclick="'actualizarProducto('+${producto.id}+')'">Actualizar</button>
+                <td> <button type="button" th:onclick="'actualizarProducto('+${producto.id}+')'"
+                    class="btn btn-light">Actualizar</button>
                 </td>
               </tr>
             </tbody>
@@ -147,14 +149,14 @@
                 <td>Tren</td>
                 <td><input type="number" class="form-control" id="precioT1" min="0" step=".001" th:id="admin1"
                     placeholder="Inserte el precio" value="0" th:value="${administrador.precioTren}"></td>
-                <td><button type="button" th:onclick="'actualizarAdmin('+1+')'">Actualizar</button>
+                <td><button type="button" th:onclick="'actualizarAdmin('+1+')'" class="btn btn-light">Actualizar</button>
                 </td>
               </tr>
               <tr>
                 <td>Barco</td>
                 <td><input type="number" class="form-control" id="precioT1" min="0" step=".001" th:id="admin2"
                     placeholder="Inserte el precio" value="0" th:value="${administrador.precioBarco}"></td>
-                <td><button type="button" th:onclick="'actualizarAdmin('+2+')'">Actualizar</button>
+                <td><button type="button" th:onclick="'actualizarAdmin('+2+')'" class="btn btn-light">Actualizar</button>
                 </td>
               </tr>
             </tbody>
