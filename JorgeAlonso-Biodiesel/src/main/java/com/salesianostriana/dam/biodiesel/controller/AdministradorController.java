@@ -29,7 +29,8 @@ public class AdministradorController {
 	@Autowired
 	private CompuestoServicio servicioCompu;
 	
-	
+	@Autowired
+	private ClienteServicio servicioClien;
 
 	@GetMapping("/administrador/precios")
 	public String actualizarMateria(Model model) {
@@ -63,6 +64,18 @@ public class AdministradorController {
 	public String pedidosCliente (Model model) {
 		
 		return "administrador/PedidosCliente";
+	}
+	
+	@GetMapping ("/administrador/clientes_pendientes")
+	public String clientesPendientes (Model model) {
+		model.addAttribute("listaClientes", servicioClien.clientesPendientes());
+		return "/administrador/ClientesPendientes";
+	}
+	
+	@GetMapping ("/administrador")
+	public String clientesTotales(Model model) {
+		model.addAttribute("listaClientes", servicioClien.clientesAceptados());
+		return "/administrador/Administrador";
 	}
 	
 	

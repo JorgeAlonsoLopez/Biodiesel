@@ -12,7 +12,10 @@ import java.util.stream.Stream;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.salesianostriana.dam.biodiesel.modelo.Cliente;
+import com.salesianostriana.dam.biodiesel.modelo.ClienteFormulario;
+import com.salesianostriana.dam.biodiesel.modelo.Pais;
 import com.salesianostriana.dam.biodiesel.modelo.Pedido;
 import com.salesianostriana.dam.biodiesel.repositorio.ClienteRepository;
 import com.salesianostriana.dam.biodiesel.servicio.base.BaseService;
@@ -63,37 +66,53 @@ public class ClienteServicio extends BaseService<Cliente, Long, ClienteRepositor
 //		
 //	}
 
-	public void cambiarDatos(long id, String nombre, String apellido, String direccion, String telefono, String correo,
-			long pais, String contrasenya, PaisServicio paisServ) {
+	public Cliente cambiarDatosAVerdadero(ClienteFormulario formulario) {
+		int num0=0, num4=4, num5=5, num7=7, num8=8, num10=10;
+		int dia, mes, anyo;
+		
+		Cliente clie = this.findById(formulario.getIdUsuario());
+		clie.setNombre(formulario.getNombre());
+		clie.setApellido(formulario.getApellido());
+		clie.setDireccion(formulario.getDireccion());
+		clie.setTelefono(formulario.getTelefono());
+		clie.setCorreo(formulario.getCorreo());
+		clie.setContrasenya(formulario.getContrasenya());
+		clie.setPais(formulario.getPais());
 
-		Cliente clie = this.findById(id);
-		clie.setNombre(nombre);
-		clie.setApellido(apellido);
-		clie.setDireccion(direccion);
-		clie.setTelefono(telefono);
-		clie.setCorreo(correo);
-		clie.setContrasenya(contrasenya);
-		clie.setPais(paisServ.findById(pais));
+		dia = Integer.parseInt(formulario.getFechaNacimiento().substring(num0, num4));
+		mes = Integer.parseInt(formulario.getFechaNacimiento().substring(num5, num7));
+		anyo = Integer.parseInt(formulario.getFechaNacimiento().substring(num8, num10));
+		
+		clie.setFechaNacimiento(LocalDate.of(anyo, mes, dia));
 
-		this.edit(clie);
+		
+		return clie;
 
-	}
-
-	public List<Pedido> ordernarFechaEntrega(List<Pedido> lista) {
-		lista = lista.stream().sorted((f1, f2) -> f1.getFechaLlegada().compareTo(f2.getFechaLlegada()))
-				.collect(Collectors.toList());
-		return lista;
-	}
-
-	public List<Pedido> ordernarFechaSalida(List<Pedido> lista) {
-		lista = lista.stream()
-				.sorted((f1, f2) -> f1.getFechaSalidaTrasnporte().compareTo(f2.getFechaSalidaTrasnporte()))
-				.collect(Collectors.toList());
-		return lista;
 	}
 	
-	public Cliente permitirAcceso(Long id) {
-		return this.findById(id);
+	public Cliente crearCliente(ClienteFormulario formulario) {
+		int num0=0, num4=4, num5=5, num7=7, num8=8, num10=10;
+		int dia, mes, anyo;
+
+		Cliente clie = new Cliente();
+		clie.setNombre(formulario.getNombre());
+		clie.setApellido(formulario.getApellido());
+		clie.setDni(formulario.getDni());
+		clie.setDireccion(formulario.getDireccion());
+		clie.setTelefono(formulario.getTelefono());
+		clie.setCorreo(formulario.getCorreo());
+		clie.setContrasenya(formulario.getContrasenya());
+		clie.setPais(formulario.getPais());
+		clie.setUsuario(formulario.getUsuario());
+		
+		anyo = Integer.parseInt(formulario.getFechaNacimiento().substring(num0, num4));
+		mes = Integer.parseInt(formulario.getFechaNacimiento().substring(num5, num7));
+		dia = Integer.parseInt(formulario.getFechaNacimiento().substring(num8, num10));
+		
+		clie.setFechaNacimiento(LocalDate.of(anyo, mes, dia));
+
+		return clie;
+
 	}
 	
 	public List<Cliente> cargarListado(){

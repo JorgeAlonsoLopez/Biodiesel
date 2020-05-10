@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.salesianostriana.dam.biodiesel.modelo.Cliente;
+import com.salesianostriana.dam.biodiesel.modelo.ClienteFormulario;
 import com.salesianostriana.dam.biodiesel.modelo.Pais;
 import com.salesianostriana.dam.biodiesel.servicio.ClienteServicio;
 import com.salesianostriana.dam.biodiesel.servicio.PaisServicio;
@@ -25,18 +26,18 @@ public class ClienteController {
 	
 	@GetMapping ("/nuevo")
 	public String registro(Model model) {
-		model.addAttribute("clienteFrom",new Cliente());
+		model.addAttribute("clienteFrom",new ClienteFormulario());
 		model.addAttribute("listaPais", servicioPais.findAll());
+		model.addAttribute("fecha", "");
 
 		return "/cliente/Nuevo";
 	}
 	
 	
-	
 	@PostMapping ("/nuevo/submit")
-	public String submitRegistro(@ModelAttribute("clienteFrom") Cliente nuevoCliente) {
-
-		servicio.save(nuevoCliente);
+	public String submitRegistro(@ModelAttribute("clienteFrom") ClienteFormulario nuevoClienteFormulario) {
+		Cliente clienteFinal = servicio.crearCliente(nuevoClienteFormulario);
+		servicio.save(clienteFinal);
 		return "redirect:/cliente";
 	}
 	
@@ -46,22 +47,7 @@ public class ClienteController {
 	public String login(Model model) {
 		
 		return "/Login";
-	}
-	
-	
-	
-	@GetMapping ("/administrador/clientes_pendientes")
-	public String clientesPendientes (Model model) {
-		model.addAttribute("listaClientes", servicio.clientesPendientes());
-		return "/administrador/ClientesPendientes";
-	}
-	
-	@GetMapping ("/administrador")
-	public String clientesTotales(Model model) {
-		model.addAttribute("listaClientes", servicio.clientesAceptados());
-		return "/administrador/Administrador";
-	}
-	
+	}	
 	
 	
 	@GetMapping("/administrador/clientes_pendientes/borrar/{dni}")
