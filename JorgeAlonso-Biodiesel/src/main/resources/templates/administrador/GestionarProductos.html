@@ -95,10 +95,10 @@
             </tr>
           </thead>
           <tbody>
-            <tr th:each="material : ${materiasPrimas}">
-              <td th:text="${material.nombre}">X</td>
-              <td th:text="${material.precio}">0</td>
-              <td><a href="#" data-izimodal-open="#modalEliminar" th:data-id="${material.id}">Eliminar</a></td>
+            <tr th:each="materia : ${materiasPrimas}">
+              <td th:text="${materia.nombre}">X</td>
+              <td th:text="${materia.precio}">0</td>
+              <td><a th:href="@{'/administrador/gestionar_productos/borrar/'+${materia.nombre}}">Eliminar</a></td>
             </tr>
           </tbody>
         </table>
@@ -117,7 +117,7 @@
             <tr th:each="producto : ${productos}">
               <td th:text="${producto.nombre}">Y</td>
               <td th:text="${producto.precio}">0</td>
-              <td><a href="#" data-izimodal-open="#modalEliminar" th:data-id="${producto.id}">Eliminar</a></td>
+              <td><a th:href="@{'/administrador/gestionar_productos/borrar/'+${producto.nombre}}">Eliminar</a></td>
             </tr>
           </tbody>
         </table>
@@ -125,22 +125,23 @@
     </section>
     <section class="mx-auto text-center">
       <h2 class="mb-4 bt-5">Nuevo artículo</h2>
-      <form action="" id="nuevoArticulo">
+      <form method="POST" id="nuevoArticulo" th:action="@{/administrador/gestionar_productos/submit}"
+        th:object="${elemento}">
         <div class="row conten justify-content-around">
           <div class="col-sm-12 col-lg-4">
             <label for="nombre" class="mr-3">Nombre</label>
-            <input type="text" class="form-control " placeholder="Inserte el nombre" name="nombre" id="nombre">
+            <input type="text" class="form-control " placeholder="Inserte el nombre" th:field="*{nombre}" id="nombre">
           </div>
           <div class="col-sm-12 col-lg-4">
             <label for="precio" class="mr-3">Precio (€/Kg)</label>
-            <input type="number" class="form-control" step=".001" placeholder="Inserte el precio" min="0" name="precio"
-              id="precio">
+            <input type="number" class="form-control" step=".001" placeholder="Inserte el precio" min="0"
+              th:field="*{precio}" id="precio">
           </div>
           <div class="col-sm-12 col-lg-4">
             <label for="tipo" class="mr-3">Tipo de artículo</label>
-            <select id="tipo" class="form-control" name="productoForm">
-              <option value="compra">Producto</option>
-              <option value="venta">Materia prima</option>
+            <select id="tipo" class="form-control" th:field="*{tipo}">
+              <option th:value="compra">Producto</option>
+              <option th:value="venta">Materia prima</option>
             </select>
           </div>
         </div>
@@ -198,14 +199,6 @@
       </div>
     </div>
   </footer>
-
-  <div id="modalEliminar" class="modalC">
-    <h2 class="text-center mt-2">¿Desea eliminar el producto/materia prima?</h2>
-    <form action="" class="row justify-content-around">
-      <a href="/administrador/compuesto/borrar/" class="btn btn-success col-sm-12 col-lg-4 mt-3 mb-3">Eliminar</a>
-    </form>
-  </div>
-
 
   <div id="coockiesModal" class="modalP">
     <div class="conten">
@@ -532,14 +525,6 @@
 
   <script>
     $(function () {
-      $(".modalC").iziModal({
-        padding: 10,
-        radius: 5,
-        overlayColor: 'rgba(0,0,0,0)',
-        transitionIn: 'flipInX',
-        transitionOut: 'fadeOutRight',
-        width: 800
-      });
       $(".modalP").iziModal({
         title: "Políticas y aviso legal",
         fullscreen: true,

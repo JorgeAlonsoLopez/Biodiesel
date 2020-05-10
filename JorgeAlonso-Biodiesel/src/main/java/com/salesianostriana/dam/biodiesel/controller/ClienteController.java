@@ -92,11 +92,9 @@ public class ClienteController {
 	public String borrarCliente(@PathVariable("dni") String dni, Model model) {
 
 		Cliente cliente = servicio.buscarPorDNI(dni);
-
 		if (cliente != null) {
 			servicio.delete(cliente);
 		}
-
 		return "redirect:/administrador";
 
 	}
