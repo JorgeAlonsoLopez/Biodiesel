@@ -70,7 +70,7 @@ public class ClienteServicio extends BaseService<Cliente, Long, ClienteRepositor
 		int num0=0, num4=4, num5=5, num7=7, num8=8, num10=10;
 		int dia, mes, anyo;
 		
-		Cliente clie = this.findById(formulario.getIdUsuario());
+		Cliente clie = this.buscarPorDNI(formulario.getDni());
 		clie.setNombre(formulario.getNombre());
 		clie.setApellido(formulario.getApellido());
 		clie.setDireccion(formulario.getDireccion());
@@ -79,11 +79,36 @@ public class ClienteServicio extends BaseService<Cliente, Long, ClienteRepositor
 		clie.setContrasenya(formulario.getContrasenya());
 		clie.setPais(formulario.getPais());
 
-		dia = Integer.parseInt(formulario.getFechaNacimiento().substring(num0, num4));
+		anyo = Integer.parseInt(formulario.getFechaNacimiento().substring(num0, num4));
 		mes = Integer.parseInt(formulario.getFechaNacimiento().substring(num5, num7));
-		anyo = Integer.parseInt(formulario.getFechaNacimiento().substring(num8, num10));
+		dia = Integer.parseInt(formulario.getFechaNacimiento().substring(num8, num10));
 		
 		clie.setFechaNacimiento(LocalDate.of(anyo, mes, dia));
+
+		
+		return clie;
+
+	}
+	
+	public ClienteFormulario cambiarDatosAFalso(Cliente cliente) {
+		int dia, mes, anyo;
+		
+		ClienteFormulario clie = new ClienteFormulario();
+		clie.setNombre(cliente.getNombre());
+		clie.setApellido(cliente.getApellido());
+		clie.setDireccion(cliente.getDireccion());
+		clie.setTelefono(cliente.getTelefono());
+		clie.setCorreo(cliente.getCorreo());
+		clie.setContrasenya(cliente.getContrasenya());
+		clie.setPais(cliente.getPais());
+		clie.setUsuario(cliente.getUsuario());
+		clie.setDni(cliente.getDni());
+
+		anyo = cliente.getFechaNacimiento().getYear();
+		mes = cliente.getFechaNacimiento().getMonthValue();
+		dia = cliente.getFechaNacimiento().getDayOfMonth();
+		
+		clie.setFechaNacimiento((anyo+"-"+mes+"-"+dia).toString());
 
 		
 		return clie;

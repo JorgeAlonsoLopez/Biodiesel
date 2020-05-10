@@ -28,8 +28,7 @@ public class ClienteController {
 	public String registro(Model model) {
 		model.addAttribute("clienteFrom",new ClienteFormulario());
 		model.addAttribute("listaPais", servicioPais.findAll());
-		model.addAttribute("fecha", "");
-
+		
 		return "/cliente/Nuevo";
 	}
 	
@@ -41,6 +40,20 @@ public class ClienteController {
 		return "redirect:/cliente";
 	}
 	
+	
+	@GetMapping ("/cliente/ajustes")
+	public String ajustes (Model model) {
+		model.addAttribute("clienteFrom", servicio.cambiarDatosAFalso(servicio.buscarPorDNI("180-96-0663")));
+		model.addAttribute("listaPais", servicioPais.findAll());
+		return "cliente/Ajustes";
+	}
+	
+	@PostMapping ("/cliente/ajustes/submit")
+	public String submitAjustes(@ModelAttribute("clienteFrom") ClienteFormulario nuevoClienteFormulario) {
+		Cliente clienteFinal = servicio.cambiarDatosAVerdadero(nuevoClienteFormulario);
+		servicio.edit(clienteFinal);
+		return "redirect:/cliente";
+	}
 	
 	
 	@GetMapping ("/login")

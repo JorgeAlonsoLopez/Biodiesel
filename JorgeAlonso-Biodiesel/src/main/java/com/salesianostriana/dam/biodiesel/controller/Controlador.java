@@ -12,11 +12,7 @@ public class Controlador {
 
 	
 	
-	@GetMapping ("/cliente/ajustes")
-	public String ajustes (Model model) {
-		
-		return "cliente/Ajustes";
-	}
+	
 	
 	@GetMapping ("/cliente/Productos")
 	public String compra (Model model) {

@@ -88,12 +88,13 @@
     <br>
     <main>
         <section class="mt-5 mb-5">
-            <form action="" method="POST" onsubmit="return validar();">
+            <form action="" method="POST" onsubmit="return validar();" th:action="@{/cliente/ajustes/submit}"
+                th:object="${clienteFrom}">
                 <div class="form-group ajustesCliente">
                     <div class="row justify-content-center mb-1">
                         <label for="nombre" class="col-sm-12 col-xl-3">Nombre</label>
                         <input type="text" class="form-control col-sm-12 col-xl-7" placeholder="Inserte el nombre"
-                            name="nombre" id="nombre" size="50">
+                        th:field="*{nombre}" id="nombre" size="50">
                     </div>
                     <div class="row justify-content-center mb-4">
                         <div class="error col-sm-12 col-xl-8"></div>
@@ -103,7 +104,7 @@
                     <div class="row justify-content-center mb-1">
                         <label for="apellidos" class="col-sm-12 col-xl-3">Apellidos</label>
                         <input type="text" class="form-control col-sm-12 col-xl-7"
-                            placeholder="Inserte el/los apellidos" name="apellidos" id="apellidos" size="50">
+                            placeholder="Inserte el/los apellidos"  th:field="*{apellido}" id="apellido" size="50">
                     </div>
                     <div class="row justify-content-center mb-4">
                         <div class="error col-sm-12 col-xl-8"></div>
@@ -111,14 +112,14 @@
                 </div>
                 <div class="form-group ajustesCliente">
                     <div class="row justify-content-center">
-                        <input type="hidden" class="form-control col-sm-12 col-xl-7" value="12345678" id="dni"
+                        <input type="hidden" class="form-control col-sm-12 col-xl-7"  th:field="*{dni}" id="dni"
                             maxlength="9" minlength="9" size="9">
                     </div>
                 </div>
                 <div class="form-group ajustesCliente">
                     <div class="row justify-content-center mb-1">
                         <label for="fecha" class="col-sm-12 col-xl-3">Fecha de nacmiento</label>
-                        <input type="date" class="form-control col-sm-12 col-xl-7" name="fecha" id="fecha">
+                        <input type="date" class="form-control col-sm-12 col-xl-7"  th:field="*{fechaNacimiento}" id="fecha">
                     </div>
                     <div class="row justify-content-center mb-4">
                         <div class="error col-sm-12 col-xl-8"></div>
@@ -127,7 +128,7 @@
                 <div class="form-group ajustesCliente">
                     <div class="row justify-content-center mb-1">
                         <label for="telef" class="col-sm-12 col-xl-3">Teléfono</label>
-                        <input type="tel" class="form-control col-sm-12 col-xl-7" name="telef" id="telef"
+                        <input type="tel" class="form-control col-sm-12 col-xl-7"  th:field="*{telefono}" id="telef"
                             placeholder="Inserte el número">
                     </div>
                     <div class="row justify-content-center mb-4">
@@ -138,7 +139,7 @@
                     <div class="row justify-content-center mb-1">
                         <label for="email" class="col-sm-12 col-xl-3">Cuenta de correo</label>
                         <input type="email" class="form-control col-sm-12 col-xl-7" placeholder="Inserte el email"
-                            name="email" id="email">
+                        th:field="*{correo}" id="email">
                     </div>
                     <div class="row justify-content-center mb-4">
                         <div class="error col-sm-12 col-xl-8"></div>
@@ -147,13 +148,9 @@
                 <div class="form-group ajustesCliente">
                     <div class="row justify-content-center mb-1">
                         <label for="pais" class="col-sm-12 col-xl-3">País</label>
-                        <select id="pais" class="form-control col-sm-12 col-xl-7" name="pais">
-                            <option value="0"></option>
-                            <option value="1">España</option>
-                            <option value="2">Francia</option>
-                            <option value="3">Italia</option>
-                            <option value="4">Portugal</option>
-                            <option value="5">Estados Unidos</option>
+                        <select id="pais" class="form-control" th:field="*{pais}">
+                            <option th:each="pais : ${listaPais}" th:value="${pais.idPais}" th:text="${pais.nombre}">
+                                España</option>
                         </select>
                     </div>
                     <div class="row justify-content-center mb-4">
@@ -164,7 +161,7 @@
                     <div class="row justify-content-center mb-1">
                         <label for="direccion" class="col-sm-12 col-xl-3">Dirección:</label>
                         <input type="text" class="form-control col-sm-12 col-xl-7" placeholder="Inserte la dirección"
-                            name="direccion" id="direccion">
+                        th:field="*{direccion}" id="direccion">
                     </div>
                     <div class="row justify-content-center mb-4">
                         <div class="error col-sm-12 col-xl-8"></div>
@@ -172,7 +169,7 @@
                 </div>
                 <div class="form-group ajustesCliente">
                     <div class="row justify-content-center">
-                        <input type="hidden" class="form-control col-sm-12 col-xl-7" value="Aaaaaaaaaaaaaaaaaa"
+                        <input type="hidden" class="form-control col-sm-12 col-xl-7" th:field="*{usuario}"
                             id="usuar">
                     </div>
                 </div>
@@ -180,7 +177,7 @@
                     <div class="row justify-content-center mb-1">
                         <label for="pwd1" class="col-sm-12 col-xl-3 ml-xl-4">Contraseña</label>
                         <input type="password" class="form-control col-sm-12 col-xl-7 ml-xl-4"
-                            placeholder="Inserte la contraseña (mínimo 8 caracteres)" id="pwd1" name="pwd1">
+                            placeholder="Inserte la contraseña (mínimo 8 caracteres)" id="pwd1"  th:field="*{contrasenya}">
                         <i id="ojo1" class="fas fa-eye-slash fa-lg mt-2 ml-xl-2"></i>
                     </div>
                     <div class="row justify-content-center mb-4">
@@ -322,8 +319,8 @@
                     &nbsp;</li>
             </ul>
             <p>
-                <h3><span class="negrita">3. Tipos de cookies</span></h3>
-                <strong>3.1. Tipos de cookies según su finalidad</strong>
+            <h3><span class="negrita">3. Tipos de cookies</span></h3>
+            <strong>3.1. Tipos de cookies según su finalidad</strong>
             </p>
             <ul class="boliches">
                 <li>
