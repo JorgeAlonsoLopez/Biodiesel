@@ -1,39 +1,8 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cliente</title>
+<head th:replace="~{fragmentos/head::head(titulo='Cliente')}">
   <meta name="description" content="Área de gestión del cliente.">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <!-- Bootstrap  -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-    crossorigin="anonymous"></script>
-  <!-- Tabla  -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.min.js"
-    integrity="sha256-dtGH1XcAyKopMui5x20KnPxuGuSx9Rs6piJB/4Oqu6I=" crossorigin="anonymous"></script>
-  <!-- Fuentes  -->
-  <link href='https://fonts.googleapis.com/css?family=Cambay' rel='stylesheet'>
-  <!-- Modal (iziModal.js) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/js/iziModal.js"
-    integrity="sha256-jx5SpNrWp5tIlHK2uGtUsZ4QRJkEV9aQXXGN3kkPXIE=" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/css/iziModal.css"
-    integrity="sha256-qaS6Cn77YhfgOLFHy4qadvrn/cEYG9bvbnQILtSY+0E=" crossorigin="anonymous" />
-  <!-- Iconos  -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
-  <!-- Estilos propios y modificados de plantilla (footer)  -->
-  <link rel="stylesheet" href="../CSS/style.CSS">
-  <link rel="stylesheet" href="../CSS/CSS.CSS">
 </head>
 
 <body>
@@ -84,7 +53,8 @@
   <main class="conten container-fluid">
     <section class="row mx-auto text-center align-items-center justify-content-around mt-5">
       <a role="button" class="btn botonContenido col-sm-12 col-lg-4" href="/cliente/Productos">Comprar productos</a>
-      <a role="button" class="btn botonContenido col-sm-12 col-lg-4" href="/cliente/MateriasPrimas">Vender materias primas</a>
+      <a role="button" class="btn botonContenido col-sm-12 col-lg-4" href="/cliente/MateriasPrimas">Vender materias
+        primas</a>
     </section>
     <section class="row justify-content-around mt-5">
       <table class="col-sm-12 col-lg-8 table table-striped table-bordered table-hover table-responsive-sm"
@@ -100,7 +70,8 @@
         </thead>
         <tbody>
           <tr th:each="pedido : ${lista}">
-            <td><a href="#" data-izimodal-open="#modalPedido" th:text="${pedido.id}" th:data-id="${pedido.id}">X</a></td>
+            <td><a href="#" data-izimodal-open="#modalPedido" th:text="${pedido.id}" th:data-id="${pedido.id}">X</a>
+            </td>
             <td th:text="${pedido.fechaLlegada}">10-07-2023</td>
             <td th:text="${pedido.fechaSalidaTrasnporte}">02-07-2023</td>
             <td th:text="${pedido.precioFinal}">341234</td>
@@ -146,10 +117,10 @@
               <input type="checkbox" id="pendiente" name="pendiente" value="1">
               <label for="pendiente">Pedidos pendientes</label>
             </li>
-          	<li class="row">
-          		<button type="submit" class="btn btn-dark col-sm-10 col-lg-5 mx-auto" value="Enviar"
-            id="enviar">Buscar</button>
-          	</li>
+            <li class="row">
+              <button type="submit" class="btn btn-dark col-sm-10 col-lg-5 mx-auto" value="Enviar"
+                id="enviar">Buscar</button>
+            </li>
           </ul>
         </form>
         <div class="mt-5 mb-3">
@@ -158,60 +129,11 @@
       </aside>
     </section>
   </main>
-  <div id="espacio"></div>
-  <footer class="footerPrin" id="footer">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-md-4">
-          <span>Copyright © GREENTECH BOIFUELS 2020</span>
-        </div>
-        <div class="col-md-4" id="marcas">
-          <ul class="list-inline">
-            <li class="list-inline-item">
-              <a href="#" class="redS">
-                <i class="fab fa-twitter"></i>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#" class="redS">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#" class="redS">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#" class="redS">
-                <i class="fab fa-google-plus-g"></i>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#" class="redS">
-                <i class="fab fa-instagram"></i>
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div class="col-md-4">
-          <ul class="list-inline">
-            <li class="list-inline-item">
-              <a href="#" data-izimodal-open="#coockiesModal">Política de Cookies</a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#" data-izimodal-open="#legalModal">Aviso Legal</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <div th:replace="~{fragmentos/footer::footer}"></div>
 
 
   <div id="modalPedido" class="modalC">
     <div class="row mx-auto text-center align-items-center justify-content-around">
-      <span class="btn info col-sm-12 col-lg-4" th:text="${pedido.id}">ID pedido</span>
       <span class="btn info col-sm-12 col-lg-4" th:text="${pedido.precioFinal}">Precio</span>
     </div>
     <div class="row mx-auto text-center align-items-center justify-content-around">
@@ -313,8 +235,8 @@
           &nbsp;</li>
       </ul>
       <p>
-        <h3><span class="negrita">3. Tipos de cookies</span></h3>
-        <strong>3.1. Tipos de cookies según su finalidad</strong>
+      <h3><span class="negrita">3. Tipos de cookies</span></h3>
+      <strong>3.1. Tipos de cookies según su finalidad</strong>
       </p>
       <ul class="boliches">
         <li>
@@ -571,6 +493,8 @@
     </div>
   </div>
 
+
+
   <script>
 
     $('#tablaPedidosCliente tbody tr').each(function () {
@@ -597,14 +521,6 @@
         transitionIn: 'flipInX',
         transitionOut: 'fadeOutRight',
         width: 800
-      });
-      $(".modalP").iziModal({
-        title: "Políticas y aviso legal",
-        fullscreen: true,
-        headerColor: 'rgb(88,88,88)',
-        overlayColor: 'rgba(0,0,0,0)',
-        transitionIn: 'comingIn',
-        width: 1000
       });
     });
   </script>
