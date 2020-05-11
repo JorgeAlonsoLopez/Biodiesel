@@ -88,30 +88,45 @@
   <main>
     <section>
       <h1 class="mt-5 mb-5 mx-auto">Productos</h1>
-      <form action="#" class="clienteCompr">
+      <form action="#" class="clienteCompr" method="POST" th:action="@{/cliente/Productos/submit}" th:object="${pedido}">
         <table class="tabla table-hover table-responsive-sm" id="tablaP">
           <thead>
             <tr>
               <th>Nombre</th>
               <th>Precio por Kg</th>
-              <th>Cantidad(Kg)</th>
-              <th>Precio(€)</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td><label for="cantidadP">Producto 1</label></td>
-              <td>5</td>
-              <td><input type="number" min="0" name="cantidadP1" id="cantidadP1" class="form-control cantidad"></td>
-              <td id="precioP">0</td>
+            <tr th:each="elemento : ${listaProductos}">
+              <td th:text="${elemento.nombre}">Producto 1</td>
+              <td th:text="${elemento.precio}">5</td>
             </tr>
           </tbody>
         </table>
+        <div class="row conten mx-auto justify-content-around mt-5 mb-5">
+          <div class="col-sm-12 col-xl-3">
+            <select id="nombre" class="form-control" th:field="*{nombre}">
+              <option th:each="elemento : ${listaProductos}" th:value="${elemento.nombre}" th:text="${elemento.nombre}">
+                Producto</option>
+
+            </select>
+          </div>
+          <div class="col-sm-12 col-xl-4 form-group">
+            <div class="row justify-content-around">
+              <label for="cantidad" class="col-sm-5 col-xl-5">Cantidad (Kg)</label>
+              <input type="number" id="cantidad" class="form-control mitad col-sm-7 col-xl-7"
+                placeholder="Inserte la cantidad a comprar." min="0" step="100" th:field="*{cantidad}">
+            </div>
+          </div>
+          <div class="col-sm-12 col-xl-3">
+            <span id="precio">0</span> <span> €</span>
+          </div>
+        </div>
         <div class="row conten mt-5 mb-5 justify-content-around">
           <div class="form-group col-sm-12 col-xl-5">
             <div class="row justify-content-center">
               <label for="fechaEntrega" class="col-sm-12 col-xl-5">Fecha de entrega</label>
-              <input type="date" id="fechaEntrega" name="fechaEntrega" class="form-control mx-auto col-sm-10 col-xl-5">
+              <input type="date" id="fechaEntrega" th:field="*{fecha}" class="form-control mx-auto col-sm-10 col-xl-5">
             </div>
           </div>
           <div class="form-group col-sm-12 col-xl-5">
@@ -133,6 +148,10 @@
       </form>
     </section>
   </main>
+  <span id="costeTT" class="oculto" th:text="${admin.precioTren}">AAAAAA</span>
+  <span id="costeTB" class="oculto" th:text="${admin.precioBarco}">AAAAAA</span>
+  <span id="numDiasT" class="oculto" th:text="${cliente.pais.numDiasTren}">AAAAAA</span>
+  <span id="numDiasB" class="oculto" th:text="${cliente.pais.numDiasBarco}">AAAAAA</span>
   <div id="espacio"></div>
   <footer class="footerPrin" id="footer">
     <div class="container">
@@ -248,8 +267,8 @@
           &nbsp;</li>
       </ul>
       <p>
-        <h3><span class="negrita">3. Tipos de cookies</span></h3>
-        <strong>3.1. Tipos de cookies según su finalidad</strong>
+      <h3><span class="negrita">3. Tipos de cookies</span></h3>
+      <strong>3.1. Tipos de cookies según su finalidad</strong>
       </p>
       <ul class="boliches">
         <li>
@@ -507,25 +526,74 @@
   </div>
 
   <script>
+    $(function () {
+      $(".modalP").iziModal({
+        title: "Políticas y aviso legal",
+        fullscreen: true,
+        headerColor: 'rgb(88,88,88)',
+        overlayColor: 'rgba(0,0,0,0)',
+        transitionIn: 'comingIn',
+        width: 1000
+      });
+    });
+  </script>
 
-    var numero = 0;
-    var costeP = 0;
-    var costeTT = 10;
-    var costeTB = 30;
-    var numDiasT = 1;
-    var numDiasB = 2;
+  <script>
+    flatpickr("#fechaEntrega", {
+      minDate: "today",
+      "locale": { "firstDayOfWeek": 1 },
+      "locale": "es",
+    });
+  </script>
+
+  <script>
+    var precioFinalIndividual = 0;
+    var costeTT = parseInt($("#costeTT").html());
+    var costeTB = parseInt($("#costeTB").html());
+    var numDiasT = parseInt($("#numDiasT").html());
+    var numDiasB = parseInt($("#numDiasB").html());
 
 
     window.onload = function () {
       $("#fechaEntrega").blur(function (event) {
         comprobarFecha();
       });
-      $(".cantidad").blur(function (event) {
+      $("#cantidad").blur(function (event) {
         costeIndiv();
         costeTotal();
       });
     }
 
+    function costeIndiv() {
+      precioFinalIndividual = 0;
+      var precioIndividual = 0;
+
+      $("table tr").each(function () {
+        var hola = 0;
+        if ($(this).children("td:nth-child(1)").html() == $("#nombre").html()) {
+          precioIndividual = $(this).children(":nth-child(2)").hmtl();
+        }
+      });
+
+      if ($("#tablaP tbody").children("tr:nth-child(1)").children("td:nth-child(1)").html() == $("#nombre").val()) {
+        precioIndividual = $("#tablaP tbody").children("tr:nth-child(1)").children("td:nth-child(2)").html();
+      } else if ($("#tablaP tbody").children("tr:nth-child(2)").children("td:nth-child(1)").html() == $("#nombre").val()) {
+        precioIndividual = $("#tablaP tbody").children("tr:nth-child(2)").children("td:nth-child(2)").html();
+      } else if ($("#tablaP tbody").children("tr:nth-child(3)").children("td:nth-child(1)").html() == $("#nombre").val()) {
+        precioIndividual = $("#tablaP tbody").children("tr:nth-child(3)").children("td:nth-child(2)").html();
+      }
+
+
+      precioFinalIndividual = precioIndividual * $("#cantidad").val();
+      $("#precio").html(precioFinalIndividual);
+    }
+
+    function costeTotal() {
+      var total = 0;
+      var coste = ((numDiasT) * (costeTT)) + ((numDiasB) * (costeTB));
+      total = precioFinalIndividual + coste;
+      $("#precioFinal").text(total.toString());
+    }
 
     function comprobarFecha() {
       var fechaEntr = new Date($("#fechaEntrega").val());
@@ -547,50 +615,8 @@
         $("#enviar").prop("disabled", "");
       }
     }
-
-    function costeIndiv() {
-
-      $("#tablaP tbody tr").each(function () {
-        numero = $(this).children("td:nth-child(3)").children().val();
-        costeP = parseFloat($(this).children("td:nth-child(2)").text());
-        var resultado = numero * costeP;
-        $(this).children("td:nth-child(4)").text(resultado.toString());
-      });
-
-    }
-
-    function costeTotal() {
-      var total = 0;
-      $(".tabla tbody tr").each(function () {
-        total = total + parseFloat($(this).children("td:nth-child(4)").text());
-      });
-      var coste = ((numDiasT) * (costeTT)) + ((numDiasB) * (costeTB));
-      total = total + coste;
-      $("#precioFinal").text(total.toString());
-    }
-
   </script>
 
-  <script>
-    $(function () {
-      $(".modalP").iziModal({
-        title: "Políticas y aviso legal",
-        fullscreen: true,
-        headerColor: 'rgb(88,88,88)',
-        overlayColor: 'rgba(0,0,0,0)',
-        transitionIn: 'comingIn',
-        width: 1000
-      });
-    });
-  </script>
-
-  <script>
-    flatpickr("#fechaEntrega", {
-      minDate: "today",
-      "locale": { "firstDayOfWeek": 1 },
-      "locale": "es",
-    });
-  </script>
 
 </body>
 

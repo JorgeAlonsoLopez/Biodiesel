@@ -11,6 +11,7 @@ import com.salesianostriana.dam.biodiesel.modelo.Administrador;
 import com.salesianostriana.dam.biodiesel.modelo.Cliente;
 import com.salesianostriana.dam.biodiesel.modelo.LineaPedido;
 import com.salesianostriana.dam.biodiesel.modelo.Pedido;
+import com.salesianostriana.dam.biodiesel.modelo.PedidoFormulario;
 import com.salesianostriana.dam.biodiesel.repositorio.PedidoRepository;
 import com.salesianostriana.dam.biodiesel.servicio.base.BaseService;
 
@@ -26,39 +27,39 @@ public class PedidoServicio extends BaseService<Pedido, Long, PedidoRepository> 
 		return this.repositorio.findAllJoin();
 	}
 
-	public Pedido hacerPedido(Administrador admin, Map<String, Integer> lineas, LocalDate fechaLlegada, Cliente cliente,
+	public Pedido hacerPedido(Administrador admin, PedidoFormulario pedidoForm, Cliente cliente,
 			CompuestoServicio compuestoServicio) {
 		double precioProductos = 0;
-		int num0 = 0;
+		int num0 = 0, num4 = 4, num5 = 5, num7 = 7, num8 = 8, num10 = 10;
+		int dia, mes, anyo;
+		LocalDate fecha, fechaSalidaTrans;
+
+		if (pedidoForm.getFecha()==null) {
+			fecha = pedidoForm.getFechaLoc();
+		} else {
+			anyo = Integer.parseInt(pedidoForm.getFecha().substring(num0, num4));
+			mes = Integer.parseInt(pedidoForm.getFecha().substring(num5, num7));
+			dia = Integer.parseInt(pedidoForm.getFecha().substring(num8, num10));
+
+			fecha = LocalDate.of(anyo, mes, dia);
+		}
 
 		int numDias = cliente.getPais().getNumDiasBarco() + cliente.getPais().getNumDiasTren();
-		LocalDate fechaSalidaTrans = fechaLlegada.minusDays(numDias);
+		fechaSalidaTrans = fecha.minusDays(numDias);
 		double precioTrasporte = (admin.getPrecioBarco() * cliente.getPais().getNumDiasBarco())
 				+ (admin.getPrecioTren() * cliente.getPais().getNumDiasTren());
 
-		List<LineaPedido> listaLineasPedido = lineas.entrySet().stream()
-				.map(e -> new LineaPedido(
-						compuestoServicio.buscarPorNombre(e.getKey()).getPrecio() * e.getValue().intValue(),
-						e.getValue().intValue(), compuestoServicio.buscarPorNombre(e.getKey())))
-				.collect(Collectors.toList());
-		
-		//Enviamos al formulario un objeto de tipo linea, donde vamos a recoger el id del compuesto(campo oculto)
-		// y la cantidad
+		LineaPedido linea = new LineaPedido(
+				compuestoServicio.buscarPorNombre(pedidoForm.getNombre()).getPrecio() * pedidoForm.getCantidad(),
+				pedidoForm.getCantidad(), compuestoServicio.buscarPorNombre(pedidoForm.getNombre()));
 
-		for (LineaPedido l : listaLineasPedido) {
-			precioProductos += l.getPrecio();
-		}
+		precioProductos = linea.getPrecio();
 
 		if (precioProductos != num0) {
-			Pedido pedido = new Pedido(precioProductos, precioTrasporte, (precioProductos + precioTrasporte),
-					fechaLlegada, fechaSalidaTrans, cliente);
-
-			for (LineaPedido l : listaLineasPedido) {
-				pedido.addLinea(l);
-			}
-
+			Pedido pedido = new Pedido(precioProductos, precioTrasporte, (precioProductos + precioTrasporte), fecha,
+					fechaSalidaTrans, cliente);
+			pedido.addLinea(linea);
 			this.save(pedido);
-
 			return pedido;
 		} else {
 			return null;

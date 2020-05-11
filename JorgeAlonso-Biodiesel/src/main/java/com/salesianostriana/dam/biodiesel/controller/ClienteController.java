@@ -63,30 +63,30 @@ public class ClienteController {
 	}	
 	
 	
-	@GetMapping("/administrador/clientes_pendientes/borrar/{dni}")
-	public String borrarClientePendiente(@PathVariable("dni") String dni, Model model) {
-		Cliente cliente = servicio.buscarPorDNI(dni);
-
-		if (cliente != null) {
-			servicio.delete(cliente);
-		}
-
-		return "redirect:/administrador/clientes_pendientes";
-
-	}
-	
-	@GetMapping("/administrador/clientes_pendientes/aceptar/{dni}")
-	public String aceptarCliente(@PathVariable("dni") String dni, Model model) {
-		Cliente cliente = servicio.buscarPorDNI(dni);
-
-		if (cliente != null) {
-			cliente.setAceptado(true);
-			servicio.edit(cliente);
-		}
-
-		return "redirect:/administrador/clientes_pendientes";
-
-	}
+//	@GetMapping("/administrador/clientes_pendientes/borrar/{dni}")
+//	public String borrarClientePendiente(@PathVariable("dni") String dni, Model model) {
+//		Cliente cliente = servicio.buscarPorDNI(dni);
+//
+//		if (cliente != null) {
+//			servicio.delete(cliente);
+//		}
+//
+//		return "redirect:/administrador/clientes_pendientes";
+//
+//	}
+//	
+//	@GetMapping("/administrador/clientes_pendientes/aceptar/{dni}")
+//	public String aceptarCliente(@PathVariable("dni") String dni, Model model) {
+//		Cliente cliente = servicio.buscarPorDNI(dni);
+//
+//		if (cliente != null) {
+//			cliente.setAceptado(true);
+//			servicio.edit(cliente);
+//		}
+//
+//		return "redirect:/administrador/clientes_pendientes";
+//
+//	}
 	
 	@GetMapping("/administrador/borrar/{dni}")
 	public String borrarCliente(@PathVariable("dni") String dni, Model model) {

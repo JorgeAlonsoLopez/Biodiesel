@@ -7,9 +7,10 @@ import com.salesianostriana.dam.biodiesel.repositorio.UsuarioRepository;
 import com.salesianostriana.dam.biodiesel.servicio.base.BaseService;
 
 @Service
-public class UsuarioServicio extends BaseService<Usuario, Long, UsuarioRepository>{
+public class UsuarioServicio extends BaseService<Usuario, Long, UsuarioRepository> {
 
 	public UsuarioServicio(UsuarioRepository repo) {
 		super(repo);
 	}
+
 }

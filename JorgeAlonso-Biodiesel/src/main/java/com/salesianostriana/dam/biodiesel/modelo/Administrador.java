@@ -15,5 +15,9 @@ public class Administrador extends Usuario{
 		this.precioTren = precioTren;
 		this.precioBarco = precioBarco;
 	}
+
+	
+	
+	
 	
 }
