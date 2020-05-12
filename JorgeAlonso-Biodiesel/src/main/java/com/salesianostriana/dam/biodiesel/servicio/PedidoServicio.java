@@ -26,6 +26,11 @@ public class PedidoServicio extends BaseService<Pedido, Long, PedidoRepository> 
 	public List<Pedido> findAll() {
 		return this.repositorio.findAllJoin();
 	}
+	
+	public List<Pedido> findListByDni(String dni) {
+		return this.repositorio.findListByDni(dni);
+	}
+	
 
 	public Pedido hacerPedido(Administrador admin, PedidoFormulario pedidoForm, Cliente cliente,
 			CompuestoServicio compuestoServicio) {

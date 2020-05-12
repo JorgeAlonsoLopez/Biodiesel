@@ -28,7 +28,7 @@ public class ClienteController {
 	
 	@GetMapping("/cliente/principal")
 	public String cliente(Model model) {
-		model.addAttribute("listaPedidos", servicioPedido.findAll());
+		model.addAttribute("listaPedidos", servicioPedido.findListByDni("497-14-9880"));
 		model.addAttribute("cliente",servicio.buscarPorDNI("58819681X"));
 		return "cliente/Cliente";
 	}
