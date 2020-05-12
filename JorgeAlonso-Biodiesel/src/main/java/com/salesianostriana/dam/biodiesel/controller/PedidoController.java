@@ -8,14 +8,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.salesianostriana.dam.biodiesel.modelo.Compuesto;
 import com.salesianostriana.dam.biodiesel.modelo.Pedido;
 import com.salesianostriana.dam.biodiesel.modelo.PedidoFormulario;
 import com.salesianostriana.dam.biodiesel.servicio.AdministradorServicio;
 import com.salesianostriana.dam.biodiesel.servicio.ClienteServicio;
 import com.salesianostriana.dam.biodiesel.servicio.CompuestoServicio;
 import com.salesianostriana.dam.biodiesel.servicio.PedidoServicio;
-import com.salesianostriana.dam.biodiesel.servicio.UsuarioServicio;
 
 @Controller
 public class PedidoController {
