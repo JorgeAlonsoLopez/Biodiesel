@@ -5,9 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.salesianostriana.dam.biodiesel.modelo.ClienteFormulario;
+import com.salesianostriana.dam.biodiesel.modelo.FormularioAdminPedido;
 import com.salesianostriana.dam.biodiesel.servicio.AdministradorServicio;
 import com.salesianostriana.dam.biodiesel.servicio.ClienteServicio;
 import com.salesianostriana.dam.biodiesel.servicio.CompuestoServicio;
@@ -69,6 +73,21 @@ public class AdministradorController {
 	@GetMapping ("/administrador/principal")
 	public String clientesTotales(Model model) {
 		model.addAttribute("listaClientes", servicioClien.findAll());
+		model.addAttribute("filtro", new ClienteFormulario());
+		return "/administrador/Administrador";
+	}
+	
+//	@GetMapping ("/administrador/principal/{apellido}")
+//	public String clientesTotales(Model model,@PathVariable("apellido") String apellido) {
+//		model.addAttribute("listaClientes", servicioClien.findListByApellido(apellido));
+//		model.addAttribute("filtro", new ClienteFormulario());
+//		return "/administrador/Administrador";
+//	}
+	
+	@PostMapping("/administrador/principal/submit")
+	public String ventaForm(@ModelAttribute("filtro") FormularioAdminPedido filtro, Model model) {
+		String apellido = filtro.getNombre();
+		System.out.println(servicioClien.findListByApellido(apellido));
 		return "/administrador/Administrador";
 	}
 	

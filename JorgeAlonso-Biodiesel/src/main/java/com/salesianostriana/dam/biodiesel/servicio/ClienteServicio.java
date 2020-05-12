@@ -21,6 +21,12 @@ public class ClienteServicio extends BaseService<Cliente, Long, ClienteRepositor
 	public ClienteServicio(ClienteRepository repo) {
 		super(repo);
 	}
+	
+	public List<Cliente> findListByApellido(String apellido){
+		return this.repositorio.findListByApellido(apellido);
+	}
+	
+	
 
 	public void cancelarPedido(long id, PedidoServicio servicio) {
 		servicio.deleteById(id);
