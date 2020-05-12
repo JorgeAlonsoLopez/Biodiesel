@@ -169,8 +169,10 @@
                 </div>
             </form>
             <div class="row ajustesCliente mt-5">
-                <a th:href="@{'/administrador/borrar/'+${}}" type="button" class="btn btn-success mx-auto">Darse
-                    de Alta/Baja</a>
+                <a th:href="@{'/cliente/ajustes/altaBaja/'+${cliente.dni}}" type="button" th:unless="${cliente.alta}"
+                	class="btn btn-success mx-auto">Darse de alta</a>
+               	<a th:href="@{'/cliente/ajustes/altaBaja/'+${cliente.dni}}" type="button" th:if="${cliente.alta}"
+               		class="btn btn-success mx-auto">Darse de baja</a>
             </div>
         </section>
     </main>

@@ -1,19 +1,13 @@
 package com.salesianostriana.dam.biodiesel.controller;
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.salesianostriana.dam.biodiesel.modelo.Administrador;
-import com.salesianostriana.dam.biodiesel.modelo.Cliente;
-import com.salesianostriana.dam.biodiesel.modelo.Compuesto;
 import com.salesianostriana.dam.biodiesel.servicio.AdministradorServicio;
 import com.salesianostriana.dam.biodiesel.servicio.ClienteServicio;
 import com.salesianostriana.dam.biodiesel.servicio.CompuestoServicio;
@@ -66,15 +60,15 @@ public class AdministradorController {
 		return "administrador/PedidosCliente";
 	}
 	
-	@GetMapping ("/administrador/clientes_pendientes")
-	public String clientesPendientes (Model model) {
-		model.addAttribute("listaClientes", servicioClien.clientesPendientes());
-		return "/administrador/ClientesPendientes";
-	}
+//	@GetMapping ("/administrador/clientes_pendientes")
+//	public String clientesPendientes (Model model) {
+//		model.addAttribute("listaClientes", servicioClien.clientesPendientes());
+//		return "/administrador/ClientesPendientes";
+//	}
 	
-	@GetMapping ("/administrador")
+	@GetMapping ("/administrador/principal")
 	public String clientesTotales(Model model) {
-		model.addAttribute("listaClientes", servicioClien.clientesAceptados());
+		model.addAttribute("listaClientes", servicioClien.findAll());
 		return "/administrador/Administrador";
 	}
 	

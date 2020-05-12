@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.salesianostriana.dam.biodiesel.modelo.Cliente;
-import com.salesianostriana.dam.biodiesel.modelo.ClienteFormulario;
 import com.salesianostriana.dam.biodiesel.modelo.Compuesto;
 import com.salesianostriana.dam.biodiesel.servicio.CompuestoServicio;
 

@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.salesianostriana.dam.biodiesel.modelo.Cliente;
 import com.salesianostriana.dam.biodiesel.modelo.ClienteFormulario;
-import com.salesianostriana.dam.biodiesel.modelo.Pais;
 import com.salesianostriana.dam.biodiesel.servicio.ClienteServicio;
 import com.salesianostriana.dam.biodiesel.servicio.PaisServicio;
 
@@ -22,6 +21,15 @@ public class ClienteController {
 	
 	@Autowired
 	private PaisServicio servicioPais;
+	
+	
+	@GetMapping("/cliente/principal")
+	public String cliente(Model model) {
+
+		// model.addAttribute("lista", servicio.findAll());
+		// model.addAttribute("cliente",servicioCli.findById(7L));
+		return "cliente/Cliente";
+	}
 	
 	
 	@GetMapping ("/nuevo")
@@ -37,22 +45,36 @@ public class ClienteController {
 	public String submitRegistro(@ModelAttribute("clienteFrom") ClienteFormulario nuevoClienteFormulario) {
 		Cliente clienteFinal = servicio.crearCliente(nuevoClienteFormulario);
 		servicio.save(clienteFinal);
-		return "redirect:/cliente";
+		return "redirect:/cliente/principal";
 	}
 	
 	
 	@GetMapping ("/cliente/ajustes")
 	public String ajustes (Model model) {
 		model.addAttribute("clienteFrom", servicio.cambiarDatosAFalso(servicio.buscarPorDNI("180-96-0663")));
+		model.addAttribute("cliente", servicio.buscarPorDNI("180-96-0663"));
 		model.addAttribute("listaPais", servicioPais.findAll());
 		return "cliente/Ajustes";
+	}
+	
+	@GetMapping ("/cliente/ajustes/altaBaja/{dni}")
+	public String darseAltaBaja (@PathVariable("dni") String dni, Model model) {
+		Cliente cliente = servicio.buscarPorDNI(dni);
+		if (cliente.isAlta()) {
+			cliente.setAlta(false);
+			servicio.edit(cliente);
+		}else {
+			cliente.setAlta(true);
+			servicio.edit(cliente);
+		}
+		return "redirect:/cliente/principal";
 	}
 	
 	@PostMapping ("/cliente/ajustes/submit")
 	public String submitAjustes(@ModelAttribute("clienteFrom") ClienteFormulario nuevoClienteFormulario) {
 		Cliente clienteFinal = servicio.cambiarDatosAVerdadero(nuevoClienteFormulario);
 		servicio.edit(clienteFinal);
-		return "redirect:/cliente";
+		return "redirect:/cliente/principal";
 	}
 	
 	
@@ -88,14 +110,14 @@ public class ClienteController {
 //
 //	}
 	
-	@GetMapping("/administrador/borrar/{dni}")
-	public String borrarCliente(@PathVariable("dni") String dni, Model model) {
+	@GetMapping("/administrador/borrar/{id}")
+	public String borrarCliente(@PathVariable("id") Long id, Model model) {
 
-		Cliente cliente = servicio.buscarPorDNI(dni);
+		Cliente cliente = servicio.findById(id);
 		if (cliente != null) {
 			servicio.delete(cliente);
 		}
-		return "redirect:/administrador";
+		return "redirect:/administrador/principal";
 
 	}
 	

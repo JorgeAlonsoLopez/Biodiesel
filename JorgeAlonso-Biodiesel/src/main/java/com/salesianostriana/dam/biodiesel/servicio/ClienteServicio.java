@@ -1,23 +1,17 @@
 package com.salesianostriana.dam.biodiesel.servicio;
 
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
-import com.salesianostriana.dam.biodiesel.modelo.Administrador;
 import com.salesianostriana.dam.biodiesel.modelo.Cliente;
 import com.salesianostriana.dam.biodiesel.modelo.ClienteFormulario;
-import com.salesianostriana.dam.biodiesel.modelo.Pais;
-import com.salesianostriana.dam.biodiesel.modelo.Pedido;
 import com.salesianostriana.dam.biodiesel.repositorio.ClienteRepository;
 import com.salesianostriana.dam.biodiesel.servicio.base.BaseService;
 
@@ -42,20 +36,20 @@ public class ClienteServicio extends BaseService<Cliente, Long, ClienteRepositor
 		return c1;
 	}
 
-	public List<Cliente> clientesPendientes() {
+	public List<Cliente> clientesAlta() {
 		List<Cliente> lista = new ArrayList<Cliente>();
 		for (Cliente c : this.findAll()) {
-			if (!c.isAceptado()) {
+			if (!c.isAlta()) {
 				lista.add(c);
 			}
 		}
 		return lista;
 	}
 
-	public List<Cliente> clientesAceptados() {
+	public List<Cliente> clientesBaja() {
 		List<Cliente> lista = new ArrayList<Cliente>();
 		for (Cliente c : this.findAll()) {
-			if (c.isAceptado()) {
+			if (c.isAlta()) {
 				lista.add(c);
 			}
 		}

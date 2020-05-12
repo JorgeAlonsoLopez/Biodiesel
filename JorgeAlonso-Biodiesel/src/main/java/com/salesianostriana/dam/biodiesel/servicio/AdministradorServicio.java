@@ -17,10 +17,10 @@ public class AdministradorServicio extends BaseService<Administrador, Long, Admi
 		super(repo);
 	}
 
-	public void aceptarCliente(long id, ClienteServicio servicio) {
-		servicio.findById(id).setAceptado(true);
-		servicio.edit(servicio.findById(id));
-	}
+//	public void aceptarCliente(long id, ClienteServicio servicio) {
+//		servicio.findById(id).setAceptado(true);
+//		servicio.edit(servicio.findById(id));
+//	}
 
 	public void eliminarCliente(long id, ClienteServicio servicio) {
 		servicio.deleteById(id);

@@ -32,13 +32,7 @@ public class PedidoController {
 	@Autowired
 	private AdministradorServicio servicioAdm;
 
-	@GetMapping("/cliente")
-	public String cliente(Model model) {
-
-		// model.addAttribute("lista", servicio.findAll());
-		// model.addAttribute("cliente",servicioCli.findById(7L));
-		return "cliente/Cliente";
-	}
+	
 
 	@GetMapping("/cliente/borrar/{id}")
 	public String borrarPedido(@PathVariable("id") Long id, Model model) {
@@ -49,11 +43,11 @@ public class PedidoController {
 			servicio.delete(pedido);
 		}
 
-		return "redirect:/cliente";
+		return "redirect:/cliente/principal";
 
 	}
 
-	@GetMapping("/cliente/Productos")
+	@GetMapping("/cliente/productos")
 	public String compra(Model model) {
 		model.addAttribute("listaProductos", servicioCompue.buscarProductos());
 		model.addAttribute("pedido", new PedidoFormulario());
@@ -62,13 +56,13 @@ public class PedidoController {
 		return "cliente/Productos";
 	}
 
-	@PostMapping("/cliente/Productos/submit")
+	@PostMapping("/cliente/productos/submit")
 	public String compraForm(@ModelAttribute("pedido") PedidoFormulario pedido) {
 		servicio.hacerPedido(servicioAdm.findAll().get(num0), pedido, servicioCli.buscarPorDNI("180-96-0663"), servicioCompue);
-		return "redirect:/cliente";
+		return "redirect:/cliente/principal";
 	}
 
-	@GetMapping("/cliente/MateriasPrimas")
+	@GetMapping("/cliente/materias_primas")
 	public String venta(Model model) {
 		model.addAttribute("listaMaterias", servicioCompue.buscarMateriasPrimas());
 		model.addAttribute("pedido", new PedidoFormulario());
@@ -77,10 +71,10 @@ public class PedidoController {
 		return "cliente/MateriasPrimas";
 	}
 	
-	@PostMapping("/cliente/MateriasPrimas/submit")
+	@PostMapping("/cliente/materias_primas/submit")
 	public String ventaForm(@ModelAttribute("pedido") PedidoFormulario pedido) {
 		servicio.hacerPedido(servicioAdm.findAll().get(num0), pedido, servicioCli.buscarPorDNI("180-96-0663"), servicioCompue);
-		return "redirect:/cliente";
+		return "redirect:/cliente/principal";
 	}
 
 }

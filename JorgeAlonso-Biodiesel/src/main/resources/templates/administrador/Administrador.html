@@ -2,7 +2,7 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="~{fragmentos/head::head(titulo='Administrador')}">
-  <meta name="description" content="Área de operaciones del administrador">
+  <meta name="description" content="Ã�rea de operaciones del administrador">
 </head>
 
 <body>
@@ -32,10 +32,10 @@
           <a class="nav-link" href="/#historia">Historia</a>
         </li>
         <li class="nav-item navLink">
-          <a class="nav-link" href="/#produccion">Producción</a>
+          <a class="nav-link" href="/#produccion">ProducciÃ³n</a>
         </li>
         <li class="nav-item navLink">
-          <a class="nav-link" href="/#principios">Principios básicos</a>
+          <a class="nav-link" href="/#principios">Principios bÃ¡sicos</a>
         </li>
         <li class="nav-item navLink">
           <a class="nav-link" href="/#equipo">Equipo</a>
@@ -44,7 +44,7 @@
           <a class="nav-link" href="/#contacto">Contacto</a>
         </li>
         <li class="nav-item navLink" id="opcionCerrarSesion">
-          <a class="btn botonNavbar" href="#" role="button">Cerrar sesión</a>
+          <a class="btn botonNavbar" href="#" role="button">Cerrar sesiÃ³n</a>
         </li>
       </ul>
     </div>
@@ -92,7 +92,7 @@
             <td><a th:text="${cliente.apellido} + ', ' + ${cliente.nombre}" href="#">Uijdvfwe, coiuhfe</a></td>
             <td th:text="${cliente.dni}">098765T</td>
             <td th:text="${cliente.pais.nombre}">España</td>
-            <td><a th:href="@{'/administrador/borrar/'+${cliente.dni}}">Eliminar</a></td>
+            <td><a th:href="@{'/administrador/borrar/'+${cliente.id}}">Eliminar</a></td>
           </tr>
         </tbody>
       </table>
