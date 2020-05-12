@@ -12,6 +12,7 @@ import com.salesianostriana.dam.biodiesel.modelo.Cliente;
 import com.salesianostriana.dam.biodiesel.modelo.ClienteFormulario;
 import com.salesianostriana.dam.biodiesel.servicio.ClienteServicio;
 import com.salesianostriana.dam.biodiesel.servicio.PaisServicio;
+import com.salesianostriana.dam.biodiesel.servicio.PedidoServicio;
 
 @Controller
 public class ClienteController {
@@ -22,12 +23,13 @@ public class ClienteController {
 	@Autowired
 	private PaisServicio servicioPais;
 	
+	@Autowired
+	private PedidoServicio servicioPedido;
 	
 	@GetMapping("/cliente/principal")
 	public String cliente(Model model) {
-
-		// model.addAttribute("lista", servicio.findAll());
-		// model.addAttribute("cliente",servicioCli.findById(7L));
+		model.addAttribute("listaPedidos", servicioPedido.findAll());
+		model.addAttribute("cliente",servicio.buscarPorDNI("58819681X"));
 		return "cliente/Cliente";
 	}
 	
@@ -49,10 +51,10 @@ public class ClienteController {
 	}
 	
 	
-	@GetMapping ("/cliente/ajustes")
-	public String ajustes (Model model) {
-		model.addAttribute("clienteFrom", servicio.cambiarDatosAFalso(servicio.buscarPorDNI("180-96-0663")));
-		model.addAttribute("cliente", servicio.buscarPorDNI("180-96-0663"));
+	@GetMapping ("/cliente/ajustes/{dni}")
+	public String ajustes (@PathVariable("dni") String dni, Model model) {
+		model.addAttribute("clienteFrom", servicio.cambiarDatosAFalso(servicio.buscarPorDNI(dni)));
+		model.addAttribute("cliente", servicio.buscarPorDNI(dni));
 		model.addAttribute("listaPais", servicioPais.findAll());
 		return "cliente/Ajustes";
 	}

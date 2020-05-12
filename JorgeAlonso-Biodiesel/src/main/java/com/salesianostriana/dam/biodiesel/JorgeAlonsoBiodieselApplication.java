@@ -2,9 +2,7 @@ package com.salesianostriana.dam.biodiesel;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 import org.springframework.boot.CommandLineRunner;
@@ -38,7 +36,7 @@ public class JorgeAlonsoBiodieselApplication {
 			public void run(String... args) throws Exception {
 
 				Random rdn = new Random(System.nanoTime());
-				int aleatorio, aleatorio2, rand, num2 = 2, num60 = 60, max = 300000, min = 10000;
+				int aleatorio, aleatorio2, rand, num2 = 2, num11=11, num60 = 60, max = 300000, min = 10000;
 				String tipo;
 
 				List<Compuesto> listaCompuestos = new ArrayList<Compuesto>();
@@ -66,6 +64,11 @@ public class JorgeAlonsoBiodieselApplication {
 					c.setPais(paisServicio.findAll().get(aleatorio));
 					clienteServicio.save(c);
 				}
+				
+				Cliente clienteTest = new Cliente("usuario", "1234", "Juan", "Bosco", "Calle Condes de Bustillo, Nº17, 41010 Sevilla", 
+						"juan.bosco@gmail.com", "954522209", "58819681X", true, clienteServicio.createRandomDate(2017, 2019));
+				clienteTest.setPais( paisServicio.findAll().get(num11) );
+				clienteServicio.save(clienteTest);
 
 				for (int i = 0; i < num60; i++) {
 					aleatorio = rdn.nextInt(clienteServicio.findAll().size());
@@ -79,6 +82,8 @@ public class JorgeAlonsoBiodieselApplication {
 
 					pedidoServicio.hacerPedido(admin, PedidoF, clienteServicio.findAll().get(aleatorio), compuestoServicio);
 				}
+				
+				
 
 			}
 		};
