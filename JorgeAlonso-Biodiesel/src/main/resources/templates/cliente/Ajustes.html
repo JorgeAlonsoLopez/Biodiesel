@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
+
 <head th:replace="~{fragmentos/head::head(titulo='Ajustes')}">
     <meta name="description" content="Sección de ajustes del cliente.">
 </head>
+
 <body>
 
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -162,10 +164,14 @@
                     </div>
                 </div>
                 <div class="row ajustesCliente mt-5">
-                    <button type="submit" class="btn btn-success  mx-auto" value="Enviar" id="enviar">Gardar los
+                    <button type="submit" class="btn btn-success mx-auto" value="Enviar" id="enviar">Gardar los
                         cambios</button>
                 </div>
             </form>
+            <div class="row ajustesCliente mt-5">
+                <a th:href="@{'/administrador/borrar/'+${}}" type="button" class="btn btn-success mx-auto">Darse
+                    de Alta/Baja</a>
+            </div>
         </section>
     </main>
 
