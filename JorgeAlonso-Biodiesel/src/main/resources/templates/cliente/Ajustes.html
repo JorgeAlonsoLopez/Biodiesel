@@ -2,57 +2,14 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="~{fragmentos/head::head(titulo='Ajustes')}">
-  <meta name="description" content="Sección de ajustes del cliente.">
-</head>
+    <meta name="description" content="Sección de ajustes del cliente">
+  </head>
 
 
 <body>
 
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <a class="navbar-brand" href="#">
-            <img id="imagenNav" src="../img/logo.png" alt="Logo de la empresa">
-        </a>
+    <div th:replace="~{fragmentos/nav::nav}"></div>
 
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-            data-target="#collapsibleNavbar" aria-controls="navbarResponsive" aria-expanded="false"
-            aria-label="Toggle navigation" id="botonNav">
-            Menu
-            <i class="fas fa-bars"></i>
-        </button>
-
-
-        <div class="collapse navbar-collapse text-right" id="collapsibleNavbar">
-            <ul class="navbar-nav ml-auto align-items-center">
-                <li class="nav-item navLink">
-                    <a class="nav-link" href="/#servicios">Que ofrecemos</a>
-                </li>
-                <li class="nav-item navLink">
-                    <a class="nav-link" href="/#productos">Productos</a>
-                </li>
-                <li class="nav-item navLink">
-                    <a class="nav-link" href="/#historia">Historia</a>
-                </li>
-                <li class="nav-item navLink">
-                    <a class="nav-link" href="/#produccion">Producción</a>
-                </li>
-                <li class="nav-item navLink">
-                    <a class="nav-link" href="/#principios">Principios básicos</a>
-                </li>
-                <li class="nav-item navLink">
-                    <a class="nav-link" href="/#equipo">Equipo</a>
-                </li>
-                <li class="nav-item navLink">
-                    <a class="nav-link" href="/#contacto">Contacto</a>
-                </li>
-                <li class="nav-item navLink" id="opcionGestion">
-                    <a class="btn botonNavbar" href="/cliente" role="button">Área del cliente</a>
-                </li>
-                <li class="nav-item navLink" id="opcionCerrarSesion">
-                    <a class="btn botonNavbar" href="#" role="button">Cerrar sesión</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
     <br>
     <main>
         <section class="mt-5 mb-5">

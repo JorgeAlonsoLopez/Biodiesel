@@ -7,61 +7,10 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <a class="navbar-brand" href="#portada">
-            <img id="imagenNav" src="../img/logo.png" alt="Logo de la empresa">
-        </a>
-
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-            data-target="#collapsibleNavbar" aria-controls="navbarResponsive" aria-expanded="false"
-            aria-label="Toggle navigation" id="botonNav">
-            Menu
-            <i class="fas fa-bars"></i>
-        </button>
-
-
-        <div class="collapse navbar-collapse text-right" id="collapsibleNavbar">
-            <ul class="navbar-nav ml-auto align-items-center">
-                <li class="nav-item navLink">
-                    <a class="nav-link" href="#servicios">Que ofrecemos</a>
-                </li>
-                <li class="nav-item navLink">
-                    <a class="nav-link" href="#productos">Productos</a>
-                </li>
-                <li class="nav-item navLink">
-                    <a class="nav-link" href="#historia">Historia</a>
-                </li>
-                <li class="nav-item navLink">
-                    <a class="nav-link" href="#produccion">Producción</a>
-                </li>
-                <li class="nav-item navLink">
-                    <a class="nav-link" href="#principios">Principios básicos</a>
-                </li>
-                <li class="nav-item navLink">
-                    <a class="nav-link" href="#equipo">Equipo</a>
-                </li>
-                <li class="nav-item navLink">
-                    <a class="nav-link" href="#contacto">Contacto</a>
-                </li>
-                <li class="nav-item navLink" id="opcionRegistro">
-                    <a href="/nuevo" class="btn botonNavbar" role="button">Registrarse</a>
-                </li>
-                <li class="nav-item navLink" id="opcionIniciarSesion">
-                    <a href="/login" class="btn botonNavbar" role="button">Iniciar
-                        sesión</a>
-                </li>
-                <li class="nav-item navLink" id="opcionGestion">
-                    <a class="btn botonNavbar" href="#" role="button">Area de gestión</a>
-                </li>
-                <li class="nav-item navLink" id="opcionCerrarSesion">
-                    <a class="btn botonNavbar" href="#" role="button">Cerrar sesión</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <div th:replace="~{fragmentos/nav::nav}"></div>
     <header id="portada" class="d-flex align-items-center parallax2">
         <div class="mx-auto text-center">
-            <h1>GREENTECH BOIFUELS</h1>
+            <h1>GREENTECH BIOFUELS</h1>
             <h2>Tu biocombustible y cada día el de más gente</h2>
         </div>
     </header>
@@ -142,7 +91,7 @@
                     </div>
                 </div>
                 <div id="imagenProduct" class="col-sm-12 col-lg-4 d-flex align-items-center">
-                    <img src="../img/logo.png" alt="">
+                    <img src="../img/logo.png" alt="Logo de la empresa">
                 </div>
                 <div class="col-sm-12 col-lg-4">
                     <h2 class="mb-4 mt-4">Materias primas</h2>
