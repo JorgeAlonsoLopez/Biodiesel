@@ -28,7 +28,7 @@ public class ClienteController {
 	
 	@GetMapping("/cliente/principal")
 	public String cliente(Model model) {
-		model.addAttribute("listaPedidos", servicioPedido.findListByDni("497-14-9880"));
+		model.addAttribute("listaPedidos", servicioPedido.findListByDni("58819681X"));
 		model.addAttribute("cliente",servicio.buscarPorDNI("58819681X"));
 		return "cliente/Cliente";
 	}
@@ -51,10 +51,10 @@ public class ClienteController {
 	}
 	
 	
-	@GetMapping ("/cliente/ajustes/{dni}")
-	public String ajustes (@PathVariable("dni") String dni, Model model) {
-		model.addAttribute("clienteFrom", servicio.cambiarDatosAFalso(servicio.buscarPorDNI(dni)));
-		model.addAttribute("cliente", servicio.buscarPorDNI(dni));
+	@GetMapping ("/cliente/ajustes")
+	public String ajustes ( Model model) {
+		model.addAttribute("clienteFrom", servicio.cambiarDatosAFalso(servicio.buscarPorDNI("58819681X")));
+		model.addAttribute("cliente", servicio.buscarPorDNI("58819681X"));
 		model.addAttribute("listaPais", servicioPais.findAll());
 		return "cliente/Ajustes";
 	}
