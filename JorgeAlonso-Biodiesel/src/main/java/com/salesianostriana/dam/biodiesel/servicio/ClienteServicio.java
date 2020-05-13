@@ -22,9 +22,6 @@ public class ClienteServicio extends BaseService<Cliente, Long, ClienteRepositor
 		super(repo);
 	}
 	
-	public List<Cliente> findListByApellido(String apellido){
-		return this.repositorio.findListByApellido(apellido);
-	}
 	
 	
 

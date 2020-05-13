@@ -77,19 +77,7 @@ public class AdministradorController {
 		return "/administrador/Administrador";
 	}
 	
-//	@GetMapping ("/administrador/principal/{apellido}")
-//	public String clientesTotales(Model model,@PathVariable("apellido") String apellido) {
-//		model.addAttribute("listaClientes", servicioClien.findListByApellido(apellido));
-//		model.addAttribute("filtro", new ClienteFormulario());
-//		return "/administrador/Administrador";
-//	}
-	
-	@PostMapping("/administrador/principal/submit")
-	public String ventaForm(@ModelAttribute("filtro") FormularioAdminPedido filtro, Model model) {
-		String apellido = filtro.getNombre();
-		System.out.println(servicioClien.findListByApellido(apellido));
-		return "/administrador/Administrador";
-	}
+
 	
 	
 }
