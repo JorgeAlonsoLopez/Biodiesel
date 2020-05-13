@@ -19,7 +19,8 @@
     </section>
     <section class="row justify-content-around mt-5">
       <table class="col-sm-12 col-lg-8 table table-striped table-bordered table-hover table-responsive-sm"
-        id="tablaPedidosCliente">
+        id="tablaPedidosCliente" summary="Tabla con los pedidos del cliente">
+        <caption>Tabla con los pedidos del cliente</caption>
         <thead>
           <tr>
             <th>ID pedido<i class="fas fa-arrows-alt-v ml-3"></i></th>
@@ -29,6 +30,9 @@
             <th></th>
           </tr>
         </thead>
+        <tfoot>
+          <td colspan="5" class="mx-auto text-center">Datos propiedad de ©GreenTech Biofuels</td>
+        </tfoot>
         <tbody>
           <tr th:each="pedido : ${listaPedidos}">
             <td><a href="#" data-izimodal-open="#modalPedido" th:text="${pedido.id}" th:data-id="${pedido.id}">X</a>
@@ -92,7 +96,8 @@
     </div>
     <div class="row">
       <table class="col-sm-12 col-lg-8 mx-auto text-center table table-striped table-bordered table-hover"
-        id="tablaPedidosDescr">
+        id="tablaPedidosDescr" summary="Tabla con los detalles del pedido">
+        <caption>Tabla con los detalles del pedido</caption>
         <thead>
           <tr>
             <th>Producto</th>
@@ -100,6 +105,9 @@
             <th>Precio(€)</th>
           </tr>
         </thead>
+        <tfoot>
+          <td colspan="3" class="mx-auto text-center">Datos propiedad de ©GreenTech Biofuels</td>
+        </tfoot>
         <tbody>
           <tr th:each="linea : ${pedido.listaPedidos}">
             <td th:text="${linea.compuesto.nombre}">Biodiesel</td>
@@ -113,14 +121,14 @@
  -->
 
   <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
       $('#tablaPedidosCliente tbody tr').each(function () {
         var a = $(this).children("td:eq(2)").text();
-        var fecha = new Date( parseInt(a.substring(0, 4)), (parseInt(a.substring(5, 7)) - 1), parseInt(a.substring(6, 10)));
+        var fecha = new Date(parseInt(a.substring(0, 4)), (parseInt(a.substring(5, 7)) - 1), parseInt(a.substring(6, 10)));
         var fecha2 = new Date();
         if (fecha < fecha2) {
           var enlac = $(this).children("td:eq(4)").children().hide();
-         
+
         }
       });
     });

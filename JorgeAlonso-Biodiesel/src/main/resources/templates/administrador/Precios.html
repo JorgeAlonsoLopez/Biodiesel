@@ -15,7 +15,9 @@
       <div class="row conten justify-content-around mx-auto">
         <div class="col-sm-12 col-lg-5 mt-5">
           <h2>Materias primas</h2>
-          <table class="table table-bordered table-hover table-responsive-sm mx-auto" id="tablaMateriasPrimas">
+          <table class="table table-bordered table-hover table-responsive-sm mx-auto" id="tablaMateriasPrimas"
+            summary="Tabla con el precio de las materias primas por Kg">
+            <caption>Tabla el precio del transporte por día</caption>
             <thead>
               <tr>
                 <th>Nombre</th>
@@ -23,6 +25,9 @@
                 <th></th>
               </tr>
             </thead>
+            <tfoot>
+              <td colspan="3" class="mx-auto text-center">Datos propiedad de ©GreenTech Biofuels</td>
+            </tfoot>
             <tbody>
               <tr th:each="producto : ${listaMateriasPrimas}">
                 <td th:text="${producto.nombre}">X</td>
@@ -39,7 +44,9 @@
         </div>
         <div class="col-sm-12 col-lg-5 mt-5">
           <h2>Productos</h2>
-          <table class="table table-bordered table-hover table-responsive-sm mx-auto" id="tablaProductos">
+          <table class="table table-bordered table-hover table-responsive-sm mx-auto" id="tablaProductos"
+            summary="Tabla con el precio de los productos pot Kg">
+            <caption>Tabla el precio del transporte por día</caption>
             <thead>
               <tr>
                 <th>Nombre</th>
@@ -47,6 +54,9 @@
                 <th></th>
               </tr>
             </thead>
+            <tfoot>
+              <td colspan="3" class="mx-auto text-center">Datos propiedad de ©GreenTech Biofuels</td>
+            </tfoot>
             <tbody>
               <tr th:each="producto : ${listaProductos}">
                 <td th:text="${producto.nombre}">X</td>
@@ -65,7 +75,9 @@
       <div class="row">
         <div class="conten mx-auto col-sm-12 col-lg-5 mt-5">
           <h2 class="mx-auto">Transporte</h2>
-          <table class="table table-bordered table-hover table-responsive-sm mx-auto" id="tablaPrecios">
+          <table class="table table-bordered table-hover table-responsive-sm mx-auto" id="tablaPrecios"
+            summary="Tabla el precio del transporte por día">
+            <caption>Tabla el precio del transporte por día</caption>
             <thead>
               <tr>
                 <th>Nombre</th>
@@ -73,19 +85,24 @@
                 <th></th>
               </tr>
             </thead>
+            <tfoot>
+              <td colspan="3" class="mx-auto text-center">Datos propiedad de ©GreenTech Biofuels</td>
+            </tfoot>
             <tbody>
               <tr>
                 <td>Tren</td>
                 <td><input type="number" class="form-control" id="precioT1" min="0" step=".001" th:id="admin1"
                     placeholder="Inserte el precio" value="0" th:value="${administrador.precioTren}"></td>
-                <td><button type="button" th:onclick="'actualizarAdmin('+1+')'" class="btn btn-light">Actualizar</button>
+                <td><button type="button" th:onclick="'actualizarAdmin('+1+')'"
+                    class="btn btn-light">Actualizar</button>
                 </td>
               </tr>
               <tr>
                 <td>Barco</td>
                 <td><input type="number" class="form-control" id="precioT1" min="0" step=".001" th:id="admin2"
                     placeholder="Inserte el precio" value="0" th:value="${administrador.precioBarco}"></td>
-                <td><button type="button" th:onclick="'actualizarAdmin('+2+')'" class="btn btn-light">Actualizar</button>
+                <td><button type="button" th:onclick="'actualizarAdmin('+2+')'"
+                    class="btn btn-light">Actualizar</button>
                 </td>
               </tr>
             </tbody>
@@ -97,7 +114,7 @@
   <div th:replace="~{fragmentos/footer::footer}"></div>
 
   <script>
-   
+
     function actualizarProducto(id) {
       window.location.href = "/administrador/precios/" + id + "?precio=" + $('#precio' + id).val();
     }

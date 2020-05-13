@@ -15,7 +15,8 @@
     <section>
       <h1 class="mt-5">Clientes pendientes</h1>
       <table class="col-sm-12 col-lg-9 table table-striped table-bordered table-hover table-responsive-sm mx-auto mt-5"
-        id="tablaClientes">
+        id="tablaClientes" summary="Tabla con los cliente pendientes">
+        <caption>Tabla con los cliente pendientes</caption>
         <thead>
           <tr>
             <th>Apellido, nombre<i class="fas fa-arrows-alt-v ml-3"></i></th>
@@ -25,6 +26,9 @@
             <th></th>
           </tr>
         </thead>
+        <tfoot>
+          <td colspan="5" class="mx-auto text-center">Datos propiedad de ©GreenTech Biofuels</td>
+        </tfoot>
         <tbody>
           <tr th:each="cliente : ${listaClientes}">
             <td th:text="${cliente.apellido} + ', ' + ${cliente.nombre} ">Dsgan, hfpodl</td>

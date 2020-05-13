@@ -14,13 +14,17 @@
       <h1 class="mt-5 mb-5 mx-auto">Materias primas</h1>
       <form action="#" class="clienteCompr" method="POST" th:action="@{/cliente/materias_primas/submit}"
         th:object="${pedido}">
-        <table class="tabla table-hover table-responsive-sm" id="tablaP">
+        <table class="tabla table-striped table-bordered table-hover table-responsive-sm" id="tablaP" summary="Tabla con las materias primas">
+          <caption>Tabla con las materias primas</caption>
           <thead>
             <tr>
               <th>Nombre</th>
               <th>Precio por Kg</th>
             </tr>
           </thead>
+          <tfoot>
+            <td colspan="2" class="mx-auto text-center">Datos propiedad de ©GreenTech Biofuels</td>
+          </tfoot>
           <tbody>
             <tr th:each="elemento : ${listaMaterias}">
               <td th:text="${elemento.nombre}">Producto 1</td>

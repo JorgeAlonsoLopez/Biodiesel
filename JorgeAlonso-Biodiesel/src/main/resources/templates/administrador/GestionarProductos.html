@@ -16,7 +16,8 @@
     <section class="row conten mt-5 mb-5 justify-content-around">
       <div class="col-sm-12 col-lg-5 mx-auto">
         <h2>Materias primas</h2>
-        <table class="table table-striped table-bordered table-hover table-responsive-sm" id="tablaPedidosCliente">
+        <table class="table table-striped table-bordered table-hover table-responsive-sm" id="tablaMateriaPrima" summary="Tabla con las materias primas">
+          <caption>Tabla con las materias primas</caption>
           <thead>
             <tr>
               <th>Nombre</th>
@@ -24,6 +25,9 @@
               <th></th>
             </tr>
           </thead>
+          <tfoot>
+            <td colspan="4" class="mx-auto text-center">Datos propiedad de ©GreenTech Biofuels</td>
+          </tfoot>
           <tbody>
             <tr th:each="materia : ${materiasPrimas}">
               <td th:text="${materia.nombre}">X</td>
@@ -35,7 +39,8 @@
       </div>
       <div class="col-sm-12 col-lg-5 mx-auto">
         <h2>Productos</h2>
-        <table class="table table-striped table-bordered table-hover table-responsive-sm" id="tablaPedidosCliente">
+        <table class="table table-striped table-bordered table-hover table-responsive-sm" id="tablaProductos" summary="Tabla con los productos">
+          <caption>Tabla con los productos</caption>
           <thead>
             <tr>
               <th>Nombre</th>
@@ -43,6 +48,9 @@
               <th></th>
             </tr>
           </thead>
+          <tfoot>
+            <td colspan="4" class="mx-auto text-center">Datos propiedad de ©GreenTech Biofuels</td>
+          </tfoot>
           <tbody>
             <tr th:each="producto : ${productos}">
               <td th:text="${producto.nombre}">Y</td>
