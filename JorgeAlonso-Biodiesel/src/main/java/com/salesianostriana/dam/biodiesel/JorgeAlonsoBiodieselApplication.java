@@ -66,7 +66,7 @@ public class JorgeAlonsoBiodieselApplication {
 				}
 				
 				Cliente clienteTest = new Cliente("usuario", "1234", "Juan", "Bosco", "Calle Condes de Bustillo, Nº17, 41010 Sevilla", 
-						"juan.bosco@gmail.com", "954522209", "58819681X", true, clienteServicio.createRandomDate(2017, 2019));
+						"juan.bosco@gmail.com", "954522209", "58819681X", true, clienteServicio.createRandomDate(1960, 2000));
 				clienteTest.setPais( paisServicio.findAll().get(num11) );
 				clienteServicio.save(clienteTest);
 
@@ -74,7 +74,7 @@ public class JorgeAlonsoBiodieselApplication {
 					aleatorio = rdn.nextInt(clienteServicio.findAll().size());
 					aleatorio2 = rdn.nextInt(compuestoServicio.findAll().size());
 
-					LocalDate fecha = clienteServicio.createRandomDate(2017, 2019);
+					LocalDate fecha = clienteServicio.createRandomDate(2017, 2021);
 					
 					PedidoFormulario PedidoF = new PedidoFormulario(
 							(compuestoServicio.findAll().get(aleatorio2).getNombre()), rdn.nextInt(max - min) + min,

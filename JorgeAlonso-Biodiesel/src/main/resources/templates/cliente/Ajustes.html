@@ -3,7 +3,7 @@
 
 <head th:replace="~{fragmentos/head::head(titulo='Ajustes')}">
     <meta name="description" content="Sección de ajustes del cliente">
-  </head>
+</head>
 
 
 <body>
@@ -126,11 +126,15 @@
                         cambios</button>
                 </div>
             </form>
-            <div class="row ajustesCliente mt-5">
-                <a th:href="@{'/cliente/ajustes/altaBaja/'+${cliente.dni}}" type="button" th:unless="${cliente.alta}"
-                	class="btn btn-success mx-auto">Darse de alta</a>
-               	<a th:href="@{'/cliente/ajustes/altaBaja/'+${cliente.dni}}" type="button" th:if="${cliente.alta}"
-               		class="btn btn-success mx-auto">Darse de baja</a>
+            <div class="row ajustesCliente mx-auto justify-content-center mt-5">
+                <div th:unless="${cliente.alta}" class="col-sm-12 col-xl-4">
+                    <a th:href="@{'/cliente/ajustes/altaBaja/'+${cliente.dni}}" type="button"
+                        class="btn btn-success grandeCent mx-auto">Darse de alta</a>
+                </div>
+                <div th:if="${cliente.alta}" class="col-sm-12 col-xl-4">
+                    <a th:href="@{'/cliente/ajustes/altaBaja/'+${cliente.dni}}" type="button"
+                        class="btn btn-success grandeCent mx-auto">Darse de baja</a>
+                </div>
             </div>
         </section>
     </main>
@@ -178,12 +182,20 @@
                 $("#nombre").addClass("is-invalid");
                 return false;
             } else {
-                $("#nombre").parent().siblings().children().html("");
-                $("#nombre").addClass("is-valid");
-                $("#nombre").removeClass("is-invalid");
-                return true;
+                if (!(/^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/.test($("#nombre").val()))) {
+                    $("#nombre").parent().siblings().children().html("El nombre no cumple con el formato");
+                    $("#nombre").removeClass("is-valid");
+                    $("#nombre").addClass("is-invalid");
+                    return false;
+                } else {
+                    $("#nombre").parent().siblings().children().html("");
+                    $("#nombre").addClass("is-valid");
+                    $("#nombre").removeClass("is-invalid");
+                    return true;
+                }
             }
         }
+
 
         function comprobarApellido() {
             if ($("#apellidos").val().length === 0) {
@@ -192,10 +204,17 @@
                 $("#apellidos").addClass("is-invalid");
                 return false;
             } else {
-                $("#apellidos").parent().siblings().children().html("");
-                $("#apellidos").addClass("is-valid");
-                $("#apellidos").removeClass("is-invalid");
-                return true;
+                if (!(/^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/.test($("#apellidos").val()))) {
+                    $("#apellidos").parent().siblings().children().html("El apellido no cumple con el formato");
+                    $("#apellidos").removeClass("is-valid");
+                    $("#apellidos").addClass("is-invalid");
+                    return false;
+                } else {
+                    $("#apellidos").parent().siblings().children().html("");
+                    $("#apellidos").addClass("is-valid");
+                    $("#apellidos").removeClass("is-invalid");
+                    return true;
+                }
             }
         }
 
@@ -246,7 +265,7 @@
                 $("#email").addClass("is-invalid");
                 return false;
             } else {
-                if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{3})+$/.test(email))) {
+                if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))) {
                     $("#email").parent().siblings().children().html("El formato del email no es correcto");
                     $("#email").removeClass("is-valid");
                     $("#email").addClass("is-invalid");

@@ -16,6 +16,11 @@
             <div class="alert alert-success alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
                 <p>Instrucciones</p>
+                <p>La contraseña tiene que tener un mínimo de 8 caracteres.</p>
+                <p>El DNI tiene que ser un formato español: 8 número seguidos de una letra (ej: 12345678A).</p>
+                <p>El número de teléfono lo forman 9 dígitos y tiene que empezar por 9 o 6.</p>
+                <p>El dominio del correo deberá ser de 2 o 3 caracteres.</p>
+                <p>El nombre y apellido solo permiten caracteres alfabéticos empezando el primero por mayúscula</p>
             </div>
             <form action="#" method="POST" onsubmit="return validar();" th:action="@{/nuevo/submit}"
                 th:object="${clienteFrom}">
@@ -105,7 +110,7 @@
                     <label class="custom-control-label" for="client-sidecustomControlValidation1">Acepta los términos y
                         condiciones</label>
                 </div>
-                <button type="submit" class="btn btn-dark botonEnv" value="Enviar" id="enviar">Enviar</button>
+                <button type="submit" class="btn btn-dark botonEnv mt-3" value="Enviar" id="enviar">Enviar</button>
             </form>
         </section>
     </main>
@@ -186,166 +191,189 @@
                 $("#nombre").addClass("is-invalid");
                 return false;
             } else {
-                $("#nombre").siblings(".error").children().html("");
-                $("#nombre").addClass("is-valid");
-                $("#nombre").removeClass("is-invalid");
-                return true;
-            }
-        }
-
-        function comprobarApellido() {
-            if ($("#apellidos").val().length === 0) {
-                $("#apellidos").siblings(".error").children().html("El campo es obligatorio");
-                $("#apellidos").removeClass("is-valid");
-                $("#apellidos").addClass("is-invalid");
-                return false;
-            } else {
-                $("#apellidos").siblings(".error").children().html("");
-                $("#apellidos").addClass("is-valid");
-                $("#apellidos").removeClass("is-invalid");
-                return true;
-            }
-        }
-
-        function comprobarUsuaio() {
-            if ($("#usuar").val().length === 0) {
-                $("#usuar").siblings(".error").children().html("El campo es obligatorio");
-                $("#usuar").removeClass("is-valid");
-                $("#usuar").addClass("is-invalid");
-                return false;
-            } else {
-                $("#usuar").siblings(".error").children().html("");
-                $("#usuar").addClass("is-valid");
-                $("#usuar").removeClass("is-invalid");
-                return true;
-            }
-        }
-
-        function comprobarDireccion() {
-            if ($("#direccion").val().length === 0) {
-                $("#direccion").siblings(".error").children().html("El campo es obligatorio");
-                $("#direccion").removeClass("is-valid");
-                $("#direccion").addClass("is-invalid");
-                return false;
-            } else {
-                $("#direccion").siblings(".error").children().html("");
-                $("#direccion").addClass("is-valid");
-                $("#direccion").removeClass("is-invalid");
-                return true;
-            }
-        }
-
-
-
-        //Comprueba el formato del dni y que la letra esté bien
-        function comprobarDNI() {
-            var dni = $("#dni").val();
-            var letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D',
-                'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E', 'T'];
-
-            if ($("#dni").val().length === 0) {
-                $("#dni").siblings(".error").children().html("El campo es obligatorio");
-                $("#dni").removeClass("is-valid");
-                $("#dni").addClass("is-invalid");
-                return false;
-            } else {
-                if (!(/^\d{8}[A-Z]$/.test(dni))) {
-                    $("#dni").siblings(".error").children().html("El DNI no cumple con el formato");
-                    $("#dni").removeClass("is-valid");
-                    $("#dni").addClass("is-invalid");
+                if (!(/^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/.test($("#nombre").val()))) {
+                    $("#nombre").siblings(".error").children().html("El nombre no cumple con el formato");
+                    $("#nombre").removeClass("is-valid");
+                    $("#nombre").addClass("is-invalid");
                     return false;
                 } else {
-                    if (dni.charAt(8) != letras[(dni.substring(0, 8)) % 23]) {
-                        $("#dni").siblings(".error").children().html("La letra insertada no es correcta");
-                        $("#dni").removeClass("is-valid");
-                        $("#dni").addClass("is-invalid");
+                    $("#nombre").siblings(".error").children().html("");
+                    $("#nombre").addClass("is-valid");
+                    $("#nombre").removeClass("is-invalid");
+                    return true;
+                }
+            }
+        }
+
+            function comprobarApellido() {
+                if ($("#apellidos").val().length === 0) {
+                    $("#apellidos").siblings(".error").children().html("El campo es obligatorio");
+                    $("#apellidos").removeClass("is-valid");
+                    $("#apellidos").addClass("is-invalid");
+                    return false;
+                } else {
+                    if (!(/^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/.test($("#apellidos").val()))) {
+                        $("#apellidos").siblings(".error").children().html("El apellido no cumple con el formato");
+                        $("#apellidos").removeClass("is-valid");
+                        $("#apellidos").addClass("is-invalid");
                         return false;
                     } else {
-                        $("#dni").siblings(".error").children().html("");
-                        $("#dni").addClass("is-valid");
-                        $("#dni").removeClass("is-invalid");
+                        $("#apellidos").siblings(".error").children().html("");
+                        $("#apellidos").addClass("is-valid");
+                        $("#apellidos").removeClass("is-invalid");
                         return true;
                     }
                 }
             }
 
-
-        }
-
-        //Comprueba el formato del teléfono
-        function comprobarTelefono() {
-            var telef = $("#telef").val();
-            if (telef.length === 0) {
-                $("#telef").siblings(".error").children().html("El campo es obligatorio");
-                $("#telef").removeClass("is-valid");
-                $("#telef").addClass("is-invalid");
-                return false;
-            } else {
-                if (!(/^[9|6]{1}([\d]{2}[-]*){3}[\d]{2}$/.test(telef))) {
-                    $("#telef").siblings(".error").children().html("El formato del número no es correcto");
-                    $("#telef").removeClass("is-valid");
-                    $("#telef").addClass("is-invalid");
-                    return false;
-                } else {
-                    $("#telef").siblings(".error").children().html("");
-                    $("#telef").addClass("is-valid");
-                    $("#telef").removeClass("is-invalid");
-                    return true;
+                function comprobarUsuaio() {
+                    if ($("#usuar").val().length === 0) {
+                        $("#usuar").siblings(".error").children().html("El campo es obligatorio");
+                        $("#usuar").removeClass("is-valid");
+                        $("#usuar").addClass("is-invalid");
+                        return false;
+                    } else {
+                        $("#usuar").siblings(".error").children().html("");
+                        $("#usuar").addClass("is-valid");
+                        $("#usuar").removeClass("is-invalid");
+                        return true;
+                    }
                 }
-            }
 
-        }
-        //Comprueba el formato del correo para recuperar contraseña
-        function comprobarCorreo() {
-            var email = $("#email").val();
-
-            if (email.length === 0) {
-                $("#email").siblings(".error").children().html("El campo es obligatorio");
-                $("#email").removeClass("is-valid");
-                $("#email").addClass("is-invalid");
-                return false;
-            } else {
-                if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{3})+$/.test(email))) {
-                    $("#email").siblings(".error").children().html("El formato del email no es correcto");
-                    $("#email").removeClass("is-valid");
-                    $("#email").addClass("is-invalid");
-                    return false;
-                } else {
-                    $("#email").siblings(".error").children().html("");
-                    $("#email").addClass("is-valid");
-                    $("#email").removeClass("is-invalid");
-                    return true;
+                function comprobarDireccion() {
+                    if ($("#direccion").val().length === 0) {
+                        $("#direccion").siblings(".error").children().html("El campo es obligatorio");
+                        $("#direccion").removeClass("is-valid");
+                        $("#direccion").addClass("is-invalid");
+                        return false;
+                    } else {
+                        $("#direccion").siblings(".error").children().html("");
+                        $("#direccion").addClass("is-valid");
+                        $("#direccion").removeClass("is-invalid");
+                        return true;
+                    }
                 }
-            }
-        }
 
 
-        //Que las dos contraseñas sean identicas
-        function comprobarContrasena(input) {
-            var contr1 = $("#pwd1").val();
-            var contr2 = $("#pwd2").val();
 
-            if (input.val().length === 0) {
-                input.siblings(".error").children().html("El campo es obligatorio");
-                $("#pwd1").removeClass("is-valid");
-                $("#pwd1").addClass("is-invalid");
-                $("#pwd2").removeClass("is-valid");
-                $("#pwd2").addClass("is-invalid");
-                return false;
-            } else {
-                if (input.val().length > 7) {
-                    if (contr2.length > 7 && contr1.length > 7) {
-                        if (contr1 == contr2) {
-                            $("#pwd1").siblings(".error").children().html("");
-                            $("#pwd2").siblings(".error").children().html("");
-                            $("#pwd1").addClass("is-valid");
-                            $("#pwd1").removeClass("is-invalid");
-                            $("#pwd2").addClass("is-valid");
-                            $("#pwd2").removeClass("is-invalid");
-                            return true;
+                //Comprueba el formato del dni y que la letra esté bien
+                function comprobarDNI() {
+                    var dni = $("#dni").val();
+                    var letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D',
+                        'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E', 'T'];
+
+                    if ($("#dni").val().length === 0) {
+                        $("#dni").siblings(".error").children().html("El campo es obligatorio");
+                        $("#dni").removeClass("is-valid");
+                        $("#dni").addClass("is-invalid");
+                        return false;
+                    } else {
+                        if (!(/^\d{8}[A-Z]$/.test(dni))) {
+                            $("#dni").siblings(".error").children().html("El DNI no cumple con el formato");
+                            $("#dni").removeClass("is-valid");
+                            $("#dni").addClass("is-invalid");
+                            return false;
                         } else {
-                            $("#pwd1").siblings(".error").children().html("Las contraseñas deben ser iguales");
-                            $("#pwd2").siblings(".error").children().html("Las contraseñas deben ser iguales");
+                            if (dni.charAt(8) != letras[(dni.substring(0, 8)) % 23]) {
+                                $("#dni").siblings(".error").children().html("La letra insertada no es correcta");
+                                $("#dni").removeClass("is-valid");
+                                $("#dni").addClass("is-invalid");
+                                return false;
+                            } else {
+                                $("#dni").siblings(".error").children().html("");
+                                $("#dni").addClass("is-valid");
+                                $("#dni").removeClass("is-invalid");
+                                return true;
+                            }
+                        }
+                    }
+
+
+                }
+
+                //Comprueba el formato del teléfono
+                function comprobarTelefono() {
+                    var telef = $("#telef").val();
+                    if (telef.length === 0) {
+                        $("#telef").siblings(".error").children().html("El campo es obligatorio");
+                        $("#telef").removeClass("is-valid");
+                        $("#telef").addClass("is-invalid");
+                        return false;
+                    } else {
+                        if (!(/^[9|6]{1}([\d]{2}[-]*){3}[\d]{2}$/.test(telef))) {
+                            $("#telef").siblings(".error").children().html("El formato del número no es correcto");
+                            $("#telef").removeClass("is-valid");
+                            $("#telef").addClass("is-invalid");
+                            return false;
+                        } else {
+                            $("#telef").siblings(".error").children().html("");
+                            $("#telef").addClass("is-valid");
+                            $("#telef").removeClass("is-invalid");
+                            return true;
+                        }
+                    }
+
+                }
+                //Comprueba el formato del correo para recuperar contraseña
+                function comprobarCorreo() {
+                    var email = $("#email").val();
+
+                    if (email.length === 0) {
+                        $("#email").siblings(".error").children().html("El campo es obligatorio");
+                        $("#email").removeClass("is-valid");
+                        $("#email").addClass("is-invalid");
+                        return false;
+                    } else {
+                        if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))) {
+                            $("#email").siblings(".error").children().html("El formato del email no es correcto");
+                            $("#email").removeClass("is-valid");
+                            $("#email").addClass("is-invalid");
+                            return false;
+                        } else {
+                            $("#email").siblings(".error").children().html("");
+                            $("#email").addClass("is-valid");
+                            $("#email").removeClass("is-invalid");
+                            return true;
+                        }
+                    }
+                }
+
+
+                //Que las dos contraseñas sean identicas
+                function comprobarContrasena(input) {
+                    var contr1 = $("#pwd1").val();
+                    var contr2 = $("#pwd2").val();
+
+                    if (input.val().length === 0) {
+                        input.siblings(".error").children().html("El campo es obligatorio");
+                        $("#pwd1").removeClass("is-valid");
+                        $("#pwd1").addClass("is-invalid");
+                        $("#pwd2").removeClass("is-valid");
+                        $("#pwd2").addClass("is-invalid");
+                        return false;
+                    } else {
+                        if (input.val().length > 7) {
+                            if (contr2.length > 7 && contr1.length > 7) {
+                                if (contr1 == contr2) {
+                                    $("#pwd1").siblings(".error").children().html("");
+                                    $("#pwd2").siblings(".error").children().html("");
+                                    $("#pwd1").addClass("is-valid");
+                                    $("#pwd1").removeClass("is-invalid");
+                                    $("#pwd2").addClass("is-valid");
+                                    $("#pwd2").removeClass("is-invalid");
+                                    return true;
+                                } else {
+                                    $("#pwd1").siblings(".error").children().html("Las contraseñas deben ser iguales");
+                                    $("#pwd2").siblings(".error").children().html("Las contraseñas deben ser iguales");
+                                    $("#pwd1").removeClass("is-valid");
+                                    $("#pwd1").addClass("is-invalid");
+                                    $("#pwd2").removeClass("is-valid");
+                                    $("#pwd2").addClass("is-invalid");
+                                    return false;
+                                }
+                            }
+                        } else {
+                            input.siblings(".error").children().html("La contraseña tiene que tener un mínimo de 8 caractéres");
                             $("#pwd1").removeClass("is-valid");
                             $("#pwd1").addClass("is-invalid");
                             $("#pwd2").removeClass("is-valid");
@@ -353,68 +381,59 @@
                             return false;
                         }
                     }
-                } else {
-                    input.siblings(".error").children().html("La contraseña tiene que tener un mínimo de 8 caractéres");
-                    $("#pwd1").removeClass("is-valid");
-                    $("#pwd1").addClass("is-invalid");
-                    $("#pwd2").removeClass("is-valid");
-                    $("#pwd2").addClass("is-invalid");
-                    return false;
                 }
-            }
-        }
 
 
-        // Que la persona sea mayor de edad
-        function comprobarEdad() {
-            var fecha = new Date($("#fecha").val());
-            var hoy = new Date();
-            var edad = Math.floor((hoy.getTime() - fecha.getTime()) / (365.25 * 24 * 60 * 60 * 1000));
-            if ($("#fecha").val() == "") {
-                $("#fecha").siblings(".error").children().html("El campo es obligatorio");
-                $("#fecha").removeClass("is-valid");
-                $("#fecha").addClass("is-invalid");
-                return false;
-            } else if (fecha > hoy) {
-                $("#fecha").siblings(".error").children().html("La fecha seleccionada se encuentra en el futuro");
-                $("#fecha").removeClass("is-valid");
-                $("#fecha").addClass("is-invalid");
-                return false;
-            } else {
-                if (edad >= 18) {
-                    $("#fecha").siblings(".error").children().html("");
-                    $("#fecha").addClass("is-valid");
-                    $("#fecha").removeClass("is-invalid");
-                    return true;
-                } else {
-                    $("#fecha").siblings(".error").children().html("Es menor de edad");
-                    $("#fecha").removeClass("is-valid");
-                    $("#fecha").addClass("is-invalid");
-                    return false;
+                // Que la persona sea mayor de edad
+                function comprobarEdad() {
+                    var fecha = new Date($("#fecha").val());
+                    var hoy = new Date();
+                    var edad = Math.floor((hoy.getTime() - fecha.getTime()) / (365.25 * 24 * 60 * 60 * 1000));
+                    if ($("#fecha").val() == "") {
+                        $("#fecha").siblings(".error").children().html("El campo es obligatorio");
+                        $("#fecha").removeClass("is-valid");
+                        $("#fecha").addClass("is-invalid");
+                        return false;
+                    } else if (fecha > hoy) {
+                        $("#fecha").siblings(".error").children().html("La fecha seleccionada se encuentra en el futuro");
+                        $("#fecha").removeClass("is-valid");
+                        $("#fecha").addClass("is-invalid");
+                        return false;
+                    } else {
+                        if (edad >= 18) {
+                            $("#fecha").siblings(".error").children().html("");
+                            $("#fecha").addClass("is-valid");
+                            $("#fecha").removeClass("is-invalid");
+                            return true;
+                        } else {
+                            $("#fecha").siblings(".error").children().html("Es menor de edad");
+                            $("#fecha").removeClass("is-valid");
+                            $("#fecha").addClass("is-invalid");
+                            return false;
+                        }
+                    }
                 }
-            }
-        }
 
-        function comprobarPais() {
-            if ($("#pais").val() == "-1") {
-                $("#pais").siblings(".error").children().html("El campo es obligatorio");
-                return false;
-            } else {
-                $("#pais").siblings(".error").children().html("");
-                return true;
-            }
-        }
+                function comprobarPais() {
+                    if ($("#pais").val() == "-1") {
+                        $("#pais").siblings(".error").children().html("El campo es obligatorio");
+                        return false;
+                    } else {
+                        $("#pais").siblings(".error").children().html("");
+                        return true;
+                    }
+                }
 
-        //Comprueba que todo están verificados los campos en el registro
-        function validar() {
-            if (comprobarEdad() &&
-                comprobarContrasena() && comprobarCorreo() && comprobarDNI() && comprobarTelefono()
-                && comprobarNombre() && comprobarApellido() && comprobarUsuaio() && comprobarDireccion() && comprobarPais()) {
-                return true;
-            } else {
-                return false;
-            }
-        }
+                //Comprueba que todo están verificados los campos en el registro
+                function validar() {
+                    if (comprobarEdad() &&
+                        comprobarContrasena() && comprobarCorreo() && comprobarDNI() && comprobarTelefono()
+                        && comprobarNombre() && comprobarApellido() && comprobarUsuaio() && comprobarDireccion() && comprobarPais()) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
     </script>
 
 </body>

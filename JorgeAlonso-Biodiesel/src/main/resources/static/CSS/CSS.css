@@ -24,9 +24,18 @@ body{
     margin-right: 50px;
 }
 
+.campoFrom{
+   width: 75%; 
+}
+
 .enlace{
-    background-color: rgb(73, 73, 73);
-    color: rgb(254, 200, 16);
+    background-color: rgb(73, 73, 73)!important;
+    color: rgb(254, 200, 16)!important;
+}
+
+.enlace a{
+    background-color: rgb(73, 73, 73)!important;
+    color: rgb(254, 200, 16)!important;
 }
 
 .botonEnv:hover, .botonEnv:focus, .botonEnv:active{
@@ -338,6 +347,11 @@ section{
 .ajustesCliente input, .ajustesCliente select, .ajustesCliente button{
     font-size: 18pt;
     text-align: center;
+}
+
+.grandeCent{
+    font-size: 18pt!important;
+    margin: auto!important;
 }
 
 .tabla{

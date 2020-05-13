@@ -24,26 +24,18 @@
             <th data-sorter="false">Fecha de entrega/envio</th>
             <th data-sorter="false">Fecha de salida</th>
             <th>Precio(€)<i class="fas fa-arrows-alt-v ml-3"></i></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td><a href="#" data-izimodal-open="#modalDescrPedido">Y</a></td>
-            <td>10-07-2023</td>
-            <td>02-07-2023</td>
-            <td>341234</td>
-          </tr>
-          <tr>
-            <td><a href="#" data-izimodal-open="#modalDescrPedido">Z</a></td>
-            <td>12-12-2010</td>
-            <td>12-12-2010</td>
-            <td>9876</td>
-          </tr>
-          <tr>
-            <td><a href="#" data-izimodal-open="#modalPedido">A</a></td>
-            <td>12-12-2010</td>
-            <td>02-12-2010</td>
-            <td>123</td>
+          <tr th:each="pedido : ${listaPedidos}">
+            <td><a href="#" data-izimodal-open="#modalPedido" th:text="${pedido.id}" th:data-id="${pedido.id}">X</a>
+            </td>
+            <td th:text="${pedido.fechaLlegada}">10-07-2023</td>
+            <td th:text="${pedido.fechaSalidaTrasnporte}">02-07-2023</td>
+            <td th:text="${pedido.precioFinal}">341234</td>
+            <td><a th:href="@{'/cliente/borrar/'+${pedido.id}}" role="button"
+                class="btn btn-success mx-auto">Cancelar</a></td>
           </tr>
         </tbody>
       </table>
@@ -51,39 +43,29 @@
         <form action="" id="formularioPedido">
           <ul class="filtro">
             <li>
-              <h3>Tipo de operación</h3>
-              <input type="radio" id="compra" name="tipo" value="0">
-              <label for="compra">Operaciones de compra</label><br>
-              <input type="radio" id="venta" name="tipo" value="1">
-              <label for="venta">Operaciones de venta</label><br>
-              <input type="radio" id="todas" name="tipo" value="-1" checked>
-              <label for="todas">Todas las operaciones</label>
-            </li>
-            <li>
               <label for="productoForm">
                 <h3>Tipo de producto</h3>
               </label><br>
               <select id="productoForm" class="form-control" name="productoForm">
                 <option value="0">Todos</option>
                 <option value="1">Biodiesel</option>
-                <option value="2">Glicerina</option>
-                <option value="3">Aceite de cogeneración</option>
-                <option value="4">Aceite de fritura</option>
-                <option value="5">Aceite de motor</option>
-                <option value="6">Restos vegetales</option>
               </select>
             </li>
             <li>
               <h3>Rango de precio</h3>
-              <input type="number" id="rangoMin" class="form-control" name="rangoMin" placeholder="Mínimo"><label
-                for="rangoMin">&nbsp&nbsp&nbsp€</label>
-              <input type="number" id="rangoMax" class="form-control" name="rangoMax" placeholder="Máximo"><label
-                for="rangoMax">&nbsp&nbsp&nbsp€</label>
+              <div class="row mx-auto">
+                <input type="number" id="rangoMin" class="form-control col-sm-10 col-lg-10" name="rangoMin"
+                  placeholder="Mínimo"><label for="rangoMin">&nbsp&nbsp&nbsp€</label>
+                <input type="number" id="rangoMax" class="form-control col-sm-10 col-lg-10" name="rangoMax"
+                  placeholder="Máximo"><label for="rangoMax">&nbsp&nbsp&nbsp€</label>
+              </div>
             </li>
             <li>
               <h3>Operaciones pendientes</h3>
-              <input type="checkbox" id="pendiente" name="pendiente" value="1">
-              <label for="pendiente">Pedidos pendientes</label>
+              <div class="row mx-auto">
+                <input type="checkbox" id="pendiente" name="pendiente" value="1" class="col-sm-1 col-lg-1">
+                <label for="pendiente" class="col-sm-10 col-lg-10">Pedidos pendientes</label>
+              </div>
             </li>
             <li class="row">
               <button type="submit" class="btn btn-dark col-sm-10 col-lg-5 mx-auto" value="Enviar"
