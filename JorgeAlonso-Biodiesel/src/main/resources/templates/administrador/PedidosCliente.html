@@ -11,12 +11,12 @@
 
   <br>
   <main>
-    <section>
-      <h1 class="mt-5 mb-5 mx-auto">X</h1>
+    <section class="row">
+      <h1 class="mt-5 mb-5 mx-auto" th:text="${cliente.apellido} + ', ' + ${cliente.nombre}">X</h1>
     </section>
     <section class="row conten justify-content-around mt-5">
 
-      <table class="col-sm-12 col-lg-8 table table-striped table-bordered table-hover table-responsive-sm"
+      <table class="col-sm-12 col-lg-10 table table-striped table-bordered table-hover table-responsive-sm"
         id="tablaPedidosCliente" summary="Tabla con los pedidos del cliente">
         <caption>Tabla con los pedidos del cliente</caption>
         <thead>
@@ -33,7 +33,7 @@
         </tfoot>
         <tbody>
           <tr th:each="pedido : ${listaPedidos}">
-            <td><a href="#" data-izimodal-open="#modalPedido" th:text="${pedido.id}" th:data-id="${pedido.id}">X</a>
+            <td><a href="#" data-izimodal-open="#modalPedido" th:text="${pedido.id}" >X</a>
             </td>
             <td th:text="${pedido.fechaLlegada}">10-07-2023</td>
             <td th:text="${pedido.fechaSalidaTrasnporte}">02-07-2023</td>
@@ -43,7 +43,7 @@
           </tr>
         </tbody>
       </table>
-      <aside class="col-sm-12 col-lg-3">
+    <!--   <aside class="col-sm-12 col-lg-3">
         <form action="" id="formularioPedido">
           <ul class="filtro">
             <li>
@@ -77,11 +77,11 @@
             </li>
           </ul>
         </form>
-      </aside>
+      </aside> -->
     </section>
   </main>
   <div th:replace="~{fragmentos/footer::footer}"></div>
-
+<!--  
   <div id="modalDescrPedido" class="modalC">
     <div class="row mx-auto text-center align-items-center justify-content-around">
       <span class="btn info col-sm-12 col-lg-4">ID pedido</span>
@@ -116,7 +116,7 @@
         </tbody>
       </table>
     </div>
-  </div>
+  </div>   -->
 
   <script>
     $(function () {

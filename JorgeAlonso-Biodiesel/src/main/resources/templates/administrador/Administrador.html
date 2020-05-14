@@ -51,7 +51,7 @@
         </tfoot>
         <tbody>
           <tr th:each="cliente : ${listaClientes}">
-            <td><a th:text="${cliente.apellido} + ', ' + ${cliente.nombre}" href="#">Uijdvfwe, coiuhfe</a></td>
+            <td><a th:text="${cliente.apellido} + ', ' + ${cliente.nombre}" th:href="@{'/administrador/pedidos_cliente/'+${cliente.dni}}">Uijdvfwe, coiuhfe</a></td>
             <td th:text="${cliente.dni}">098765T</td>
             <td th:text="${cliente.pais.nombre}">España</td>
             <div>

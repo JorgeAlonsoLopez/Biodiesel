@@ -15,6 +15,7 @@ import com.salesianostriana.dam.biodiesel.modelo.FormularioAdminPedido;
 import com.salesianostriana.dam.biodiesel.servicio.AdministradorServicio;
 import com.salesianostriana.dam.biodiesel.servicio.ClienteServicio;
 import com.salesianostriana.dam.biodiesel.servicio.CompuestoServicio;
+import com.salesianostriana.dam.biodiesel.servicio.PedidoServicio;
 
 @Controller
 public class AdministradorController {
@@ -30,6 +31,9 @@ public class AdministradorController {
 	@Autowired
 	private ClienteServicio servicioClien;
 
+	@Autowired
+	private PedidoServicio servicioPedido;
+	
 	@GetMapping("/administrador/precios")
 	public String actualizarMateria(Model model) {
 		model.addAttribute("listaMateriasPrimas", servicioCompu.buscarMateriasPrimas());
@@ -58,9 +62,10 @@ public class AdministradorController {
 	
 	
 	
-	@GetMapping ("/administrador/pedidos_cliente")
-	public String pedidosCliente (Model model) {
-		
+	@GetMapping ("/administrador/pedidos_cliente/{dni}")
+	public String pedidosCliente (@PathVariable("dni") String dni, Model model) {
+		model.addAttribute("listaPedidos", servicioPedido.findListByDni(dni));
+		model.addAttribute("cliente",servicioClien.buscarPorDNI(dni));
 		return "administrador/PedidosCliente";
 	}
 	
