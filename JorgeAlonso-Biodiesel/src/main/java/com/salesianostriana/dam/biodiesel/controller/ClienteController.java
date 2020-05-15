@@ -62,18 +62,4 @@ public class ClienteController {
 		return "redirect:/cliente/principal";
 	}
 	
-	
-	
-	@GetMapping("/administrador/borrar/{id}")
-	public String borrarCliente(@PathVariable("id") Long id, Model model) {
-
-		Cliente cliente = servicio.findById(id);
-		if (cliente != null) {
-			servicio.delete(cliente);
-		}
-		return "redirect:/administrador/principal";
-
-	}
-	
-	
 }

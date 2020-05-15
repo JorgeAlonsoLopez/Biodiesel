@@ -20,7 +20,8 @@
                 <p>El DNI tiene que ser un formato español: 8 número seguidos de una letra (ej: 12345678A).</p>
                 <p>El número de teléfono lo forman 9 dígitos y tiene que empezar por 9 o 6.</p>
                 <p>El dominio del correo deberá ser de 2 o 3 caracteres.</p>
-                <p>El nombre y apellido solo permiten caracteres alfabéticos empezando el primero por mayúscula</p>
+                <p>El nombre y apellido solo permiten caracteres alfabéticos empezando el primero por mayúscula.</p>
+                <p>Si se registra con un usuario y/o DNI que ya le pertenece a otro usuario, volverá a la página de inicio.</p>
             </div>
             <form action="#" method="POST" onsubmit="return validar();" th:action="@{/nuevo/submit}"
                 th:object="${clienteFrom}">

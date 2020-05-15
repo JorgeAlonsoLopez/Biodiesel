@@ -5148,3 +5148,120 @@ Caused by: java.lang.IllegalStateException: The file is locked: nio:C:/Users/Jor
 	at org.h2.mvstore.FileStore.open(FileStore.java:172)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:381)
 	... 62 more
+2020-05-15 18:35:46 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "SELECT CLIENTE0_.ID AS ID1_6_, CLIENTE0_1_.CONTRASENYA AS CONTRASE2_6_, CLIENTE0_1_.USUARIO AS USUARIO3_6_, CLIENTE0_.ALTA AS ALTA1_1_, CLIENTE0_.APELLIDO AS APELLIDO2_1_, CLIENTE0_.CORREO AS CORREO3_1_, CLIENTE0_.DIRECCION AS DIRECCIO4_1_, CLIENTE0_.DNI AS DNI5_1_, CLIENTE0_.FECHA_NACIMIENTO AS FECHA_NA6_1_, CLIENTE0_.NOMBRE AS NOMBRE7_1_, CLIENTE0_.PAIS_ID_PAIS AS PAIS_ID10_1_, CLIENTE0_.TELEFONO AS TELEFONO8_1_ FROM CLIENTE CLIENTE0_ INNER JOIN USUARIO CLIENTE0_1_ ON CLIENTE0_.ID=CLIENTE0_1_.ID INNER JOIN USUARIO USUARIO1_ ON WHERE[*] USUARIO1_.USUARIO=?"; se esperaba "NOT, EXISTS, INTERSECTS, UNIQUE"
+Syntax error in SQL statement "SELECT CLIENTE0_.ID AS ID1_6_, CLIENTE0_1_.CONTRASENYA AS CONTRASE2_6_, CLIENTE0_1_.USUARIO AS USUARIO3_6_, CLIENTE0_.ALTA AS ALTA1_1_, CLIENTE0_.APELLIDO AS APELLIDO2_1_, CLIENTE0_.CORREO AS CORREO3_1_, CLIENTE0_.DIRECCION AS DIRECCIO4_1_, CLIENTE0_.DNI AS DNI5_1_, CLIENTE0_.FECHA_NACIMIENTO AS FECHA_NA6_1_, CLIENTE0_.NOMBRE AS NOMBRE7_1_, CLIENTE0_.PAIS_ID_PAIS AS PAIS_ID10_1_, CLIENTE0_.TELEFONO AS TELEFONO8_1_ FROM CLIENTE CLIENTE0_ INNER JOIN USUARIO CLIENTE0_1_ ON CLIENTE0_.ID=CLIENTE0_1_.ID INNER JOIN USUARIO USUARIO1_ ON WHERE[*] USUARIO1_.USUARIO=?"; expected "NOT, EXISTS, INTERSECTS, UNIQUE"; SQL statement:
+select cliente0_.id as id1_6_, cliente0_1_.contrasenya as contrase2_6_, cliente0_1_.usuario as usuario3_6_, cliente0_.alta as alta1_1_, cliente0_.apellido as apellido2_1_, cliente0_.correo as correo3_1_, cliente0_.direccion as direccio4_1_, cliente0_.dni as dni5_1_, cliente0_.fecha_nacimiento as fecha_na6_1_, cliente0_.nombre as nombre7_1_, cliente0_.pais_id_pais as pais_id10_1_, cliente0_.telefono as telefono8_1_ from cliente cliente0_ inner join usuario cliente0_1_ on cliente0_.id=cliente0_1_.id inner join usuario usuario1_ on where usuario1_.usuario=? [42001-200]
+2020-05-15 18:49:06 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "SELECT CLIENTE0_.ID AS ID1_6_, CLIENTE0_1_.CONTRASENYA AS CONTRASE2_6_, CLIENTE0_1_.USUARIO AS USUARIO3_6_, CLIENTE0_.ALTA AS ALTA1_1_, CLIENTE0_.APELLIDO AS APELLIDO2_1_, CLIENTE0_.CORREO AS CORREO3_1_, CLIENTE0_.DIRECCION AS DIRECCIO4_1_, CLIENTE0_.DNI AS DNI5_1_, CLIENTE0_.FECHA_NACIMIENTO AS FECHA_NA6_1_, CLIENTE0_.NOMBRE AS NOMBRE7_1_, CLIENTE0_.PAIS_ID_PAIS AS PAIS_ID10_1_, CLIENTE0_.TELEFONO AS TELEFONO8_1_ FROM CLIENTE CLIENTE0_ INNER JOIN USUARIO CLIENTE0_1_ ON CLIENTE0_.ID=CLIENTE0_1_.ID INNER JOIN USUARIO USUARIO1_ ON WHERE[*] USUARIO1_.USUARIO=?"; se esperaba "NOT, EXISTS, INTERSECTS, UNIQUE"
+Syntax error in SQL statement "SELECT CLIENTE0_.ID AS ID1_6_, CLIENTE0_1_.CONTRASENYA AS CONTRASE2_6_, CLIENTE0_1_.USUARIO AS USUARIO3_6_, CLIENTE0_.ALTA AS ALTA1_1_, CLIENTE0_.APELLIDO AS APELLIDO2_1_, CLIENTE0_.CORREO AS CORREO3_1_, CLIENTE0_.DIRECCION AS DIRECCIO4_1_, CLIENTE0_.DNI AS DNI5_1_, CLIENTE0_.FECHA_NACIMIENTO AS FECHA_NA6_1_, CLIENTE0_.NOMBRE AS NOMBRE7_1_, CLIENTE0_.PAIS_ID_PAIS AS PAIS_ID10_1_, CLIENTE0_.TELEFONO AS TELEFONO8_1_ FROM CLIENTE CLIENTE0_ INNER JOIN USUARIO CLIENTE0_1_ ON CLIENTE0_.ID=CLIENTE0_1_.ID INNER JOIN USUARIO USUARIO1_ ON WHERE[*] USUARIO1_.USUARIO=?"; expected "NOT, EXISTS, INTERSECTS, UNIQUE"; SQL statement:
+select cliente0_.id as id1_6_, cliente0_1_.contrasenya as contrase2_6_, cliente0_1_.usuario as usuario3_6_, cliente0_.alta as alta1_1_, cliente0_.apellido as apellido2_1_, cliente0_.correo as correo3_1_, cliente0_.direccion as direccio4_1_, cliente0_.dni as dni5_1_, cliente0_.fecha_nacimiento as fecha_na6_1_, cliente0_.nombre as nombre7_1_, cliente0_.pais_id_pais as pais_id10_1_, cliente0_.telefono as telefono8_1_ from cliente cliente0_ inner join usuario cliente0_1_ on cliente0_.id=cliente0_1_.id inner join usuario usuario1_ on where usuario1_.usuario=? [42001-200]
+2020-05-15 18:49:06 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "SELECT CLIENTE0_.ID AS ID1_6_, CLIENTE0_1_.CONTRASENYA AS CONTRASE2_6_, CLIENTE0_1_.USUARIO AS USUARIO3_6_, CLIENTE0_.ALTA AS ALTA1_1_, CLIENTE0_.APELLIDO AS APELLIDO2_1_, CLIENTE0_.CORREO AS CORREO3_1_, CLIENTE0_.DIRECCION AS DIRECCIO4_1_, CLIENTE0_.DNI AS DNI5_1_, CLIENTE0_.FECHA_NACIMIENTO AS FECHA_NA6_1_, CLIENTE0_.NOMBRE AS NOMBRE7_1_, CLIENTE0_.PAIS_ID_PAIS AS PAIS_ID10_1_, CLIENTE0_.TELEFONO AS TELEFONO8_1_ FROM CLIENTE CLIENTE0_ INNER JOIN USUARIO CLIENTE0_1_ ON CLIENTE0_.ID=CLIENTE0_1_.ID INNER JOIN USUARIO USUARIO1_ ON WHERE[*] USUARIO1_.USUARIO=?"; se esperaba "NOT, EXISTS, INTERSECTS, UNIQUE"
+Syntax error in SQL statement "SELECT CLIENTE0_.ID AS ID1_6_, CLIENTE0_1_.CONTRASENYA AS CONTRASE2_6_, CLIENTE0_1_.USUARIO AS USUARIO3_6_, CLIENTE0_.ALTA AS ALTA1_1_, CLIENTE0_.APELLIDO AS APELLIDO2_1_, CLIENTE0_.CORREO AS CORREO3_1_, CLIENTE0_.DIRECCION AS DIRECCIO4_1_, CLIENTE0_.DNI AS DNI5_1_, CLIENTE0_.FECHA_NACIMIENTO AS FECHA_NA6_1_, CLIENTE0_.NOMBRE AS NOMBRE7_1_, CLIENTE0_.PAIS_ID_PAIS AS PAIS_ID10_1_, CLIENTE0_.TELEFONO AS TELEFONO8_1_ FROM CLIENTE CLIENTE0_ INNER JOIN USUARIO CLIENTE0_1_ ON CLIENTE0_.ID=CLIENTE0_1_.ID INNER JOIN USUARIO USUARIO1_ ON WHERE[*] USUARIO1_.USUARIO=?"; expected "NOT, EXISTS, INTERSECTS, UNIQUE"; SQL statement:
+select cliente0_.id as id1_6_, cliente0_1_.contrasenya as contrase2_6_, cliente0_1_.usuario as usuario3_6_, cliente0_.alta as alta1_1_, cliente0_.apellido as apellido2_1_, cliente0_.correo as correo3_1_, cliente0_.direccion as direccio4_1_, cliente0_.dni as dni5_1_, cliente0_.fecha_nacimiento as fecha_na6_1_, cliente0_.nombre as nombre7_1_, cliente0_.pais_id_pais as pais_id10_1_, cliente0_.telefono as telefono8_1_ from cliente cliente0_ inner join usuario cliente0_1_ on cliente0_.id=cliente0_1_.id inner join usuario usuario1_ on where usuario1_.usuario=? [42001-200]
+2020-05-15 18:49:47 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "SELECT CLIENTE0_.ID AS ID1_6_, CLIENTE0_1_.CONTRASENYA AS CONTRASE2_6_, CLIENTE0_1_.USUARIO AS USUARIO3_6_, CLIENTE0_.ALTA AS ALTA1_1_, CLIENTE0_.APELLIDO AS APELLIDO2_1_, CLIENTE0_.CORREO AS CORREO3_1_, CLIENTE0_.DIRECCION AS DIRECCIO4_1_, CLIENTE0_.DNI AS DNI5_1_, CLIENTE0_.FECHA_NACIMIENTO AS FECHA_NA6_1_, CLIENTE0_.NOMBRE AS NOMBRE7_1_, CLIENTE0_.PAIS_ID_PAIS AS PAIS_ID10_1_, CLIENTE0_.TELEFONO AS TELEFONO8_1_ FROM CLIENTE CLIENTE0_ INNER JOIN USUARIO CLIENTE0_1_ ON CLIENTE0_.ID=CLIENTE0_1_.ID INNER JOIN USUARIO USUARIO1_ ON WHERE[*] USUARIO1_.USUARIO=?"; se esperaba "NOT, EXISTS, INTERSECTS, UNIQUE"
+Syntax error in SQL statement "SELECT CLIENTE0_.ID AS ID1_6_, CLIENTE0_1_.CONTRASENYA AS CONTRASE2_6_, CLIENTE0_1_.USUARIO AS USUARIO3_6_, CLIENTE0_.ALTA AS ALTA1_1_, CLIENTE0_.APELLIDO AS APELLIDO2_1_, CLIENTE0_.CORREO AS CORREO3_1_, CLIENTE0_.DIRECCION AS DIRECCIO4_1_, CLIENTE0_.DNI AS DNI5_1_, CLIENTE0_.FECHA_NACIMIENTO AS FECHA_NA6_1_, CLIENTE0_.NOMBRE AS NOMBRE7_1_, CLIENTE0_.PAIS_ID_PAIS AS PAIS_ID10_1_, CLIENTE0_.TELEFONO AS TELEFONO8_1_ FROM CLIENTE CLIENTE0_ INNER JOIN USUARIO CLIENTE0_1_ ON CLIENTE0_.ID=CLIENTE0_1_.ID INNER JOIN USUARIO USUARIO1_ ON WHERE[*] USUARIO1_.USUARIO=?"; expected "NOT, EXISTS, INTERSECTS, UNIQUE"; SQL statement:
+select cliente0_.id as id1_6_, cliente0_1_.contrasenya as contrase2_6_, cliente0_1_.usuario as usuario3_6_, cliente0_.alta as alta1_1_, cliente0_.apellido as apellido2_1_, cliente0_.correo as correo3_1_, cliente0_.direccion as direccio4_1_, cliente0_.dni as dni5_1_, cliente0_.fecha_nacimiento as fecha_na6_1_, cliente0_.nombre as nombre7_1_, cliente0_.pais_id_pais as pais_id10_1_, cliente0_.telefono as telefono8_1_ from cliente cliente0_ inner join usuario cliente0_1_ on cliente0_.id=cliente0_1_.id inner join usuario usuario1_ on where usuario1_.usuario=? [42001-200]
+2020-05-15 18:51:06 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Columna "ADMIN" no encontrada
+Column "ADMIN" not found; SQL statement:
+SELECT * FROM CLIENTE C JOIN USUARIO U WHERE U.USUARIO = admin [42122-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:163)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:145)
+	at org.h2.expression.condition.Comparison.optimize(Comparison.java:191)
+	at org.h2.command.dml.Select.prepare(Select.java:1209)
+	at org.h2.command.Parser.prepareCommand(Parser.java:744)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1459)
+	at org.h2.server.web.WebApp.query(WebApp.java:1116)
+	at org.h2.server.web.WebApp.query(WebApp.java:1092)
+	at org.h2.server.web.WebApp.process(WebApp.java:241)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:173)
+	at org.h2.server.web.WebServlet.doGet(WebServlet.java:129)
+	at org.h2.server.web.WebServlet.doPost(WebServlet.java:166)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:320)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:126)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:90)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:118)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:137)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:111)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:158)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:200)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:92)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:77)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:105)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:215)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:178)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2020-05-15 18:52:26 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "SELECT DISTINTC U.[*]USUARIO  FROM CLIENTE C JOIN USUARIO U WHERE U.USUARIO = 'admin'"
+Syntax error in SQL statement "SELECT DISTINTC U.[*]USUARIO  FROM CLIENTE C JOIN USUARIO U WHERE U.USUARIO = 'admin'"; SQL statement:
+SELECT distintc u.USUARIO  FROM CLIENTE C JOIN USUARIO U WHERE U.USUARIO = 'admin' [42000-200]
+2020-05-15 18:52:31 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "SELECT DISTINT U.[*]USUARIO  FROM CLIENTE C JOIN USUARIO U WHERE U.USUARIO = 'admin'"
+Syntax error in SQL statement "SELECT DISTINT U.[*]USUARIO  FROM CLIENTE C JOIN USUARIO U WHERE U.USUARIO = 'admin'"; SQL statement:
+SELECT distint u.USUARIO  FROM CLIENTE C JOIN USUARIO U WHERE U.USUARIO = 'admin' [42000-200]

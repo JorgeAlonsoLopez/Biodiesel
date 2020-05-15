@@ -25,7 +25,6 @@
             <th data-sorter="false">Fecha de entrega/envio</th>
             <th data-sorter="false">Fecha de salida</th>
             <th>Precio(€)<i class="fas fa-arrows-alt-v ml-3"></i></th>
-            <th></th>
           </tr>
         </thead>
         <tfoot>
@@ -38,8 +37,6 @@
             <td th:text="${pedido.fechaLlegada}">10-07-2023</td>
             <td th:text="${pedido.fechaSalidaTrasnporte}">02-07-2023</td>
             <td th:text="${pedido.precioFinal}">341234</td>
-            <td><a th:href="@{'/cliente/borrar/'+${pedido.id}}" role="button"
-                class="btn btn-success mx-auto">Cancelar</a></td>
           </tr>
         </tbody>
       </table>

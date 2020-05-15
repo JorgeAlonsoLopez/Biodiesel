@@ -56,8 +56,6 @@ public class JorgeAlonsoBiodieselApplication {
 				admin.setContrasenya(passwordEncoder.encode(admin.getContrasenya()));
 				administradorServicio.save(admin);
 
-				// usuario 1234
-
 				for (Pais p : paisServicio.cargarListado()) {
 					paisServicio.save(p);
 				}

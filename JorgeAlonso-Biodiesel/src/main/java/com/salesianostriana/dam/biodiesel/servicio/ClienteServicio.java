@@ -5,6 +5,7 @@ import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -38,6 +39,7 @@ public class ClienteServicio extends BaseService<Cliente, Long, ClienteRepositor
 		}
 		return c1;
 	}
+	
 
 	public List<Cliente> clientesAlta() {
 		List<Cliente> lista = new ArrayList<Cliente>();
@@ -59,9 +61,6 @@ public class ClienteServicio extends BaseService<Cliente, Long, ClienteRepositor
 		return lista;
 	}
 
-//	public void realizarPedido() {
-//		
-//	}
 
 	public Cliente cambiarDatosAVerdadero(ClienteFormulario formulario) {
 		int num0 = 0, num4 = 4, num5 = 5, num7 = 7, num8 = 8, num10 = 10;
@@ -124,6 +123,7 @@ public class ClienteServicio extends BaseService<Cliente, Long, ClienteRepositor
 		clie.setContrasenya(formulario.getContrasenya());
 		clie.setPais(formulario.getPais());
 		clie.setUsuario(formulario.getUsuario());
+		clie.setAlta(true);
 
 		anyo = Integer.parseInt(formulario.getFechaNacimiento().substring(num0, num4));
 		mes = Integer.parseInt(formulario.getFechaNacimiento().substring(num5, num7));

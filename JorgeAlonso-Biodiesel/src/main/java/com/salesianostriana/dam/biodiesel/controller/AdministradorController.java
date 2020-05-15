@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.salesianostriana.dam.biodiesel.modelo.Cliente;
 import com.salesianostriana.dam.biodiesel.modelo.ClienteFormulario;
 import com.salesianostriana.dam.biodiesel.modelo.FormularioAdminPedido;
 import com.salesianostriana.dam.biodiesel.servicio.AdministradorServicio;
@@ -83,6 +84,17 @@ public class AdministradorController {
 	}
 	
 
+	@GetMapping("/administrador/borrar/{id}")
+	public String borrarCliente(@PathVariable("id") Long id, Model model) {
+
+		Cliente cliente = servicioClien.findById(id);
+		if (cliente != null) {
+			servicioClien.delete(cliente);
+		}
+		return "redirect:/administrador/principal";
+
+	}
+	
 	
 	
 }
