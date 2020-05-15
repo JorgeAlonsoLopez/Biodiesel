@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head th:replace="~{fragmentos/head::head(titulo='Iniciar sesión')}">
 <meta name="description" content="Área donde se procede al login.">
@@ -8,12 +9,16 @@
 
 <body>
 
-	<div th:replace="~{fragmentos/nav::nav}"></div>
+
 	<br>
 	<main>
 		<section class="conten mt-5 d-flex align-items-center">
 			<div id="contenInici">
-				<h3 class="text-center mt-2 contenLog">Acceso denegado</h3>
+				<h2 class="text-center mt-2 contenLog">Acceso denegado</h2>
+				<div class=" row justify-content-center mt-5">
+					<a role="button" class="btn botonContenido col-sm-12 col-lg-4"
+						href="/index">Volver al inicio</a>
+				</div>
 			</div>
 		</section>
 	</main>

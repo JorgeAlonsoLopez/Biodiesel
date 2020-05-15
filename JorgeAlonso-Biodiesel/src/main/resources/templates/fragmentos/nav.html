@@ -29,7 +29,7 @@
                         </div>
                     </li>
                     <li class="mr-5 ml-4">
-                        <a class="navbar-brand" href="#">
+                        <a class="navbar-brand" href="/">
                             <img id="imagenNav" src="../img/logo.png" th:src="@{/img/logo.png}" alt="Logo de la empresa">
                         </a>
                     </li> 
@@ -43,11 +43,11 @@
                             </div>
                             <div>
                            		<a class="dropdown-item " href="/cliente/principal">Area de cliente</a>
-                           		<a class="dropdown-item " href="#">Cerrar sesión</a>
+                           		<a class="dropdown-item " href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a>
                             </div>
                             <div>
                            		<a class="dropdown-item " href="/administrador/principal">Area de administrador</a>
-                           		<a class="dropdown-item " href="#">Cerrar sesión</a>
+                           		<a class="dropdown-item " href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a>
                             </div>                              
                         </div>
                     </li>
