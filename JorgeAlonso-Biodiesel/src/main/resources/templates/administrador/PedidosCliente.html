@@ -36,7 +36,7 @@
             </td>
             <td th:text="${pedido.fechaLlegada}">10-07-2023</td>
             <td th:text="${pedido.fechaSalidaTrasnporte}">02-07-2023</td>
-            <td th:text="${pedido.precioFinal}">341234</td>
+            <td th:text="${#numbers.formatDecimal(pedido.precioFinal, 0, 'POINT', 2, 'COMMA')}">341234</td>
           </tr>
         </tbody>
       </table>

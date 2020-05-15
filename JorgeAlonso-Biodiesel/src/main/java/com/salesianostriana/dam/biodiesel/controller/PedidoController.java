@@ -51,14 +51,14 @@ public class PedidoController {
 	public String compra(Model model) {
 		model.addAttribute("listaProductos", servicioCompue.buscarProductos());
 		model.addAttribute("pedido", new PedidoFormulario());
-		model.addAttribute("cliente", servicioCli.buscarPorDNI("180-96-0663"));
+		model.addAttribute("cliente", servicioCli.buscarPorDNI("58819681X"));
 		model.addAttribute("admin", servicioAdm.findAll().get(num0));
 		return "cliente/Productos";
 	}
 
 	@PostMapping("/cliente/productos/submit")
 	public String compraForm(@ModelAttribute("pedido") PedidoFormulario pedido) {
-		servicio.hacerPedido(servicioAdm.findAll().get(num0), pedido, servicioCli.buscarPorDNI("180-96-0663"), servicioCompue);
+		servicio.hacerPedido(servicioAdm.findAll().get(num0), pedido, servicioCli.buscarPorDNI("58819681X"), servicioCompue);
 		return "redirect:/cliente/principal";
 	}
 
@@ -66,14 +66,14 @@ public class PedidoController {
 	public String venta(Model model) {
 		model.addAttribute("listaMaterias", servicioCompue.buscarMateriasPrimas());
 		model.addAttribute("pedido", new PedidoFormulario());
-		model.addAttribute("cliente", servicioCli.buscarPorDNI("180-96-0663"));
+		model.addAttribute("cliente", servicioCli.buscarPorDNI("58819681X"));
 		model.addAttribute("admin", servicioAdm.findAll().get(num0));
 		return "cliente/MateriasPrimas";
 	}
 	
 	@PostMapping("/cliente/materias_primas/submit")
 	public String ventaForm(@ModelAttribute("pedido") PedidoFormulario pedido) {
-		servicio.hacerPedido(servicioAdm.findAll().get(num0), pedido, servicioCli.buscarPorDNI("180-96-0663"), servicioCompue);
+		servicio.hacerPedido(servicioAdm.findAll().get(num0), pedido, servicioCli.buscarPorDNI("58819681X"), servicioCompue);
 		return "redirect:/cliente/principal";
 	}
 

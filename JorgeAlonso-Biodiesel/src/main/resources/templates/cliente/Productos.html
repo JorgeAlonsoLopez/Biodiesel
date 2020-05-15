@@ -131,6 +131,7 @@
 
 
       precioFinalIndividual = precioIndividual * $("#cantidad").val();
+      Number(precioFinalIndividual).toFixed(2); 
       $("#precio").html(precioFinalIndividual);
     }
 
