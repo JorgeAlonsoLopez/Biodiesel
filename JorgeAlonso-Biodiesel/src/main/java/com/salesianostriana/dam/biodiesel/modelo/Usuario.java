@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
+import org.springframework.security.core.userdetails.UserDetails;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -16,7 +18,12 @@ import lombok.NoArgsConstructor;
 @Data @NoArgsConstructor
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Usuario {
+public abstract class Usuario implements UserDetails{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6767914261998068491L;
 
 	@Id @GeneratedValue(strategy = GenerationType.TABLE)
 	private Long id;
@@ -30,6 +37,36 @@ public abstract class Usuario {
 		super();
 		this.usuario = usuario;
 		this.contrasenya = contrasenya;
+	}
+	
+	@Override
+	public String getUsername() {
+		return usuario;
+	}
+	
+	@Override
+	public String getPassword() {
+		return contrasenya;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return true;
 	}
 
 	

@@ -1,6 +1,12 @@
 package com.salesianostriana.dam.biodiesel.modelo;
 
+import java.util.Arrays;
+import java.util.Collection;
+
 import javax.persistence.Entity;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -21,6 +27,11 @@ public class Administrador extends Usuario{
 		super(usuario, contrasenya);
 		this.precioTren = precioTren;
 		this.precioBarco = precioBarco;
+	}
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return Arrays.asList(new SimpleGrantedAuthority("ROLE_ADMIN"));
 	}
 
 	

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="~{fragmentos/head::head(titulo='Iniciar sesión')}">
+<meta name="description" content="Área donde se procede al login.">
+</head>
+
+
+<body>
+
+	<div th:replace="~{fragmentos/nav::nav}"></div>
+	<br>
+	<main>
+		<section class="conten mt-5 d-flex align-items-center">
+			<div id="contenInici">
+				<h3 class="text-center mt-2 contenLog">Acceso denegado</h3>
+			</div>
+		</section>
+	</main>
+	<div th:replace="~{fragmentos/footer::footer}"></div>
+
+
+</body>
+
+</html>
