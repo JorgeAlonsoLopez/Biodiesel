@@ -122,20 +122,13 @@
       precioFinalIndividual = 0;
       var precioIndividual = 0;
 
-      $("table tr").each(function () {
-        var hola = 0;
-        if ($(this).children("td:nth-child(1)").html() == $("#nombre").html()) {
-          precioIndividual = $(this).children(":nth-child(2)").hmtl();
-        }
-      });
+      $("tbody tr").each(function () {
+          if ($(this).children("td:nth-child(1)").html() == $("#nombre").val()) {
+            precioIndividual = $(this).children("td:nth-child(2)").html();
+          }
+        });
 
-      if ($("#tablaP tbody").children("tr:nth-child(1)").children("td:nth-child(1)").html() == $("#nombre").val()) {
-        precioIndividual = $("#tablaP tbody").children("tr:nth-child(1)").children("td:nth-child(2)").html();
-      } else if ($("#tablaP tbody").children("tr:nth-child(2)").children("td:nth-child(1)").html() == $("#nombre").val()) {
-        precioIndividual = $("#tablaP tbody").children("tr:nth-child(2)").children("td:nth-child(2)").html();
-      } else if ($("#tablaP tbody").children("tr:nth-child(3)").children("td:nth-child(1)").html() == $("#nombre").val()) {
-        precioIndividual = $("#tablaP tbody").children("tr:nth-child(3)").children("td:nth-child(2)").html();
-      }
+      
 
 
       precioFinalIndividual = precioIndividual * $("#cantidad").val();
