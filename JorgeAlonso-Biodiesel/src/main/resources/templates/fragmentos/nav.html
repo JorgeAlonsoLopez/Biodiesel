@@ -38,16 +38,16 @@
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Acceso</a>
                         <div class="dropdown-menu enlace" aria-labelledby="navbarDropdown">
                             <form th:action="@{/logout}" method="POST" id="logoutForm"></form>
-                            <div>
+                            <div sec:authorize="not isAuthenticated()">
                                 <a class="dropdown-item " href="/login">Iniciar sesión</a>
                                 <a class="dropdown-item " href="/nuevo">Registrarse</a>
                             </div>
-                            <div>
+                            <div sec:authorize="hasRole('ROLE_USER')">
                                 <a class="dropdown-item " href="/cliente/principal">Area de cliente</a>
                                 <a class="dropdown-item "
                                     href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a>
                             </div>
-                            <div>
+                            <div sec:authorize="hasRole('ROLE_ADMIN')">
                                 <a class="dropdown-item " href="/administrador/principal">Area de administrador</a>
                                 <a class="dropdown-item "
                                     href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a>
