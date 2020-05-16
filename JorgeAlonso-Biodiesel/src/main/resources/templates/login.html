@@ -2,7 +2,7 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head th:replace="~{fragmentos/head::head(titulo='Iniciar sesión')}">
-<meta name="description" content="Área donde se procede al login.">
+	<meta name="description" content="Área donde se procede al login.">
 </head>
 
 
@@ -17,20 +17,16 @@
 				<form action="" method="POST" th:action="@{/login}">
 					<div class="row mt-5">
 						<div class="form-group col-sm-12 col-xl-6">
-							<label for=username class="blk">Usuario:</label> <input
-								type="text" class="form-control"
-								placeholder="Inserte el nombre de usuario" id="username"
-								name="username" required>
+							<label for=username class="blk">Usuario:</label> <input type="text" class="form-control"
+								placeholder="Inserte el nombre de usuario" id="username" name="username" required>
 						</div>
 						<div class="form-group col-sm-12 col-xl-6">
-							<label for="password" class="blk">Contraseña:</label> <input
-								type="password" class="form-control"
-								placeholder="Inserte la contraseña" name="password"
-								id="password" required>
+							<label for="password" class="blk">Contraseña:</label> <input type="password"
+								class="form-control" placeholder="Inserte la contraseña" name="password" id="password"
+								required>
 						</div>
 					</div>
-					<button type="submit" class="btn btn-dark botonEnv mt-5"
-						value="Enviar" id="enviar">Enviar</button>
+					<button type="submit" class="btn btn-dark botonEnv mt-5" value="Enviar" id="enviar">Enviar</button>
 				</form>
 			</div>
 		</section>

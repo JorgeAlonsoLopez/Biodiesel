@@ -15,7 +15,7 @@
   <main>
     <section class="row conten mt-5 mb-5 justify-content-around">
       <div class="col-sm-12 col-lg-5 mx-auto">
-      	<div th:unless="${#lists.isEmpty(materiasPrimas)}">
+        <div th:unless="${#lists.isEmpty(materiasPrimas)}">
       		<h2>Materias primas</h2>
         <table class="table table-striped table-bordered table-hover table-responsive-sm" id="tablaMateriaPrima" summary="Tabla con las materias primas">
           <caption>Tabla con las materias primas</caption>
@@ -82,7 +82,7 @@
           </div>
           <div class="col-sm-12 col-lg-4">
             <label for="precio" class="mr-3">Precio (€/Kg)</label>
-            <input type="number" class="form-control" step=".001" placeholder="Inserte el precio" min="0"
+            <input type="number" class="form-control" step=".01" placeholder="Inserte el precio" min="0"
               th:field="*{precio}" id="precio">
           </div>
           <div class="col-sm-12 col-lg-4">

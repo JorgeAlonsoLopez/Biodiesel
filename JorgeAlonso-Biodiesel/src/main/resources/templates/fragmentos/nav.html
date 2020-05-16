@@ -30,25 +30,28 @@
                     </li>
                     <li class="mr-5 ml-4">
                         <a class="navbar-brand" href="/">
-                            <img id="imagenNav" src="../img/logo.png" th:src="@{/img/logo.png}" alt="Logo de la empresa">
+                            <img id="imagenNav" src="../img/logo.png" th:src="@{/img/logo.png}"
+                                alt="Logo de la empresa">
                         </a>
-                    </li> 
+                    </li>
                     <li class="nav-item navLink dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Acceso</a>
                         <div class="dropdown-menu enlace" aria-labelledby="navbarDropdown">
-							<form th:action="@{/logout}" method="POST" id="logoutForm"></form>
+                            <form th:action="@{/logout}" method="POST" id="logoutForm"></form>
                             <div>
-                            	<a class="dropdown-item " href="/login">Iniciar sesión</a>
-                            	<a class="dropdown-item " href="/nuevo" >Registrarse</a>
+                                <a class="dropdown-item " href="/login">Iniciar sesión</a>
+                                <a class="dropdown-item " href="/nuevo">Registrarse</a>
                             </div>
                             <div>
-                           		<a class="dropdown-item " href="/cliente/principal">Area de cliente</a>
-                           		<a class="dropdown-item " href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a>
+                                <a class="dropdown-item " href="/cliente/principal">Area de cliente</a>
+                                <a class="dropdown-item "
+                                    href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a>
                             </div>
                             <div>
-                           		<a class="dropdown-item " href="/administrador/principal">Area de administrador</a>
-                           		<a class="dropdown-item " href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a>
-                            </div>                              
+                                <a class="dropdown-item " href="/administrador/principal">Area de administrador</a>
+                                <a class="dropdown-item "
+                                    href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a>
+                            </div>
                         </div>
                     </li>
                 </ul>

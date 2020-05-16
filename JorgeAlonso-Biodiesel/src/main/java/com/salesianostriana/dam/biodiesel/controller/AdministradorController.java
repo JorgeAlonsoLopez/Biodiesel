@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.salesianostriana.dam.biodiesel.modelo.Cliente;
 import com.salesianostriana.dam.biodiesel.modelo.ClienteFormulario;
 import com.salesianostriana.dam.biodiesel.modelo.FormularioAdminPedido;
+import com.salesianostriana.dam.biodiesel.modelo.Pedido;
 import com.salesianostriana.dam.biodiesel.servicio.AdministradorServicio;
 import com.salesianostriana.dam.biodiesel.servicio.ClienteServicio;
 import com.salesianostriana.dam.biodiesel.servicio.CompuestoServicio;
@@ -70,12 +71,6 @@ public class AdministradorController {
 		return "administrador/PedidosCliente";
 	}
 	
-//	@GetMapping ("/administrador/clientes_pendientes")
-//	public String clientesPendientes (Model model) {
-//		model.addAttribute("listaClientes", servicioClien.clientesPendientes());
-//		return "/administrador/ClientesPendientes";
-//	}
-	
 	@GetMapping ("/administrador/principal")
 	public String clientesTotales(Model model) {
 		model.addAttribute("listaClientes", servicioClien.findAll());
@@ -89,6 +84,9 @@ public class AdministradorController {
 
 		Cliente cliente = servicioClien.findById(id);
 		if (cliente != null) {
+			for(Pedido p: servicioPedido.findListByDni(cliente.getDni())) {
+				servicioPedido.delete(p);
+			}
 			servicioClien.delete(cliente);
 		}
 		return "redirect:/administrador/principal";

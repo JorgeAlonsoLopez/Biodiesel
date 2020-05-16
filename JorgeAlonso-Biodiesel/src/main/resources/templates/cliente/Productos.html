@@ -13,7 +13,7 @@
   <main>
     <section>
       <h1 class="mt-5 mb-5 mx-auto">Productos</h1>
-      
+
       <div th:unless="${#lists.isEmpty(listaProductos)}">
       <form action="#" class="clienteCompr" method="POST" th:action="@{/cliente/productos/submit}"
         th:object="${pedido}">
@@ -123,16 +123,16 @@
       var precioIndividual = 0;
 
       $("tbody tr").each(function () {
-          if ($(this).children("td:nth-child(1)").html() == $("#nombre").val()) {
-            precioIndividual = $(this).children("td:nth-child(2)").html();
-          }
-        });
+        if ($(this).children("td:nth-child(1)").html() == $("#nombre").val()) {
+          precioIndividual = $(this).children("td:nth-child(2)").html();
+        }
+      });
 
-      
+
 
 
       precioFinalIndividual = precioIndividual * $("#cantidad").val();
-      precioFinalIndividual = Number(precioFinalIndividual).toFixed(2); 
+      precioFinalIndividual = Number(precioFinalIndividual).toFixed(2);
       $("#precio").html(precioFinalIndividual);
     }
 
@@ -140,7 +140,7 @@
       var total = 0;
       var coste = ((numDiasT) * (costeTT)) + ((numDiasB) * (costeTB));
       total = parseInt(precioFinalIndividual) + coste;
-      total = Number(total).toFixed(2); 
+      total = Number(total).toFixed(2);
       $("#precioFinal").text(total.toString());
     }
 

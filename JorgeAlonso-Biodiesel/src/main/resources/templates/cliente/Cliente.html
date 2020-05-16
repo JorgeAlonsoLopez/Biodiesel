@@ -116,14 +116,14 @@
 				if (fecha < fecha2) {
 					var enlac = $(this).children("td:eq(4)").children().hide();
 				}
-				
+
 				$(this).children("td:eq(3)").text(Number($(this).children("td:eq(3)").text()).toFixed(2));
-				
+
 			});
-			
-			$('#tablaInfoPedidos tbody tr').each(function () {			
+
+			$('#tablaInfoPedidos tbody tr').each(function () {
 				$(this).children("td:eq(3)").text(Number($(this).children("td:eq(3)").text()).toFixed(2));
-				
+
 			});
 		});
 
@@ -134,22 +134,22 @@
 			comprobarRango();
 		});
 
-		function ocultarSec(id){
+		function ocultarSec(id) {
 			$('#tablaInfoPedidos tbody tr').each(function () {
-				if($(this).children("td:eq(0)").text()==id){
+				if ($(this).children("td:eq(0)").text() == id) {
 					$(this).hide();
 				}
 			});
 		}
-		
-		function mostrarSec(id){
+
+		function mostrarSec(id) {
 			$('#tablaInfoPedidos tbody tr').each(function () {
-				if($(this).children("td:eq(0)").text()==id){
+				if ($(this).children("td:eq(0)").text() == id) {
 					$(this).show();
 				}
 			});
 		}
-		
+
 		function comprobarRango() {
 			var max = parseInt($("#rangoMax").val());
 			var min = parseInt($("#rangoMin").val());
@@ -174,7 +174,7 @@
 					var fecha2 = new Date();
 					if (fecha < fecha2) {
 						ocultarSec($(this).children("td:eq(0)").text());
-						$(this).hide();					
+						$(this).hide();
 					}
 				});
 			} else {
@@ -192,7 +192,7 @@
 		$(function () {
 			$("#tablaPedidosCliente").tablesorter();
 		});
-		
+
 		$(function () {
 			$("#tablaInfoPedidos").tablesorter();
 		});
@@ -214,7 +214,7 @@
 				$(this).find("i").removeClass("fa-arrow-down");
 			}
 		});
-		
+
 		$("#tablaInfoPedidos thead th").click(function () {
 			$("#tablaInfoPedidos thead i").hide();
 			$(this).find("i").show();

@@ -14,7 +14,7 @@
     <section>
       <div class="row conten justify-content-around mx-auto">
         <div class="col-sm-12 col-lg-5 mt-5">
-        <div th:unless="${#lists.isEmpty(listaMateriasPrimas)}" >
+          <div th:unless="${#lists.isEmpty(listaMateriasPrimas)}" >
         	 <h2>Materias primas</h2>
           <table class="table table-bordered table-hover table-responsive-sm mx-auto" id="tablaMateriasPrimas"
             summary="Tabla con el precio de las materias primas por Kg">
@@ -33,7 +33,7 @@
               <tr th:each="producto : ${listaMateriasPrimas}">
                 <td th:text="${producto.nombre}">X</td>
                 <td>
-                  <input th:id="'precio' + ${producto.id}" type="number" class="form-control" step=".001"
+                  <input th:id="'precio' + ${producto.id}" type="number" class="form-control" step=".01"
                     placeholder="Inserte el precio" th:value="${producto.precio}">
                 </td>
                 <td> <button type="button" th:onclick="'actualizarProducto('+${producto.id}+')'"
@@ -67,7 +67,7 @@
               <tr th:each="producto : ${listaProductos}">
                 <td th:text="${producto.nombre}">X</td>
                 <td>
-                  <input th:id="'precio' + ${producto.id}" type="number" class="form-control" step=".001"
+                  <input th:id="'precio' + ${producto.id}" type="number" class="form-control" step=".01"
                     placeholder="Inserte el precio" th:value="${producto.precio}">
                 </td>
                 <td> <button type="button" th:onclick="'actualizarProducto('+${producto.id}+')'"
@@ -101,7 +101,7 @@
             <tbody>
               <tr>
                 <td>Tren</td>
-                <td><input type="number" class="form-control" id="precioT1" min="0" step=".001" th:id="admin1"
+                <td><input type="number" class="form-control" id="precioT1" min="0" step=".01" th:id="admin1"
                     placeholder="Inserte el precio" value="0" th:value="${administrador.precioTren}"></td>
                 <td><button type="button" th:onclick="'actualizarAdmin('+1+')'"
                     class="btn btn-light">Actualizar</button>
@@ -109,7 +109,7 @@
               </tr>
               <tr>
                 <td>Barco</td>
-                <td><input type="number" class="form-control" id="precioT1" min="0" step=".001" th:id="admin2"
+                <td><input type="number" class="form-control" id="precioT1" min="0" step=".01" th:id="admin2"
                     placeholder="Inserte el precio" value="0" th:value="${administrador.precioBarco}"></td>
                 <td><button type="button" th:onclick="'actualizarAdmin('+2+')'"
                     class="btn btn-light">Actualizar</button>
