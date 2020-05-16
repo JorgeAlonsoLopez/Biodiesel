@@ -35,12 +35,39 @@
         </tfoot>
         <tbody>
           <tr th:each="pedido : ${listaPedidos}">
-            <td><a href="#" data-izimodal-open="#modalPedido" th:text="${pedido.id}" th:data-id="${pedido.id}">X</a>
+            <td><a href="#" th:text="${pedido.id}" >X</a>
             </td>
             <td th:text="${pedido.fechaLlegada}">10-07-2023</td>
             <td th:text="${pedido.fechaSalidaTrasnporte}">02-07-2023</td>
             <td th:text="${#numbers.formatDecimal(pedido.precioFinal, 0, 'POINT', 2, 'COMMA')}">341234</td>
             <td><a th:href="@{'/cliente/borrar/'+${pedido.id}}">Cancelar</a></td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="col-sm-12 col-lg-8 mt-5 table table-striped table-bordered table-hover table-responsive-sm"
+        id="tablaInfoPedidos" summary="Tabla con los detalles de los pedidos">
+        <caption>Tabla con los detalles de los pedidos</caption>
+        <thead>
+          <tr>
+            <th>ID pedido<i class="fas fa-arrows-alt-v ml-3"></i></th>
+            <th>Compuesto / Materia prima<i class="fas fa-arrows-alt-v ml-3"></i></th>
+            <th>Cantidad<i class="fas fa-arrows-alt-v ml-3"></i></th>
+            <th>Precio individual(€)<i class="fas fa-arrows-alt-v ml-3"></i></th>
+          </tr>
+        </thead>
+        <tfoot>
+          <td colspan="5" class="mx-auto text-center">Datos propiedad de ©GreenTech Biofuels</td>
+        </tfoot>
+        <tbody>
+          <tr th:each="pedido : ${listaPedidos}">
+            <td><span href="#" th:text="${pedido.id}" >X</span>
+            </td>
+            <td th:each="linea : ${pedido.listaPedidos}">
+            <span th:text="${linea.compuesto.nombre}"></span></td>
+            <td th:each="linea : ${pedido.listaPedidos}">
+            <span th:text="${linea.cantidad}"></span></td>
+            <td th:each="linea : ${pedido.listaPedidos}">
+            <span th:text="${#numbers.formatDecimal(linea.precio, 0, 'POINT', 2, 'COMMA')}"></span></td>
           </tr>
         </tbody>
       </table>
