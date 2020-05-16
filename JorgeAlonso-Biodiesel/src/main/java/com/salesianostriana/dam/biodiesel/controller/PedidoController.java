@@ -1,6 +1,7 @@
 package com.salesianostriana.dam.biodiesel.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.salesianostriana.dam.biodiesel.modelo.Cliente;
 import com.salesianostriana.dam.biodiesel.modelo.Pedido;
 import com.salesianostriana.dam.biodiesel.modelo.PedidoFormulario;
 import com.salesianostriana.dam.biodiesel.servicio.AdministradorServicio;
@@ -48,32 +50,32 @@ public class PedidoController {
 	}
 
 	@GetMapping("/cliente/productos")
-	public String compra(Model model) {
+	public String compra(Model model, @AuthenticationPrincipal Cliente clienteLog) {
 		model.addAttribute("listaProductos", servicioCompue.buscarProductos());
 		model.addAttribute("pedido", new PedidoFormulario());
-		model.addAttribute("cliente", servicioCli.buscarPorDNI("58819681X"));
+		model.addAttribute("cliente", servicioCli.buscarPorDNI(clienteLog.getDni()));
 		model.addAttribute("admin", servicioAdm.findAll().get(num0));
 		return "cliente/Productos";
 	}
 
 	@PostMapping("/cliente/productos/submit")
-	public String compraForm(@ModelAttribute("pedido") PedidoFormulario pedido) {
-		servicio.hacerPedido(servicioAdm.findAll().get(num0), pedido, servicioCli.buscarPorDNI("58819681X"), servicioCompue);
+	public String compraForm(@ModelAttribute("pedido") PedidoFormulario pedido, @AuthenticationPrincipal Cliente clienteLog) {
+		servicio.hacerPedido(servicioAdm.findAll().get(num0), pedido, servicioCli.buscarPorDNI(clienteLog.getDni()), servicioCompue);
 		return "redirect:/cliente/principal";
 	}
 
 	@GetMapping("/cliente/materias_primas")
-	public String venta(Model model) {
+	public String venta(Model model, @AuthenticationPrincipal Cliente clienteLog) {
 		model.addAttribute("listaMaterias", servicioCompue.buscarMateriasPrimas());
 		model.addAttribute("pedido", new PedidoFormulario());
-		model.addAttribute("cliente", servicioCli.buscarPorDNI("58819681X"));
+		model.addAttribute("cliente", servicioCli.buscarPorDNI(clienteLog.getDni()));
 		model.addAttribute("admin", servicioAdm.findAll().get(num0));
 		return "cliente/MateriasPrimas";
 	}
 	
 	@PostMapping("/cliente/materias_primas/submit")
-	public String ventaForm(@ModelAttribute("pedido") PedidoFormulario pedido) {
-		servicio.hacerPedido(servicioAdm.findAll().get(num0), pedido, servicioCli.buscarPorDNI("58819681X"), servicioCompue);
+	public String ventaForm(@ModelAttribute("pedido") PedidoFormulario pedido, @AuthenticationPrincipal Cliente clienteLog) {
+		servicio.hacerPedido(servicioAdm.findAll().get(num0), pedido, servicioCli.buscarPorDNI(clienteLog.getDni()), servicioCompue);
 		return "redirect:/cliente/principal";
 	}
 

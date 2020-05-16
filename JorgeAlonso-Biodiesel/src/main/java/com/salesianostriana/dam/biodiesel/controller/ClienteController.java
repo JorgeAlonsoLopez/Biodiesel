@@ -1,6 +1,7 @@
 package com.salesianostriana.dam.biodiesel.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,17 +28,17 @@ public class ClienteController {
 	private PedidoServicio servicioPedido;
 	
 	@GetMapping("/cliente/principal")
-	public String cliente(Model model) {
-		model.addAttribute("listaPedidos", servicioPedido.findListByDni("58819681X"));
-		model.addAttribute("cliente",servicio.buscarPorDNI("58819681X"));
+	public String cliente(Model model, @AuthenticationPrincipal Cliente clienteLog) {
+		model.addAttribute("listaPedidos", servicioPedido.findListByDni(clienteLog.getDni()));
+		model.addAttribute("cliente",servicio.buscarPorDNI(clienteLog.getDni()));
 		return "cliente/Cliente";
 	}
 	
 	
 	@GetMapping ("/cliente/ajustes")
-	public String ajustes ( Model model) {
-		model.addAttribute("clienteFrom", servicio.cambiarDatosAFalso(servicio.buscarPorDNI("58819681X")));
-		model.addAttribute("cliente", servicio.buscarPorDNI("58819681X"));
+	public String ajustes ( Model model, @AuthenticationPrincipal Cliente clienteLog) {
+		model.addAttribute("clienteFrom", servicio.cambiarDatosAFalso(servicio.buscarPorDNI(clienteLog.getDni())));
+		model.addAttribute("cliente", servicio.buscarPorDNI(clienteLog.getDni()));
 		model.addAttribute("listaPais", servicioPais.findAll());
 		return "cliente/Ajustes";
 	}
