@@ -14,7 +14,8 @@
     <section>
       <div class="row conten justify-content-around mx-auto">
         <div class="col-sm-12 col-lg-5 mt-5">
-          <h2>Materias primas</h2>
+        <div th:unless="${#lists.isEmpty(listaMateriasPrimas)}" >
+        	 <h2>Materias primas</h2>
           <table class="table table-bordered table-hover table-responsive-sm mx-auto" id="tablaMateriasPrimas"
             summary="Tabla con el precio de las materias primas por Kg">
             <caption>Tabla el precio del transporte por día</caption>
@@ -42,8 +43,13 @@
             </tbody>
           </table>
         </div>
+        <div th:if="${#lists.isEmpty(listaMateriasPrimas)}">
+        	<p class="mt-5 mx-auto textHist">Actualmente no hay ninguna materia prima disponible.</p>
+        </div>
+        </div>
         <div class="col-sm-12 col-lg-5 mt-5">
-          <h2>Productos</h2>
+        	<div th:unless="${#lists.isEmpty(listaProductos)}">
+        		<h2>Productos</h2>
           <table class="table table-bordered table-hover table-responsive-sm mx-auto" id="tablaProductos"
             summary="Tabla con el precio de los productos pot Kg">
             <caption>Tabla el precio del transporte por día</caption>
@@ -70,6 +76,10 @@
               </tr>
             </tbody>
           </table>
+        	</div>
+        	<div th:if="${#lists.isEmpty(listaProductos)}">
+	        	<p class="mt-5 mx-auto textHist">Actualmente no hay ningún producto disponible.</p>
+	        </div>
         </div>
       </div>
       <div class="row">

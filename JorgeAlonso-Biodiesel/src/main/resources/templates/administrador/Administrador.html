@@ -17,8 +17,8 @@
       <a role="button" class="btn botonContenido col-sm-10 col-lg-3" href="/administrador/clientes_pendientes">Aceptar
         nuevos clientes</a> -->
     </section>
-    <section>
-      <form action="" method="">
+    <section th:unless="${#lists.isEmpty(listaClientes)}">
+      <div>
         <div class="row mx-auto text-center justify-content-center" id="formulario">
           <input type="text" placeholder="Inserte el apellido del cliente a buscar"
             class="form-control col-sm-10 col-lg-3 mr-lg-5 mt-3" id="nombreApell">
@@ -31,9 +31,9 @@
             <label for="todo" class="mr-4">Todos</label>
           </div>
         </div>
-      </form>
+      </div>
     </section>
-    <section>
+    <section th:unless="${#lists.isEmpty(listaClientes)}">
       <table class="col-sm-12 col-lg-9 table table-striped table-bordered table-hover table-responsive-sm mx-auto mt-5"
         id="tablaClientes"  summary="Tabla con la información general de los clientes">
         <caption>Tabla con la información general de los clientes</caption>
@@ -63,6 +63,9 @@
         </tbody>
       </table>
     </section>
+    <div th:if="${#lists.isEmpty(listaClientes)}">
+      	<p class="mt-5 mx-auto textHist">Actualmente no hay ningún cliente registrado.</p>
+      </div>
   </main>
   <div th:replace="~{fragmentos/footer::footer}"></div>
 
