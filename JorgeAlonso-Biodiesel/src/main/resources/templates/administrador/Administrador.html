@@ -8,7 +8,7 @@
 <body>
 
   <div th:replace="~{fragmentos/nav::nav}"></div>
-  <main>
+  <main class="conten container-fluid">
     <section class="row mx-auto text-center justify-content-around mt-5 mb-4">
       <a role="button" class="btn botonContenido col-sm-10 col-lg-3" href="/administrador/gestionar_productos">Gestionar
         productos</a>
@@ -19,7 +19,7 @@
     <section th:unless="${#lists.isEmpty(listaClientes)}">
       <div>
         <div class="row mx-auto text-center justify-content-center" id="formulario">
-          <input type="text" placeholder="Inserte el apellido del cliente a buscar"
+          <input type="text" placeholder="Inserte el apellido o nombre del cliente a buscar"
             class="form-control col-sm-10 col-lg-3 mr-lg-5 mt-3" id="nombreApell">
           <div class="col-sm-10 col-lg-3 mt-4">
             <input type="radio" id="alta" name="estado" value="alta">
@@ -35,7 +35,7 @@
     <section th:unless="${#lists.isEmpty(listaClientes)}">
       <table class="col-sm-12 col-lg-9 table table-striped table-bordered table-hover table-responsive-sm mx-auto mt-5"
         id="tablaClientes"  summary="Tabla con la información general de los clientes">
-        <caption>Tabla con la información general de los clientes</caption>
+        <caption class="text-center">Tabla con la información general de los clientes</caption>
         <thead>
           <tr>
             <th>Apellido, nombre<i class="fas fa-arrows-alt-v ml-3"></i></th>

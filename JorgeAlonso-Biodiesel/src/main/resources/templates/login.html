@@ -7,13 +7,12 @@
 
 
 <body>
-
 	<div th:replace="~{fragmentos/nav::nav}"></div>
 	<br>
-	<main>
+	<main class="conten container-fluid">
 		<section class="conten mt-5 d-flex align-items-center">
 			<div id="contenInici">
-				<h3 class="text-center mt-2 contenLog">Inicio de sesión</h3>
+				<h3 class="text-center mt-2 contenLog">Iniciar sesión</h3>
 				<form action="" method="POST" th:action="@{/login}">
 					<div class="row mt-5">
 						<div class="form-group col-sm-12 col-xl-6">
@@ -26,7 +25,7 @@
 								required>
 						</div>
 					</div>
-					<button type="submit" class="btn btn-dark botonEnv mt-5" value="Enviar" id="enviar">Enviar</button>
+					<button type="submit" class="btn btn-dark botonEnv mt-5" value="Enviar" id="enviar">Acceder</button>
 				</form>
 			</div>
 		</section>

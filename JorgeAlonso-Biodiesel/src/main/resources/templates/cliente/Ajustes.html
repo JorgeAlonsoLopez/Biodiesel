@@ -11,7 +11,7 @@
     <div th:replace="~{fragmentos/nav::nav}"></div>
 
     <br>
-    <main>
+    <main class="conten container-fluid">
         <section class="mt-5 mb-5">
             <form action="" method="POST" onsubmit="return validar();" th:action="@{/cliente/ajustes/submit}"
                 th:object="${clienteFrom}">
@@ -365,8 +365,7 @@
         //Comprueba que todo están verificados los campos en el registro
         function validar() {
             if (comprobarEdad() && comprobarContrasena() && comprobarCorreo() && comprobarTelefono()
-                && comprobarNombre() && comprobarApellido() && comprobarUsuaio() && comprobarDireccion() && comprobarPais()) {
-                alert("OK");
+                && comprobarNombre() && comprobarApellido() && comprobarDireccion() && comprobarPais()) {
                 return true;
             } else {
                 return false;

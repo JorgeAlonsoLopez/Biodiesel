@@ -11,12 +11,12 @@
   <div th:replace="~{fragmentos/nav::nav}"></div>
 
   <br>
-  <main>
+  <main class="conten container-fluid">
     <section th:unless="${#lists.isEmpty(listaClientes)}">
       <h1 class="mt-5">Clientes pendientes</h1>
       <table class="col-sm-12 col-lg-9 table table-striped table-bordered table-hover table-responsive-sm mx-auto mt-5"
         id="tablaClientes" summary="Tabla con los cliente pendientes">
-        <caption>Tabla con los cliente pendientes</caption>
+        <caption class="text-center">Tabla con los cliente pendientes</caption>
         <thead>
           <tr>
             <th>Apellido, nombre<i class="fas fa-arrows-alt-v ml-3"></i></th>
@@ -40,9 +40,15 @@
         </tbody>
       </table>
     </section>
-    <div th:if="${#lists.isEmpty(listaClientes)}">
-      	<p class="mt-5 mx-auto textHist">Actualmente no hay ningún cliente en espera.</p>
+
+    <div class="row mx-auto justify-content-center" th:if="${#lists.isEmpty(listaClientes)}">
+      <div class="col-lg-4 col-sm-2"></div>
+      <div class="col-sm-8 col-lg-4">
+        <p class="textHist text-center">Actualmente no hay ningún cliente en espera.</p>
       </div>
+      <div class="col-lg-4 col-sm-2"></div>
+    </div>
+    
   </main>
   <div th:replace="~{fragmentos/footer::footer}"></div>
 

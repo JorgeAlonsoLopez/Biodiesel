@@ -38,7 +38,7 @@ public class JorgeAlonsoBiodieselApplication {
 			public void run(String... args) throws Exception {
 
 				Random rdn = new Random(System.nanoTime());
-				int aleatorio, aleatorio2, rand, num0=0, num2 = 2, num11 = 11, num40 = 40, max = 300000, min = 10000;
+				int aleatorio, aleatorio2, rand, num0=0, num2 = 2, num11 = 11, num25 = 25, max = 300000, min = 10000;
 				String tipo;
 
 				List<Compuesto> listaCompuestos = new ArrayList<Compuesto>();
@@ -81,7 +81,7 @@ public class JorgeAlonsoBiodieselApplication {
 				clienteTest.setValido(true);
 				clienteServicio.save(clienteTest);
 
-				for (int i = 0; i < num40; i++) {
+				for (int i = 0; i < num25; i++) {
 					aleatorio = rdn.nextInt(clienteServicio.clientesAceptados().size());
 					aleatorio2 = rdn.nextInt(compuestoServicio.findAll().size());
 

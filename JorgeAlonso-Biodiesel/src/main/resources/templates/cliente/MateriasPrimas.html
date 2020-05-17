@@ -9,7 +9,7 @@
 
   <div th:replace="~{fragmentos/nav::nav}"></div>
   <br>
-  <main>
+  <main class="conten container-fluid">
     <section>
       <h1 class="mt-5 mb-5 mx-auto">Materias primas</h1>
 
@@ -18,7 +18,7 @@
         th:object="${pedido}">
 
 	        <table class="tabla table-striped table-bordered table-hover table-responsive-sm" id="tablaP" summary="Tabla con las materias primas">
-	          <caption>Tabla con las materias primas</caption>
+	          <caption class="text-center">Tabla con las materias primas</caption>
 	          <thead>
 	            <tr>
 	              <th>Nombre</th>
@@ -75,7 +75,7 @@
           <span>Precio final </span><span id="precioFinal" class="ml-2 mr-1">X</span><span> €</span>
         </div>
         <div class="mx-auto mt-5 mb-5">
-          <button type="submit" class="btn btn-success clienteCompr" value="Enviar" id="enviar">Crear pedido</button>
+          <button type="submit" class="btn btn-success clienteCompr" value="Enviar" id="enviar">Realizar compra</button>
         </div>
       </form>
         </div>

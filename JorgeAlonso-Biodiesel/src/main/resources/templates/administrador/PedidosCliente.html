@@ -10,22 +10,21 @@
 	<div th:replace="~{fragmentos/nav::nav}"></div>
 
 	<br>
-	<main>
+	<main class="conten container-fluid">
 		<section class="row">
-			<h1 class="mt-5 mb-5 mx-auto" th:text="${cliente.apellido} + ', ' + ${cliente.nombre}">X</h1>
+			<h1 class="mt-5 mb-5 mx-auto" th:text="${cliente.nombre} + ' ' + ${cliente.apellido}">X</h1>
 		</section>
 		<section class="row justify-content-around mt-5" th:unless="${#lists.isEmpty(listaPedidos)}">
 			<div class="col-sm-12 col-lg-9">
 				<table class="table table-striped table-bordered table-hover table-responsive-sm"
 					id="tablaPedidosCliente" summary="Tabla con los pedidos del cliente">
-					<caption>Tabla con los pedidos del cliente</caption>
+					<caption class="text-center">Tabla con los pedidos del cliente</caption>
 					<thead>
 						<tr>
 							<th>ID pedido<i class="fas fa-arrows-alt-v ml-3"></i></th>
 							<th data-sorter="false">Fecha de entrega/envio</th>
 							<th data-sorter="false">Fecha de salida</th>
 							<th>Precio(€)<i class="fas fa-arrows-alt-v ml-3"></i></th>
-							<th></th>
 						</tr>
 					</thead>
 					<tfoot>
@@ -38,14 +37,13 @@
 							<td th:text="${pedido.fechaLlegada}">10-07-2023</td>
 							<td th:text="${pedido.fechaSalidaTrasnporte}">02-07-2023</td>
 							<td th:text="${pedido.precioFinal}">341234</td>
-							<td><a th:href="@{'/cliente/borrar/'+${pedido.id}}">Cancelar</a></td>
 						</tr>
 					</tbody>
 				</table>
 				<table class=" mt-5 table table-striped table-bordered table-hover table-responsive-sm"
 					id="tablaInfoPedidos"
 					summary="Tabla con los detalles de los pedidos">
-					<caption>Tabla con los detalles de los pedidos</caption>
+					<caption class="text-center">Tabla con los detalles de los pedidos</caption>
 					<thead>
 						<tr>
 							<th>ID pedido<i class="fas fa-arrows-alt-v ml-3"></i></th>
@@ -97,9 +95,9 @@
 				</ul>
 			</aside>
 		</section>
-		<div th:if="${#lists.isEmpty(listaPedidos)}">
-        	<p class="mt-5 auto textHist">Actualmente no se ha realizado ningún pedido por parte del cliente.</p>
-        </div>
+		<div class="mx-auto mt-5" th:if="${#lists.isEmpty(listaClientes)}">
+        <p class="textHist text-center">Actualmente no hay ningún pedido para este cliente.</p>
+    </div>
   </main>
   <div th:replace="~{fragmentos/footer::footer}"></div>
 

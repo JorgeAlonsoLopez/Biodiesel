@@ -10,15 +10,15 @@
   <div th:replace="~{fragmentos/nav::nav}"></div>
 
   <br>
-  <main>
+  <main class="conten container-fluid">
     <section>
       <div class="row conten justify-content-around mx-auto">
         <div class="col-sm-12 col-lg-5 mt-5">
           <div th:unless="${#lists.isEmpty(listaMateriasPrimas)}" >
         	 <h2>Materias primas</h2>
-          <table class="table table-bordered table-hover table-responsive-sm mx-auto" id="tablaMateriasPrimas"
+          <table class="table table-striped table-bordered table-hover table-responsive-sm mx-auto" id="tablaMateriasPrimas"
             summary="Tabla con el precio de las materias primas por Kg">
-            <caption>Tabla el precio del transporte por día</caption>
+            <caption class="text-center">Tabla del precio de las materias primas por Kg</caption>
             <thead>
               <tr>
                 <th>Nombre</th>
@@ -50,9 +50,9 @@
         <div class="col-sm-12 col-lg-5 mt-5">
         	<div th:unless="${#lists.isEmpty(listaProductos)}">
         		<h2>Productos</h2>
-          <table class="table table-bordered table-hover table-responsive-sm mx-auto" id="tablaProductos"
+          <table class="table table-striped table-bordered table-hover table-responsive-sm mx-auto" id="tablaProductos"
             summary="Tabla con el precio de los productos pot Kg">
-            <caption>Tabla el precio del transporte por día</caption>
+            <caption class="text-center">Tabla del precio de los productos por Kg</caption>
             <thead>
               <tr>
                 <th>Nombre</th>
@@ -85,9 +85,9 @@
       <div class="row">
         <div class="conten mx-auto col-sm-12 col-lg-5 mt-5">
           <h2 class="mx-auto">Transporte</h2>
-          <table class="table table-bordered table-hover table-responsive-sm mx-auto" id="tablaPrecios"
+          <table class="table table-bordered table-striped table-hover table-responsive-sm mx-auto" id="tablaPrecios"
             summary="Tabla el precio del transporte por día">
-            <caption>Tabla el precio del transporte por día</caption>
+            <caption class="text-center">Tabla el precio del transporte por día</caption>
             <thead>
               <tr>
                 <th>Nombre</th>
