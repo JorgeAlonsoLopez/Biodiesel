@@ -1,6 +1,7 @@
 package com.salesianostriana.dam.biodiesel.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -55,7 +56,6 @@ public class PublicController {
 
 	@GetMapping({ "/", "/index" })
 	public String index(Model model) {
-
 		return "/index";
 	}
 
