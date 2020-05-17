@@ -31,6 +31,8 @@ public class Cliente extends Usuario{
 	
 	private boolean alta;
 	
+	private boolean valido;
+	
 	private LocalDate fechaNacimiento;
 	
 	@ManyToOne
@@ -64,9 +66,16 @@ public class Cliente extends Usuario{
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
+		String role = "ROLE_";
+		if (valido) {
+			role += "USER";
+		} else {
+			role += "PENDT";
+		}
+		return Arrays.asList(new SimpleGrantedAuthority(role));
 	}
 	
 	

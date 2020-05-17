@@ -12,7 +12,7 @@
 
   <br>
   <main>
-    <section>
+    <section th:unless="${#lists.isEmpty(listaClientes)}">
       <h1 class="mt-5">Clientes pendientes</h1>
       <table class="col-sm-12 col-lg-9 table table-striped table-bordered table-hover table-responsive-sm mx-auto mt-5"
         id="tablaClientes" summary="Tabla con los cliente pendientes">
@@ -40,6 +40,9 @@
         </tbody>
       </table>
     </section>
+    <div th:if="${#lists.isEmpty(listaClientes)}">
+      	<p class="mt-5 mx-auto textHist">Actualmente no hay ningún cliente en espera.</p>
+      </div>
   </main>
   <div th:replace="~{fragmentos/footer::footer}"></div>
 

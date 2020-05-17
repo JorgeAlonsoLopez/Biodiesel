@@ -40,6 +40,7 @@ public class PublicController {
 		if (servicio.buscarPorDNI(clienteFinal.getDni()) == null) {
 			if (servicioUsur.buscarPorUsuario(clienteFinal.getUsuario()).orElse(null) == null) {
 				clienteFinal.setContrasenya(passwordEncoder.encode(clienteFinal.getContrasenya()));
+				clienteFinal.setValido(false);
 				servicio.save(clienteFinal);
 				return "redirect:/index";
 			} else {

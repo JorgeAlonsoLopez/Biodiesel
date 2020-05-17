@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="~{fragmentos/head::head(titulo='Iniciar sesión')}">
+	<meta name="description" content="Área donde se procede al login.">
+</head>
+
+
+<body>
+
+
+	<br>
+	<main>
+		<section class="conten mt-5 d-flex align-items-center">
+			<div id="contenInici">
+				<h2 class="text-center mt-2 contenLog">Acceso denegado</h2>
+				<p class="text-center mt-3 contenLog">Tiene que esperar hasta que el administrador le de acceso.</p>
+				<form th:action="@{/logout}" method="POST" id="logoutForm"></form>
+				<div class=" row justify-content-center mt-5">
+					<a role="button" class="btn botonContenido col-sm-12 col-lg-4"
+						href="javascript:document.getElementById('logoutForm').submit()">Volver al inicio</a>
+				</div>
+			</div>
+		</section>
+	</main>
+	<div th:replace="~{fragmentos/footer::footer}"></div>
+
+
+</body>
+
+</html>

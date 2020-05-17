@@ -38,7 +38,7 @@ public class JorgeAlonsoBiodieselApplication {
 			public void run(String... args) throws Exception {
 
 				Random rdn = new Random(System.nanoTime());
-				int aleatorio, aleatorio2, rand, num2 = 2, num11 = 11, num60 = 60, max = 300000, min = 10000;
+				int aleatorio, aleatorio2, rand, num0=0, num2 = 2, num11 = 11, num40 = 40, max = 300000, min = 10000;
 				String tipo;
 
 				List<Compuesto> listaCompuestos = new ArrayList<Compuesto>();
@@ -64,6 +64,12 @@ public class JorgeAlonsoBiodieselApplication {
 					c.setContrasenya(passwordEncoder.encode(c.getContrasenya()));
 					aleatorio = rdn.nextInt(paisServicio.findAll().size());
 					c.setPais(paisServicio.findAll().get(aleatorio));
+					if(aleatorio%num2!=num0) {
+						c.setValido(true);
+					}else {
+						c.setValido(false);
+					}
+					
 					clienteServicio.save(c);
 				}
 
@@ -72,10 +78,11 @@ public class JorgeAlonsoBiodieselApplication {
 						"58819681X", true, clienteServicio.createRandomDate(1960, 2000));
 				clienteTest.setContrasenya(passwordEncoder.encode(clienteTest.getContrasenya()));
 				clienteTest.setPais(paisServicio.findAll().get(num11));
+				clienteTest.setValido(true);
 				clienteServicio.save(clienteTest);
 
-				for (int i = 0; i < num60; i++) {
-					aleatorio = rdn.nextInt(clienteServicio.findAll().size());
+				for (int i = 0; i < num40; i++) {
+					aleatorio = rdn.nextInt(clienteServicio.clientesAceptados().size());
 					aleatorio2 = rdn.nextInt(compuestoServicio.findAll().size());
 
 					LocalDate fecha = clienteServicio.createRandomDate(2017, 2021);
@@ -84,7 +91,7 @@ public class JorgeAlonsoBiodieselApplication {
 							(compuestoServicio.findAll().get(aleatorio2).getNombre()), rdn.nextInt(max - min) + min,
 							fecha);
 
-					pedidoServicio.hacerPedido(admin, PedidoF, clienteServicio.findAll().get(aleatorio),
+					pedidoServicio.hacerPedido(admin, PedidoF, clienteServicio.clientesAceptados().get(aleatorio),
 							compuestoServicio);
 				}
 

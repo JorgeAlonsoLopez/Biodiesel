@@ -23,7 +23,25 @@ public class ClienteServicio extends BaseService<Cliente, Long, ClienteRepositor
 		super(repo);
 	}
 	
+	public List<Cliente> clientesAceptados() {
+		List<Cliente> lista = new ArrayList<Cliente>();
+		for(Cliente c: this.findAll()) {
+			if(c.isValido()) {
+				lista.add(c);
+			}
+		}
+		return lista;
+	}
 	
+	public List<Cliente> clientesPendientes() {
+		List<Cliente> lista = new ArrayList<Cliente>();
+		for(Cliente c: this.findAll()) {
+			if(!c.isValido()) {
+				lista.add(c);
+			}
+		}
+		return lista;
+	}
 	
 
 	public void cancelarPedido(long id, PedidoServicio servicio) {
