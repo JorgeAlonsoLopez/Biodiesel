@@ -1,4 +1,4 @@
-package com.salesianostriana.dam.biodiesel.modelo;
+package com.salesianostriana.dam.biodiesel.modelo.formulario;
 
 import java.time.LocalDate;
 

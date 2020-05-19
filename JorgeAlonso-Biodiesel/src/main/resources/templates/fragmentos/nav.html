@@ -36,25 +36,39 @@
 							alt="Logo de la empresa">
 					</a></li>
 					<li class="nav-item navLink dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Acceso</a>
-                        <div class="dropdown-menu enlace" aria-labelledby="navbarDropdown">
-                            <form th:action="@{/logout}" method="POST" id="logoutForm"></form>
-                            <div sec:authorize="not isAuthenticated()">
-                                <a class="dropdown-item " href="/login">Iniciar sesión</a>
-                                <a class="dropdown-item " href="/nuevo">Registrarse</a>
-                            </div>
-                            <div sec:authorize="hasRole('ROLE_USER')">
-                                <a class="dropdown-item " href="/cliente/principal">Area de operación</a>
-                                <a class="dropdown-item "
-                                    href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a>
-                            </div>
-                            <div sec:authorize="hasRole('ROLE_ADMIN')">
-                                <a class="dropdown-item " href="/administrador/principal">Area de operación</a>
-                                <a class="dropdown-item "
-                                    href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a>
-                            </div>
-                        </div>
-                    </li>
+						<form th:action="@{/logout}" method="POST" id="logoutForm"></form>
+						<div sec:authorize="not isAuthenticated()">
+							<a href="#" class="nav-link dropdown-toggle"
+								data-toggle="dropdown">Acceso</a>
+							<div class="dropdown-menu enlace"
+								aria-labelledby="navbarDropdown">
+								<a class="dropdown-item " href="/login">Iniciar sesión</a> <a
+									class="dropdown-item " href="/nuevo">Registrarse</a>
+							</div>
+						</div>
+						<div sec:authorize="hasRole('ROLE_USER')">
+							<a href="#" class="nav-link dropdown-toggle"
+								data-toggle="dropdown" th:text="${cliente.nombre} + ' ' + ${cliente.apellido}">Acceso</a>
+							<div class="dropdown-menu enlace"
+								aria-labelledby="navbarDropdown">
+								<a class="dropdown-item " href="/cliente/principal">Area de
+									operación</a> <a class="dropdown-item "
+									href="javascript:document.getElementById('logoutForm').submit()">Cerrar
+									sesión</a>
+							</div>
+						</div>
+						<div sec:authorize="hasRole('ROLE_ADMIN')">
+							<a href="#" class="nav-link dropdown-toggle"
+								data-toggle="dropdown">Administrador</a>
+							<div class="dropdown-menu enlace"
+								aria-labelledby="navbarDropdown">
+								<a class="dropdown-item " href="/administrador/principal">Area
+									de operación</a> <a class="dropdown-item "
+									href="javascript:document.getElementById('logoutForm').submit()">Cerrar
+									sesión</a>
+							</div>
+						</div> 
+					</li>
 				</ul>
 			</div>
 		</nav>

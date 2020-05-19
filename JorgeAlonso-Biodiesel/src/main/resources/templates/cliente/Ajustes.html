@@ -144,6 +144,19 @@
     <script>
         var numero1 = 0;
         var numero2 = 0;
+        
+        $( document ).ready(function() {
+        	comprobarContrasena($("#pwd1"));
+        	comprobarContrasena($("#pwd2"));
+        	comprobarPais();
+        	 comprobarTelefono();
+        	 comprobarEdad();
+        	 comprobarCorreo();
+        	 comprobarDireccion();
+        	 comprobarApellido();
+        	 comprobarNombre();
+        });
+        
         //Comprueba cada elemento cuando se retira el ratón
         window.onload = function () {
             $("#nombre").blur(function (event) {
@@ -173,7 +186,7 @@
             $("#pais").blur(function (event) {
                 comprobarPais();
             });
-        }
+         }
 
         function comprobarNombre() {
             if ($("#nombre").val().length === 0) {
@@ -364,8 +377,9 @@
 
         //Comprueba que todo están verificados los campos en el registro
         function validar() {
-            if (comprobarEdad() && comprobarContrasena() && comprobarCorreo() && comprobarTelefono()
-                && comprobarNombre() && comprobarApellido() && comprobarDireccion() && comprobarPais()) {
+            if (comprobarEdad() &&
+                    comprobarContrasena() && comprobarCorreo() && comprobarTelefono()
+                    && comprobarNombre() && comprobarApellido() && comprobarUsuaio() && comprobarDireccion() && comprobarPais()) {
                 return true;
             } else {
                 return false;

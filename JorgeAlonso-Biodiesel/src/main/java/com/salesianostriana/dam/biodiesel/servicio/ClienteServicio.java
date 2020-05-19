@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 
 import com.salesianostriana.dam.biodiesel.modelo.Cliente;
-import com.salesianostriana.dam.biodiesel.modelo.ClienteFormulario;
+import com.salesianostriana.dam.biodiesel.modelo.formulario.ClienteFormulario;
 import com.salesianostriana.dam.biodiesel.repositorio.ClienteRepository;
 import com.salesianostriana.dam.biodiesel.servicio.base.BaseService;
 

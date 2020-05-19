@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.salesianostriana.dam.biodiesel.modelo.Cliente;
 import com.salesianostriana.dam.biodiesel.modelo.Pedido;
-import com.salesianostriana.dam.biodiesel.modelo.PedidoFormulario;
+import com.salesianostriana.dam.biodiesel.modelo.formulario.PedidoFormulario;
 import com.salesianostriana.dam.biodiesel.servicio.AdministradorServicio;
 import com.salesianostriana.dam.biodiesel.servicio.ClienteServicio;
 import com.salesianostriana.dam.biodiesel.servicio.CompuestoServicio;

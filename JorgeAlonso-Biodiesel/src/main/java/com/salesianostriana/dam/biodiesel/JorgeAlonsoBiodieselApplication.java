@@ -15,7 +15,7 @@ import com.salesianostriana.dam.biodiesel.modelo.Administrador;
 import com.salesianostriana.dam.biodiesel.modelo.Cliente;
 import com.salesianostriana.dam.biodiesel.modelo.Compuesto;
 import com.salesianostriana.dam.biodiesel.modelo.Pais;
-import com.salesianostriana.dam.biodiesel.modelo.PedidoFormulario;
+import com.salesianostriana.dam.biodiesel.modelo.formulario.PedidoFormulario;
 import com.salesianostriana.dam.biodiesel.servicio.AdministradorServicio;
 import com.salesianostriana.dam.biodiesel.servicio.ClienteServicio;
 import com.salesianostriana.dam.biodiesel.servicio.CompuestoServicio;
@@ -38,9 +38,15 @@ public class JorgeAlonsoBiodieselApplication {
 			public void run(String... args) throws Exception {
 
 				Random rdn = new Random(System.nanoTime());
-				int aleatorio, aleatorio2, rand, num0=0, num2 = 2, num11 = 11, num25 = 25, max = 300000, min = 10000;
+				int aleatorio, aleatorio2, rand, num0=0, num2 = 2, num11 = 11, num25 = 25, max = 300, min = 10, mil=1000;
 				String tipo;
 
+				/*
+				 * Primero vamos a generar los datos necesarios para poder empezar a trabajar con la aplicación.
+				 * Para los usuarios tendremos que cifrar las contraseñas y se les asignará un país de forma aleatoria.
+				 * Para la asignación de pedidos, todos los valores se generan de forma aleatoria.
+				 */
+				
 				List<Compuesto> listaCompuestos = new ArrayList<Compuesto>();
 				listaCompuestos.add(new Compuesto("Biodiesel", "compra", 0.86, true));
 				listaCompuestos.add(new Compuesto("Aceite de cogeneración", "compra", 0.34, true));
@@ -88,7 +94,7 @@ public class JorgeAlonsoBiodieselApplication {
 					LocalDate fecha = clienteServicio.createRandomDate(2017, 2021);
 
 					PedidoFormulario PedidoF = new PedidoFormulario(
-							(compuestoServicio.findAll().get(aleatorio2).getNombre()), rdn.nextInt(max - min) + min,
+							(compuestoServicio.findAll().get(aleatorio2).getNombre()), (rdn.nextInt(max - min) + min) * mil,
 							fecha);
 
 					pedidoServicio.hacerPedido(admin, PedidoF, clienteServicio.clientesAceptados().get(aleatorio),

@@ -11,7 +11,7 @@ import com.salesianostriana.dam.biodiesel.modelo.Administrador;
 import com.salesianostriana.dam.biodiesel.modelo.Cliente;
 import com.salesianostriana.dam.biodiesel.modelo.LineaPedido;
 import com.salesianostriana.dam.biodiesel.modelo.Pedido;
-import com.salesianostriana.dam.biodiesel.modelo.PedidoFormulario;
+import com.salesianostriana.dam.biodiesel.modelo.formulario.PedidoFormulario;
 import com.salesianostriana.dam.biodiesel.repositorio.PedidoRepository;
 import com.salesianostriana.dam.biodiesel.servicio.base.BaseService;
 

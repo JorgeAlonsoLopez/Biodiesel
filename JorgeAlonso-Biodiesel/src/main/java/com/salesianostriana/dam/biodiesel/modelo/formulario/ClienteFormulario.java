@@ -1,7 +1,9 @@
-package com.salesianostriana.dam.biodiesel.modelo;
+package com.salesianostriana.dam.biodiesel.modelo.formulario;
 
 
 import javax.persistence.ManyToOne;
+
+import com.salesianostriana.dam.biodiesel.modelo.Pais;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
