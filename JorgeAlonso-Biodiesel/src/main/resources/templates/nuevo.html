@@ -221,12 +221,12 @@
 			$("#email").blur(function(event) {
 				comprobarCorreo();
 			});
-			$("#pwd2").blur(function(event) {
-				comprobarContrasena($(this));
-			});
-			$("#pwd1").blur(function(event) {
-				comprobarContrasena($(this));
-			});
+			$("#pwd1").blur(function (event) {
+                comprobarContrasenas();
+            });
+            $("#pwd2").blur(function (event) {
+                comprobarContrasenas();
+            });
 			$("#fecha").blur(function(event) {
 				comprobarEdad();
 			});
@@ -407,6 +407,15 @@
 		}
 
 		//Que las dos contraseñas sean identicas
+		
+		function comprobarContrasenas(){
+        	if(comprobarContrasena($("#pwd1")) && comprobarContrasena($("#pwd2"))){
+        		return true;
+        	}else{
+        		return false;
+        	}
+        }
+		
 		function comprobarContrasena(input) {
 			var contr1 = $("#pwd1").val();
 			var contr2 = $("#pwd2").val();
@@ -502,7 +511,7 @@
 
 		//Comprueba que todo están verificados los campos en el registro
 		function validar() {
-			if (comprobarEdad() && comprobarContrasena() && comprobarCorreo()
+			if (comprobarEdad() && comprobarContrasenas() && comprobarCorreo()
 					&& comprobarDNI() && comprobarTelefono()
 					&& comprobarNombre() && comprobarApellido()
 					&& comprobarUsuaio() && comprobarDireccion()
