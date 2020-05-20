@@ -441,13 +441,11 @@
 							$("#pwd2").addClass("is-invalid");
 							return false;
 						}
+					}else{
+						return false;
 					}
 				} else {
-					input
-							.siblings(".error")
-							.children()
-							.html(
-									"La contraseña tiene que tener un mínimo de 8 caractéres");
+					input.siblings(".error").children().html("La contraseña tiene que tener un mínimo de 8 caractéres");
 					$("#pwd1").removeClass("is-valid");
 					$("#pwd1").addClass("is-invalid");
 					$("#pwd2").removeClass("is-valid");
