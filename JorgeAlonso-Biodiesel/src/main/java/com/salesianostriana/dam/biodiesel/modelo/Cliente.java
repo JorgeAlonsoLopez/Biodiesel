@@ -34,7 +34,7 @@ public class Cliente extends Usuario{
 	
 	private boolean valido;
 	
-	@DateTimeFormat(pattern="dd/MM/yyyy")
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private LocalDate fechaNacimiento;
 	
 	@ManyToOne

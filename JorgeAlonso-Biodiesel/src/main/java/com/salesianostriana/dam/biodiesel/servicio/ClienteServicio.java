@@ -23,7 +23,7 @@ public class ClienteServicio extends BaseService<Cliente, Long, ClienteRepositor
 		super(repo);
 	}
 	
-	public List<Cliente> clientesAceptados() {
+	public List<Cliente> listarClientesAceptados() {
 		List<Cliente> lista = new ArrayList<Cliente>();
 		for(Cliente c: this.findAll()) {
 			if(c.isValido()) {
@@ -33,7 +33,7 @@ public class ClienteServicio extends BaseService<Cliente, Long, ClienteRepositor
 		return lista;
 	}
 	
-	public List<Cliente> clientesPendientes() {
+	public List<Cliente> listarClientesPendientes() {
 		List<Cliente> lista = new ArrayList<Cliente>();
 		for(Cliente c: this.findAll()) {
 			if(!c.isValido()) {
@@ -59,9 +59,9 @@ public class ClienteServicio extends BaseService<Cliente, Long, ClienteRepositor
 	}
 	
 
-	public List<Cliente> clientesAlta() {
+	public List<Cliente> listarClientesAlta() {
 		List<Cliente> lista = new ArrayList<Cliente>();
-		for (Cliente c : this.findAll()) {
+		for (Cliente c : this.listarClientesAceptados()) {
 			if (!c.isAlta()) {
 				lista.add(c);
 			}
@@ -69,9 +69,9 @@ public class ClienteServicio extends BaseService<Cliente, Long, ClienteRepositor
 		return lista;
 	}
 
-	public List<Cliente> clientesBaja() {
+	public List<Cliente> listarClientesBaja() {
 		List<Cliente> lista = new ArrayList<Cliente>();
-		for (Cliente c : this.findAll()) {
+		for (Cliente c : this.listarClientesAceptados()) {
 			if (c.isAlta()) {
 				lista.add(c);
 			}

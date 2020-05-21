@@ -74,7 +74,7 @@ public class AdministradorController {
 
 	@GetMapping("/administrador/principal")
 	public String clientesTotales(Model model) {
-		model.addAttribute("listaClientes", servicioClien.clientesAceptados());
+		model.addAttribute("listaClientes", servicioClien.listarClientesAceptados());
 		model.addAttribute("filtro", new ClienteFormulario());
 		return "/administrador/Administrador";
 	}
@@ -95,7 +95,7 @@ public class AdministradorController {
 
 	@GetMapping("/administrador/clientes_pendientes")
 	public String clientesPendientes(Model model) {
-		model.addAttribute("listaClientes", servicioClien.clientesPendientes());
+		model.addAttribute("listaClientes", servicioClien.listarClientesPendientes());
 		return "/administrador/ClientesPendientes";
 	}
 

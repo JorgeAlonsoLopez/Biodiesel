@@ -88,7 +88,7 @@ public class JorgeAlonsoBiodieselApplication {
 				clienteServicio.save(clienteTest);
 
 				for (int i = 0; i < num25; i++) {
-					aleatorio = rdn.nextInt(clienteServicio.clientesAceptados().size());
+					aleatorio = rdn.nextInt(clienteServicio.listarClientesAceptados().size());
 					aleatorio2 = rdn.nextInt(compuestoServicio.findAll().size());
 
 					LocalDate fecha = clienteServicio.createRandomDate(2017, 2021);
@@ -97,7 +97,7 @@ public class JorgeAlonsoBiodieselApplication {
 							(compuestoServicio.findAll().get(aleatorio2).getNombre()), (rdn.nextInt(max - min) + min) * mil,
 							fecha);
 
-					pedidoServicio.hacerPedido(admin, PedidoF, clienteServicio.clientesAceptados().get(aleatorio),
+					pedidoServicio.hacerPedido(admin, PedidoF, clienteServicio.listarClientesAceptados().get(aleatorio),
 							compuestoServicio);
 				}
 
