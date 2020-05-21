@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
@@ -33,6 +34,7 @@ public class Cliente extends Usuario{
 	
 	private boolean valido;
 	
+	@DateTimeFormat(pattern="dd/MM/yyyy")
 	private LocalDate fechaNacimiento;
 	
 	@ManyToOne
