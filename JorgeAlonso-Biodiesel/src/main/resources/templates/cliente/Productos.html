@@ -72,7 +72,7 @@
           <p class="error"></p>
         </div>
         <div class="mx-auto mt-5 mb-5">
-          <span>Precio final </span><span id="precioFinal" class="ml-2 mr-1">X</span><span> €</span>
+          <span>Precio final </span><span id="precioFinal" class="ml-2 mr-1">0</span><span> €</span>
         </div>
         <div class="mx-auto mt-5 mb-5">
           <button type="submit" class="btn btn-success clienteCompr" value="Enviar" id="enviar">Realizar compra</button>
@@ -107,15 +107,61 @@
     var numDiasT = parseInt($("#numDiasT").html());
     var numDiasB = parseInt($("#numDiasB").html());
 
+    $("#nombre").change(function() {
+    	if($("#cantidad").val()>0){
+          	costeIndiv();
+              costeTotal();
+          	$("#enviar").prop("disabled", "");
+          }else{
+          	$("#enviar").prop("disabled", "true");
+          }
+    	if($("#fechaEntrega").val()==""){
+      		$("#enviar").prop("disabled", "true");
+      	}else{
+      		comprobarFecha();
+      		if($("#cantidad").val()<=0){
+        		$("#enviar").prop("disabled", "true");
+        	}
+      	}
+    	
+
+    });
 
     window.onload = function () {
+    	if($("#fechaEntrega").val()==""){
+    		$("#enviar").prop("disabled", "true");
+    	}
+    	if($("#cantidad").val()==0){
+    		$("#enviar").prop("disabled", "true");
+    	}
+    	
       $("#fechaEntrega").blur(function (event) {
         comprobarFecha();
+        if($("#cantidad").val()<=0){
+    		$("#enviar").prop("disabled", "true");
+    	}
+        
       });
+      
       $("#cantidad").blur(function (event) {
-        costeIndiv();
-        costeTotal();
+    	  if($("#cantidad").val()>0){
+          		costeIndiv();
+              costeTotal();
+          	$("#enviar").prop("disabled", "");
+          }else{
+          	$("#enviar").prop("disabled", "true");
+          }
+    	  if($("#fechaEntrega").val()==""){
+      		$("#enviar").prop("disabled", "true");
+      	}else{
+      		comprobarFecha();
+      		if($("#cantidad").val()<=0){
+        		$("#enviar").prop("disabled", "true");
+        	}
+      	}
+
       });
+      
     }
 
     function costeIndiv() {
@@ -127,9 +173,6 @@
           precioIndividual = $(this).children("td:nth-child(2)").html();
         }
       });
-
-
-
 
       precioFinalIndividual = precioIndividual * $("#cantidad").val();
       precioFinalIndividual = Number(precioFinalIndividual).toFixed(2);

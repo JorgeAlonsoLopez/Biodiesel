@@ -133,7 +133,7 @@
                 </div>
                 <div th:if="${cliente.alta}" class="col-sm-12 col-xl-4">
                     <a th:href="@{'/cliente/ajustes/altaBaja/'+${cliente.dni}}" type="button"
-                        class="btn btn-success grandeCent mx-auto">Darse de baja</a>
+                        class="btn btn-warning grandeCent mx-auto">Darse de baja</a>
                 </div>
             </div>
         </section>
@@ -162,7 +162,7 @@
             $("#nombre").blur(function (event) {
                 comprobarNombre();
             });
-            $("#apellidos").blur(function (event) {
+            $("#apellido").blur(function (event) {
                 comprobarApellido();
             });
             $("#direccion").blur(function (event) {
@@ -211,21 +211,21 @@
 
 
         function comprobarApellido() {
-            if ($("#apellidos").val().length === 0) {
-                $("#apellidos").parent().siblings().children().html("El campo es obligatorio");
-                $("#apellidos").removeClass("is-valid");
-                $("#apellidos").addClass("is-invalid");
+            if ($("#apellido").val().length === 0) {
+                $("#apellido").parent().siblings().children().html("El campo es obligatorio");
+                $("#apellido").removeClass("is-valid");
+                $("#apellido").addClass("is-invalid");
                 return false;
             } else {
-                if (!(/^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/.test($("#apellidos").val()))) {
-                    $("#apellidos").parent().siblings().children().html("El apellido no cumple con el formato");
-                    $("#apellidos").removeClass("is-valid");
-                    $("#apellidos").addClass("is-invalid");
+                if (!(/^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/.test($("#apellido").val()))) {
+                    $("#apellido").parent().siblings().children().html("El apellido no cumple con el formato");
+                    $("#apellido").removeClass("is-valid");
+                    $("#apellido").addClass("is-invalid");
                     return false;
                 } else {
-                    $("#apellidos").parent().siblings().children().html("");
-                    $("#apellidos").addClass("is-valid");
-                    $("#apellidos").removeClass("is-invalid");
+                    $("#apellido").parent().siblings().children().html("");
+                    $("#apellido").addClass("is-valid");
+                    $("#apellido").removeClass("is-invalid");
                     return true;
                 }
             }
