@@ -5,7 +5,6 @@ import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -81,8 +80,6 @@ public class ClienteServicio extends BaseService<Cliente, Long, ClienteRepositor
 
 
 	public Cliente cambiarDatosAVerdadero(ClienteFormulario formulario) {
-		int num0 = 0, num4 = 4, num5 = 5, num7 = 7, num8 = 8, num10 = 10;
-		int dia, mes, anyo;
 
 		Cliente clie = this.buscarPorDNI(formulario.getDni());
 		clie.setNombre(formulario.getNombre());
@@ -93,18 +90,13 @@ public class ClienteServicio extends BaseService<Cliente, Long, ClienteRepositor
 		clie.setContrasenya(formulario.getContrasenya());
 		clie.setPais(formulario.getPais());
 
-		anyo = Integer.parseInt(formulario.getFechaNacimiento().substring(num0, num4));
-		mes = Integer.parseInt(formulario.getFechaNacimiento().substring(num5, num7));
-		dia = Integer.parseInt(formulario.getFechaNacimiento().substring(num8, num10));
-
-		clie.setFechaNacimiento(LocalDate.of(anyo, mes, dia));
+		clie.setFechaNacimiento(formulario.getFechaNacimientoLocal());
 
 		return clie;
 
 	}
 
 	public ClienteFormulario cambiarDatosAFalso(Cliente cliente) {
-		int dia, mes, anyo;
 
 		ClienteFormulario clie = new ClienteFormulario();
 		clie.setNombre(cliente.getNombre());
@@ -116,12 +108,8 @@ public class ClienteServicio extends BaseService<Cliente, Long, ClienteRepositor
 		clie.setPais(cliente.getPais());
 		clie.setUsuario(cliente.getUsuario());
 		clie.setDni(cliente.getDni());
-
-		anyo = cliente.getFechaNacimiento().getYear();
-		mes = cliente.getFechaNacimiento().getMonthValue();
-		dia = cliente.getFechaNacimiento().getDayOfMonth();
-
-		clie.setFechaNacimiento((anyo + "-" + mes + "-" + dia).toString());
+		
+		clie.setFechaNacimientoLocal(cliente.getFechaNacimiento());
 
 		return clie;
 

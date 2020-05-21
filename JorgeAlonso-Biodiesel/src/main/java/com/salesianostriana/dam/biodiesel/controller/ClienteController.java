@@ -2,6 +2,7 @@ package com.salesianostriana.dam.biodiesel.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -57,8 +58,9 @@ public class ClienteController {
 	}
 	
 	@PostMapping ("/cliente/ajustes/submit")
-	public String submitAjustes(@ModelAttribute("clienteFrom") ClienteFormulario nuevoClienteFormulario) {
+	public String submitAjustes(@ModelAttribute("clienteFrom") ClienteFormulario nuevoClienteFormulario, BCryptPasswordEncoder passwordEncoder) {
 		Cliente clienteFinal = servicio.cambiarDatosAVerdadero(nuevoClienteFormulario);
+		clienteFinal.setContrasenya(passwordEncoder.encode(clienteFinal.getContrasenya()));
 		servicio.edit(clienteFinal);
 		return "redirect:/cliente/principal";
 	}

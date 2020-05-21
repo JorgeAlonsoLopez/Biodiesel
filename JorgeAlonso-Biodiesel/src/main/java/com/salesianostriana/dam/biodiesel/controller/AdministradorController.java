@@ -4,15 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.salesianostriana.dam.biodiesel.modelo.Cliente;
 import com.salesianostriana.dam.biodiesel.modelo.Pedido;
-import com.salesianostriana.dam.biodiesel.modelo.formulario.ClienteFormulario;
-import com.salesianostriana.dam.biodiesel.modelo.formulario.FormularioAdminPedido;
 import com.salesianostriana.dam.biodiesel.servicio.AdministradorServicio;
 import com.salesianostriana.dam.biodiesel.servicio.ClienteServicio;
 import com.salesianostriana.dam.biodiesel.servicio.CompuestoServicio;
@@ -75,7 +71,6 @@ public class AdministradorController {
 	@GetMapping("/administrador/principal")
 	public String clientesTotales(Model model) {
 		model.addAttribute("listaClientes", servicioClien.listarClientesAceptados());
-		model.addAttribute("filtro", new ClienteFormulario());
 		return "/administrador/Administrador";
 	}
 
