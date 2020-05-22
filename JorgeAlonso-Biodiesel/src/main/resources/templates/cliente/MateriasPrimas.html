@@ -36,7 +36,7 @@
 	          </tbody>
 	        </table>
         	<div class="row conten mx-auto justify-content-around mt-5 mb-5">
-          <div class="col-sm-12 col-xl-3">
+          <div class="col-sm-12 col-xl-3 mb-3">
             <select id="nombre" class="form-control" th:field="*{nombre}">
               <option th:each="elemento : ${listaMaterias}" th:value="${elemento.nombre}" th:text="${elemento.nombre}">
                 Producto</option>
@@ -87,18 +87,17 @@
         
     </section>
   </main>
-  <span id="costeTT" class="oculto" th:text="${admin.precioTren}">AAAAAA</span>
-  <span id="costeTB" class="oculto" th:text="${admin.precioBarco}">AAAAAA</span>
-  <span id="numDiasT" class="oculto" th:text="${cliente.pais.numDiasTren}">AAAAAA</span>
-  <span id="numDiasB" class="oculto" th:text="${cliente.pais.numDiasBarco}">AAAAAA</span>
   <div th:replace="~{fragmentos/footer::footer}"></div>
+
+	<script th:inline="javascript">
+		var costeTT = [(${admin.precioTren})];
+		var costeTB = [(${admin.precioBarco})];
+		var numDiasT = [(${cliente.pais.numDiasTren})];
+		var numDiasB = [(${cliente.pais.numDiasBarco})];
+	</script>
 
   <script>
     var precioFinalIndividual = 0;
-    var costeTT = parseInt($("#costeTT").html());
-    var costeTB = parseInt($("#costeTB").html());
-    var numDiasT = parseInt($("#numDiasT").html());
-    var numDiasB = parseInt($("#numDiasB").html());
 
     $("#nombre").change(function() {
     	if($("#cantidad").val()>0){
