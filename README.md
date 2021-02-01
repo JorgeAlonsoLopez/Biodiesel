@@ -2,7 +2,8 @@
 
 # GREENTECH BIOFUELS
 
-El proyecto se centra en la gestión de una fábrica de biodiesel de segunda generación.
+El proyecto se centra en la gestión de una fábrica de biodiesel de segunda generación. Se desarrolla en Java, haciendo uso de Spring y Maven. Para iniciar el proyecto, se lanzará mediante Spring Boot App en ```JorgeAlonsoBiodieselApplication.java```, dentro de src/main/java en el paquete ```com.salesianostriana.dam.biodiesel``` y la URL será http://localhost:9000/
+
 Habrá dos tipos de usuarios distintos: clientes y administradores.
 
 El cliente podrá realizar pedidos (comprar productos y vender materias primas), listar, ordenar y cancelar sus pedidos y modificar sus datos. El administrador podrá listar a los clientes, acceder a su información, eliminar clientes y cambiar los precios.
